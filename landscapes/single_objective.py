@@ -18,7 +18,9 @@ from math import e
 
 def rastrigin(x, safe_mode=False):
     '''
-    https://en.wikipedia.org/wiki/Rastrigin_function
+    Rastrigin Function
+    
+    wikipedia: https://en.wikipedia.org/wiki/Rastrigin_function
 
     global minimum at x=0, where f(x)=0
     bounds: -5.12 <= x_i <= 5.12
@@ -30,7 +32,10 @@ def rastrigin(x, safe_mode=False):
 
 def ackley(xy):
     '''
-    https://en.wikipedia.org/wiki/Ackley_function
+    Ackley Function
+    
+    wikipedia: https://en.wikipedia.org/wiki/Ackley_function
+    
     global minium at f(x=0, y=0) = 0
     bounds: -5<=x,y<=5
     '''
@@ -42,6 +47,8 @@ def ackley(xy):
 
 def sphere(x):
     '''
+    Sphere Function
+    
     global minimum at x=0 where f(x)=0
     bounds: none
     '''
@@ -58,7 +65,6 @@ def rosenbrock(x):
         n=2 -> f(1,1)=0
         n=3 -> f(1,1,1)=0
         n>3 -> f(1,...,1)=0
-
     bounds:
         -inf <= x_i <= +inf
         1 <= i <= n
@@ -141,7 +147,7 @@ def himmelblau(x,y):
     '''
     Himmelblau's Function
 
-    Wikipedia: https://en.wikipedia.org/wiki/Himmelblau%27s_function
+    wikipedia: https://en.wikipedia.org/wiki/Himmelblau%27s_function
 
     global minimum(s):
         f(x=3.0, 2.0) = 0
