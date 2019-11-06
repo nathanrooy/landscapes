@@ -10,6 +10,11 @@ You can also install directly from this git repo:
 pip install git+https://github.com/nathanrooy/landscapes
 ```
 Lastly, you can always clone/download this repo and use as is.
+```sh
+wget https://github.com/nathanrooy/landscapes/archive/master.zip
+unzip master.zip
+cd landscapes-master
+```
 
 ## Usage
 
