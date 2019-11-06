@@ -1,2 +1,2 @@
-<p  align="center"><img src="landscapes.png"></p>
+<p  align="center"><img src="logo.png"></p>
 
