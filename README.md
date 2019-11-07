@@ -1,4 +1,4 @@
-<p  align="center"><img src="logo.png"></p>
+<p  align="center"><img src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/logo.png"></p>
 
 [![GitHub license](https://img.shields.io/github/license/nathanrooy/landscapes.svg)](https://github.com/nathanrooy/landscapes/blob/master/LICENSE)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/landscapes.svg)](https://pypi.python.org/pypi/landscapes/)
