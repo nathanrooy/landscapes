@@ -1,5 +1,7 @@
 <p  align="center"><img src="logo.png"></p>
 
+[![Downloads](https://pepy.tech/badge/landscapes)](https://pepy.tech/project/landscapes)
+
 ## Installation
 There are a couple ways in which you can use this library. The first and probably the easiest is by using pip and PyPi:
 ```sh
