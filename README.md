@@ -1,5 +1,8 @@
 <p  align="center"><img src="logo.png"></p>
 
+[![GitHub license](https://img.shields.io/github/license/nathanrooy/landscapes.svg)](https://github.com/nathanrooy/landscapes/blob/master/LICENSE)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/landscapes.svg)](https://pypi.python.org/pypi/landscapes/)
+[![PyPI version fury.io](https://badge.fury.io/py/landscapes.svg)](https://pypi.python.org/pypi/landscapes/)
 [![Downloads](https://pepy.tech/badge/landscapes)](https://pepy.tech/project/landscapes)
 
 ## Installation
