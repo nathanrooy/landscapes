@@ -50,7 +50,7 @@ The output of which should look close to this:
 ## Function Reference - Single Objective
 
 
-### Ackley Function
+### Ackley function
 ```py
 from landscapes.single_objective import ackley
 ```
@@ -60,7 +60,7 @@ from landscapes.single_objective import ackley
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/ackley.png">
 
-### Beale Function
+### Beale function
 ```py
 from landscapes.single_objective import beale
 ```
@@ -70,7 +70,7 @@ from landscapes.single_objective import beale
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/beale.png">
 
-### Booth Function
+### Booth function
 ```py
 from landscapes.single_objective import booth
 ```
@@ -80,7 +80,7 @@ from landscapes.single_objective import booth
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/booth.png">
 
-### Bukin N.6 Function
+### Bukin N.6 function
 ```py
 from landscapes.single_objective import bukin_n6
 ```
@@ -90,7 +90,7 @@ from landscapes.single_objective import bukin_n6
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/bukin_n6.png">
 
-### Cross-in-tray
+### Cross-in-tray function
 ```py
 from landscapes.single_objective import cross_in_tray
 ```
@@ -100,7 +100,7 @@ from landscapes.single_objective import cross_in_tray
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/cross_in_tray.png">
 
-### Easom Function
+### Easom function
 ```py
 from landscapes.single_objective import easom
 ```
@@ -110,7 +110,7 @@ from landscapes.single_objective import easom
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/easom.png">
 
-### Eggholder Function
+### Eggholder function
 ```py
 from landscapes.single_objective import eggholder
 ```
@@ -120,7 +120,17 @@ from landscapes.single_objective import eggholder
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/egg_holder.png">
 
-### Himmelblau's Function
+### Goldstein–Price function
+```py
+from landscapes.single_objective import goldstein_price
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f(x=0, y=-1) = 3 | -2 <= x, y <= 2 | `goldstein_price([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/log_color_scale/goldstein_price.png">
+
+### Himmelblau's function
 ```py
 from landscapes.single_objective import himmelblau
 ```
@@ -129,3 +139,66 @@ from landscapes.single_objective import himmelblau
 | f(x=3.0, y=2.0) = 0.0 <br> f(x=-2.805118, y=3.131312) = 0.0 <br> f(x=-3.779310, y=-3.283186) = 0.0 <br> f(x=3.584428, y=-1.848126) = 0.0 | -5 <= x, y <= 5 | `himmelblau([x,y])` |
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/himmelblau.png">
+
+### Hölder table function
+```py
+from landscapes.single_objective import holder_table
+```
+| global minimum(s) | bounds | usage | 
+| --- | --- | --- |
+| f(x=8.05502, y=9.66459) = -19.2085 <br> f(x=-8.05502, y=9.66459) = -19.2085 <br> f(x=8.05502, y=-9.66459) = -19.2085 <br> f(x=-8.05502, y=-9.66459) = -19.2085 <br> | -10 <= x, y <= 10 | `holder_table([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/holder_table.png">
+
+### Lévi function N.13
+```py
+from landscapes.single_objective import levi_n13
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f(x=1, y=1) = 0 | -10 <= x, y <= 10 | `levi_n13([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/levi_n13.png">
+
+### Matyas function
+```py
+from landscapes.single_objective import mccormick
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f(x=0, y=0) = 0 | -10 <= x, y <= 10 | `matyas([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/matyas.png">
+
+### McCormick function
+```py
+from landscapes.single_objective import mccormick
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f(x=-0.54719, y=-1.54719) = -1.9133 | -1.5 <= x <= 4 <br> -3 <= y <= 4 | `mccormick([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/mccormick.png">
+
+### Rastrigin function
+```py
+from landscapes.single_objective import rastrigin
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f([0,...,0]) = 0 | -5.12 <= x_i <= 5.12 | `rastrigin([x_1,...,x_n])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/rastrigin.png">
+
+### Rosenbrock function
+```py
+from landscapes.single_objective import rosenbrock
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f([1,...,1]) = 0 | -inf <= x_i <= inf | `rosenbrock([x_1,...,x_n])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/rosenbrock.png">
+
+
+
