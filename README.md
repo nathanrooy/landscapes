@@ -46,3 +46,37 @@ The output of which should look close to this:
              x: array([-3.33051318e-05, -1.93825710e-05])
 
 ```
+
+## Function Reference - Single Objective
+
+
+### Ackley Function
+```py
+from landscapes.single_objective import ackley
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f(x=0,y=0)=0 | -5.12 <= x, y <= 5.12 | `ackley([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/ackley.png">
+
+### Beale Function
+```py
+from landscapes.single_objective import beale
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f(x=3, y=0.5) = 0 | -4.5 <= x, y <= 4.5 | `beale([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/beale.png">
+
+### Booth Function
+```py
+from landscapes.single_objective import booth
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f(x=1, y=3) = 0 | -10 <= x, y <= 10 | `booth([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/booth.png">
+
