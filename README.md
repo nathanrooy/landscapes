@@ -100,7 +100,7 @@ from landscapes.single_objective import cross_in_tray
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/cross_in_tray.png">
 
-### Easom
+### Easom Function
 ```py
 from landscapes.single_objective import easom
 ```
@@ -110,7 +110,7 @@ from landscapes.single_objective import easom
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/easom.png">
 
-### Eggholder
+### Eggholder Function
 ```py
 from landscapes.single_objective import eggholder
 ```
@@ -119,3 +119,13 @@ from landscapes.single_objective import eggholder
 | f(x=512, y=404.2319) = -959.6407 | -512 <= x, y <= 512 | `eggholder([x,y])` |
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/egg_holder.png">
+
+### Himmelblau's Function
+```py
+from landscapes.single_objective import himmelblau
+```
+| global minimum(s) | bounds | usage | 
+| --- | --- | --- |
+| f(x=3.0, y=2.0) = 0.0 <br> f(x=-2.805118, y=3.131312) = 0.0 <br> f(x=-3.779310, y=-3.283186) = 0.0 <br> f(x=3.584428, y=-1.848126) = 0.0 | -5 <= x, y <= 5 | `himmelblau([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/himmelblau.png">
