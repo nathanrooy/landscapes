@@ -200,5 +200,54 @@ from landscapes.single_objective import rosenbrock
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/rosenbrock.png">
 
+### Schaffer function N.2
+```py
+from landscapes.single_objective import schaffer_n2
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f(x=0, y=0) = 0 | -100 <= x, y <= 100 | `schaffer_n2([x,y])` |
 
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/schaffer_n2.png">
+
+
+### Schaffer function N.4
+```py
+from landscapes.single_objective import schaffer_n4
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f(x=0, y=1.25313) = 0.292579 <br> f(x=0, y=-1.25313) = 0.292579 | -100 <= x, y <= 100 | `schaffer_n4([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/schaffer_n4.png">
+
+### Sphere function
+```py
+from landscapes.single_objective import sphere
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f([0,...,0]) = 0 | -inf <= x_i <= inf | `sphere([x_1,...x_n])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/sphere.png">
+
+### Styblinski–Tang function
+```py
+from landscapes.single_objective import styblinski_tang
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| -39.16617n < f([-2.903534,...,-2.903534]) < -39.16616n | -5 <= x_i <= 5 | `styblinski_tang([x_1,...x_n])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/styblinski_tang.png">
+
+### Three-hump camel function
+```py
+from landscapes.single_objective import three_hump_camel
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| -f(x=0, y=0) = 0 | -5 <= x_i <= 5 | `three_hump_camel([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/three_hump_camel.png">
 
