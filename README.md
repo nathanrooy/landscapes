@@ -80,3 +80,42 @@ from landscapes.single_objective import booth
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/booth.png">
 
+### Bukin N.6 Function
+```py
+from landscapes.single_objective import bukin_n6
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f(x=-10, y=1) = 0 | -15 <= x <= -5 <br> -3 <= y <= 3 | `bukin_n6([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/bukin_n6.png">
+
+### Cross-in-tray
+```py
+from landscapes.single_objective import cross_in_tray
+```
+| global minimum(s) | bounds | usage | 
+| --- | --- | --- |
+| f(x=1.34941, y=-1.34941) = -2.06261 <br> f(x=1.34941, y=1.34941) = -2.06261 <br> f(x=-1.34941, y=1.34941) = -2.06261 <br> f(x=-1.34941, y=-1.34941) = -2.06261 | -10 <= x, y <= 10 | `cross_in_tray([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/cross_in_tray.png">
+
+### Easom
+```py
+from landscapes.single_objective import easom
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f(x=pi, y=pi) = -1 | -100 <= x, y <= 100 | `easom([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/easom.png">
+
+### Eggholder
+```py
+from landscapes.single_objective import eggholder
+```
+| global minimum | bounds | usage | 
+| --- | --- | --- |
+| f(x=512, y=404.2319) = -959.6407 | -512 <= x, y <= 512 | `eggholder([x,y])` |
+
+<img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/egg_holder.png">
