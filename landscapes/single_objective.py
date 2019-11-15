@@ -45,13 +45,14 @@ def beale(xy):
             (2.625 - x + x*y**3)**2)
 
 
-def booth(x,y):
+def booth(xy):
     '''
     Booth Function
 
     global minimum: f(x=1, y=3) = 0
     bounds: 10 <= x, y <= 10
     '''
+    x, y = xy[0], xy[1]
     return (x + 2*y - 7)**2 + (2*x + y - 5)**2
 
 
@@ -63,7 +64,7 @@ def branin(xy):
 
     global minimum(s):
         f(x=-pi, y=12.275) = 0.397887
-        f(x= pi, y= 2.275) = 0397887
+        f(x= pi, y= 2.275) = 0.397887
         f(x=9.42478, y=2.475) = 0.397887
     bounds:
         -5 <= x <= 10
@@ -79,7 +80,7 @@ def branin(xy):
     return a * (y - b*x**2 + c*x - r)**2 + s*(1-t)*cos(x) + s
 
 
-def bukin_n6(x,y):
+def bukin_n6(xy):
     '''
     Bukin Function N.6
 
@@ -88,10 +89,11 @@ def bukin_n6(x,y):
         -15 <= x <= -5
         -3 <= y <= 3
     '''
+    x, y = xy[0], xy[1]
     return 100 * sqrt(abs(y-0.01*x**2)) + 0.01*abs(x+10)
 
 
-def cross_in_tray(x,y):
+def cross_in_tray(xy):
     '''
     Cross-in-tray Fucntion
 
@@ -102,10 +104,11 @@ def cross_in_tray(x,y):
         f(x=-1.34941, y=-1.34941) = -2.06261
     bounds: -10 = x, y <= 10
     '''
+    x, y = xy[0], xy[1]
     return -0.0001*(abs(sin(x)*sin(y)*exp(abs(100-(sqrt(x**2 + y**2)/pi))))+1)**0.1
 
 
-def drop_wave(x,y):
+def drop_wave(xy):
     '''
     Drop-Wave Function
 
@@ -114,16 +117,18 @@ def drop_wave(x,y):
     global minimum: f(x=0, y=0) = -1
     bounds: -5.12 <= x, y <= 5.12
     '''
+    x, y = xy[0], xy[1]
     return -(1 + cos(12 * sqrt(x**2 + y**2))) / (0.5 * (x**2 + y**2) + 2)
 
 
-def easom(x,y):
+def easom(xy):
     '''
     Easom Function
 
     global minimum: f(x=pi, y=pi) = -1
     bounds: -100 <= x, y <= 100
     '''
+    x, y = xy[0], xy[1]
     return -cos(x)*cos(y)*exp(-((x-pi)**2 + (y-pi)**2))
 
 
@@ -321,4 +326,3 @@ def three_hump_camel(x,y):
 
 
 #--- END ----------------------------------------------------------------------+
-
