@@ -25,6 +25,7 @@ from landscapes.single_objective import schwefel
 from landscapes.single_objective import sphere
 from landscapes.single_objective import styblinski_tang
 from landscapes.single_objective import three_hump_camel
+from landscapes.single_objective import sum_of_different_powers
 
 class test_single_objective(unittest.TestCase):
 
@@ -148,6 +149,12 @@ class test_single_objective(unittest.TestCase):
         styblinski_tang([-2.903534, -2.903534, -2.903534, -2.903534, -2.903534])
         <= -39.16616 * 5
         )
+
+    def test_sum_of_different_powers_1(self):
+        self.assertEqual(sum_of_different_powers([0]), 0)
+
+    def test_sum_of_different_powers_2(self):
+        self.assertEqual(sum_of_different_powers([0,0,0,0,0]), 0)
 
     def test_three_hump_camel(self):
         self.assertEqual(three_hump_camel([0,0]), 0)
