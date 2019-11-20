@@ -244,9 +244,8 @@ def rosenbrock(x):
     wikipedia: https://en.wikipedia.org/wiki/Rosenbrock_function
 
     global minimum:
-        n=2 -> f(1,1)=0
-        n=3 -> f(1,1,1)=0
-        n>3 -> f(1,...,1)=0
+        f(x)=0 where x=[1,...,1]
+
     bounds:
         -inf <= x_i <= +inf
         1 <= i <= n
@@ -319,6 +318,17 @@ def styblinski_tang(x):
         1 <= i <= n
     '''
     return sum([item**4 - 16*item**2 + 5*item for item in x]) / 2.0
+
+
+def sum_of_different_powers(x):
+    '''
+    Sum of Different Powers
+
+    reference: https://www.sfu.ca/~ssurjano/sumpow.html
+
+    global minimum: f(x)=0, when x=[0,...,0]
+    '''
+    return sum([abs(item)**(i+2) for i, item in enumerate(x)])
 
 
 def three_hump_camel(xy):
