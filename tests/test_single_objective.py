@@ -12,8 +12,19 @@ from landscapes.single_objective import drop_wave
 from landscapes.single_objective import easom
 from landscapes.single_objective import eggholder
 from landscapes.single_objective import goldstein_price
-
+from landscapes.single_objective import himmelblau
+from landscapes.single_objective import holder_table
+from landscapes.single_objective import levi_n13
+from landscapes.single_objective import matyas
+from landscapes.single_objective import mccormick
+from landscapes.single_objective import rastrigin
+from landscapes.single_objective import rosenbrock
+from landscapes.single_objective import schaffer_n2
+from landscapes.single_objective import schaffer_n4
+from landscapes.single_objective import schwefel
 from landscapes.single_objective import sphere
+from landscapes.single_objective import styblinski_tang
+from landscapes.single_objective import three_hump_camel
 
 class test_single_objective(unittest.TestCase):
 
@@ -26,8 +37,14 @@ class test_single_objective(unittest.TestCase):
     def test_booth(self):
         self.assertEqual(booth([1,3]), 0)
 
-    # def test_branin(self):
-    #     self.assertEqual(branin([-pi, y=12.275]), 0)
+    def test_branin_1(self):
+        self.assertLess(abs(0.397887 - branin([-pi, 12.275])), 1e-6)
+
+    def test_branin_2(self):
+        self.assertLess(abs(0.397887 - branin([pi, 2.275])), 1e-6)
+
+    def test_branin_3(self):
+        self.assertLess(abs(0.397887 - branin([3*pi, 2.475])), 1e-6)
 
     def test_bukin_n6(self):
         self.assertEqual(bukin_n6([-10,1]), 0)
@@ -56,8 +73,85 @@ class test_single_objective(unittest.TestCase):
     def test_goldstein_price(self):
         self.assertEqual(goldstein_price([0,-1]), 3)
 
-    def test_sphere(self):
-        self.assertEqual(sphere([0,0,0]), 0)
+    def test_himmelblau_1(self):
+        self.assertEqual(himmelblau([3,2]), 0)
+
+    def test_himmelblau_2(self):
+        self.assertLess(himmelblau([-2.805118, 3.131312]), 1e-10)
+
+    def test_himmelblau_3(self):
+        self.assertLess(himmelblau([-3.779310, -3.283186]), 1e-10)
+
+    def test_himmelblau_4(self):
+        self.assertLess(himmelblau([3.584428, -1.848126]), 1e-10)
+
+    def test_holder_table_1(self):
+        self.assertLess(abs(-19.2085 - holder_table([8.05502, 9.66459])), 1e-5)
+
+    def test_holder_table_2(self):
+        self.assertLess(abs(-19.2085 - holder_table([-8.05502, 9.66459])), 1e-5)
+
+    def test_holder_table_3(self):
+        self.assertLess(abs(-19.2085 - holder_table([8.05502, -9.66459])), 1e-5)
+
+    def test_holder_table_4(self):
+        self.assertLess(abs(-19.2085 - holder_table([-8.05502, -9.66459])), 1e-5)
+
+    def test_levi_n13(self):
+        self.assertLess(levi_n13([1,1]), 1e-10)
+
+    def test_matyas(self):
+        self.assertEqual(matyas([0,0]), 0)
+
+    def test_mccormick(self):
+        self.assertLess(abs(-1.9133 - mccormick([-0.54719, -1.54719])), 1e-4)
+
+    def test_rastrigin_1(self):
+        self.assertEqual(rastrigin([0]), 0)
+
+    def test_rastrigin_2(self):
+        self.assertEqual(rastrigin([0,0,0,0,0]), 0)
+
+    def test_rosenbrock_1(self):
+        self.assertEqual(rosenbrock([1]), 0)
+
+    def test_rosenbrock_2(self):
+        self.assertEqual(rosenbrock([1,1,1,1,1]), 0)
+
+    def test_schaffer_n2(self):
+        self.assertEqual(schaffer_n2([0,0]), 0)
+
+    def test_schaffer_n4_1(self):
+        self.assertLess(abs(0.292579 - schaffer_n4([0, 1.25313])), 1e-6)
+
+    def test_schaffer_n4_2(self):
+        self.assertLess(abs(0.292579 - schaffer_n4([0, -1.25313])), 1e-6)
+
+    def test_schwefel_1(self):
+        self.assertLess(schwefel([420.9687]), 1e-4)
+
+    def test_schwefel_2(self):
+        self.assertLess(schwefel([420.9687, 420.9687, 420.9687, 420.9687, 420.9687]), 1e-4)
+
+    def test_sphere_1(self):
+        self.assertEqual(sphere([0]), 0)
+
+    def test_sphere_2(self):
+        self.assertEqual(sphere([0,0,0,0,0]), 0)
+
+    def test_styblinski_tang_1(self):
+        self.assertTrue(-39.16617 <= styblinski_tang([-2.903534]) <= -39.16616)
+
+    def test_styblinski_tang_2(self):
+        self.assertTrue(
+        -39.16617*5 <=
+        styblinski_tang([-2.903534, -2.903534, -2.903534, -2.903534, -2.903534])
+        <= -39.16616 * 5
+        )
+
+    def test_three_hump_camel(self):
+        self.assertEqual(three_hump_camel([0,0]), 0)
+
 
 
 if __name__ == '__main__':
