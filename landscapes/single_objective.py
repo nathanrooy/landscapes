@@ -164,16 +164,16 @@ def himmelblau(xy):
 
     global minimum(s):
         f(x=3.0, 2.0) = 0
-        f(x=-2.805118, y=3.131312) = 0
-        f(x=-3.779310, y=-3.283186) = 0
-        f(x=3.584428, y=-1.848126) = 0
+        f(-2.805118, 3.131312) = 0
+        f(-3.779310, -3.283186) = 0
+        f(3.584428, -1.848126) = 0
     bounds: -5 <= x, y <= 5
     '''
     x, y = xy[0], xy[1]
     return (x**2 + y - 11)**2 + (x + y**2 - 7)**2
 
 
-def holder_table(xy):
+def holder_table(x,y):
     '''
     Holder Table Function
 
@@ -184,33 +184,30 @@ def holder_table(xy):
         f(x=-8.05502, y=-9.66459) = -19.2085
     bounds: -10 <= x, y <= 10
     '''
-    x, y = xy[0], xy[1]
     return -abs(sin(x)*cos(y)*exp(abs(1-(sqrt(x**2 + y**2)/pi))))
 
 
-def levi_n13(xy):
+def levi_n13(x,y):
     '''
     Levi Function N.13
 
     global minimum: f(x=1, y=1) = 0
     bounds: -10 <= x, y <= 10
     '''
-    x, y = xy[0], xy[1]
     return sin(3.0*pi*x)**2 + (x-1)**2 * (1+sin(3.0*pi*y)**2) + (y-1)**2 * (1+sin(2.0*pi*y)**2)
 
 
-def matyas(xy):
+def matyas(x,y):
     '''
     Matyas Function
 
     global minimum: f(x=0, y=0) = 0
     bounds: -10 <= x, y <= 10
     '''
-    x, y = xy[0], xy[1]
     return 0.26*(x**2 + y**2) - 0.48*x*y
 
 
-def mccormick(xy):
+def mccormick(x,y):
     '''
     McCormick Function
 
@@ -219,7 +216,6 @@ def mccormick(xy):
         -1.5 <= x <= 4
         -3 <= y <= 4
     '''
-    x, y = xy[0], xy[1]
     return sin(x+y) + (x-y)**2 - 1.5*x + 2.5*y + 1
 
 
@@ -244,8 +240,9 @@ def rosenbrock(x):
     wikipedia: https://en.wikipedia.org/wiki/Rosenbrock_function
 
     global minimum:
-        f(x)=0 where x=[1,...,1]
-
+        n=2 -> f(1,1)=0
+        n=3 -> f(1,1,1)=0
+        n>3 -> f(1,...,1)=0
     bounds:
         -inf <= x_i <= +inf
         1 <= i <= n
@@ -257,7 +254,7 @@ def rosenbrock(x):
     return total
 
 
-def schaffer_n2(xy):
+def schaffer_n2(x,y):
     '''
     Schaffer Function N.2
 
@@ -266,11 +263,10 @@ def schaffer_n2(xy):
     global minimum: f(x=0, y=0) = 0
     bounds: -100 <= x, y <= 100
     '''
-    x, y = xy[0], xy[1]
     return 0.5 + (sin(x**2 - y**2)**2 - 0.5)/(1+0.001*(x**2+y**2))**2
 
 
-def schaffer_n4(xy):
+def schaffer_n4(x,y):
     '''
     Schaffer Function N.4
 
@@ -281,7 +277,6 @@ def schaffer_n4(xy):
         f(x=0, y=-1.25313) = 0.292579
     bounds: -100 <= x, y <= 100
     '''
-    x, y = xy[0], xy[1]
     return 0.5 + (cos(sin(abs(x**2 - y**2)))**2 - 0.5)/(1+0.001*(x**2 + y**2))**2
 
 
@@ -320,26 +315,31 @@ def styblinski_tang(x):
     return sum([item**4 - 16*item**2 + 5*item for item in x]) / 2.0
 
 
-def sum_of_different_powers(x):
-    '''
-    Sum of Different Powers
-
-    reference: https://www.sfu.ca/~ssurjano/sumpow.html
-
-    global minimum: f(x)=0, when x=[0,...,0]
-    '''
-    return sum([abs(item)**(i+2) for i, item in enumerate(x)])
-
-
-def three_hump_camel(xy):
+def three_hump_camel(x,y):
     '''
     Three-Hump Camel Function
 
     global minimum: f(x=0, y=0) = 0
     bounds: -5 <= x, y <= 5
     '''
-    x, y = xy[0], xy[1]
     return 2.0*x**2 - 1.05*x**4 + (x**6 / 6.0) + x*y + y**2
+
+
+class tsp():
+    def __init__(self, dist_func, close_loop=True):
+        self.dist_func = dist_func
+        self.close_loop = close_loop
+    
+    def dist(self, xy):
+        # sequentially calculate distance between all tsp nodes
+        dist = 0
+        for i in range(len(xy)-1): dist += self.dist_func(xy[i+1], xy[i])
+
+        # close the tsp loop by calculating the distance 
+        # between the first and last points
+        if self.close_loop: dist += self.dist_func(xy[0], xy[-1])
+        
+        return dist
 
 
 #--- END ----------------------------------------------------------------------+
