@@ -26,8 +26,7 @@ def ackley(xy):
     global minium at f(x=0, y=0) = 0
     bounds: -5<=x,y<=5
     '''
-    x=xy[0]
-    y=xy[1]
+    x, y = xy[0], xy[1]
     return (-20 * exp(-0.2 * sqrt(0.5 * (x*x + y*y))) -
             exp(0.5 * (cos(2.0*pi*x) + cos(2*pi*y))) + e + 20)
 
@@ -173,7 +172,7 @@ def himmelblau(xy):
     return (x**2 + y - 11)**2 + (x + y**2 - 7)**2
 
 
-def holder_table(x,y):
+def holder_table(xy):
     '''
     Holder Table Function
 
@@ -184,30 +183,33 @@ def holder_table(x,y):
         f(x=-8.05502, y=-9.66459) = -19.2085
     bounds: -10 <= x, y <= 10
     '''
+    x, y = xy[0], xy[1]
     return -abs(sin(x)*cos(y)*exp(abs(1-(sqrt(x**2 + y**2)/pi))))
 
 
-def levi_n13(x,y):
+def levi_n13(xy):
     '''
     Levi Function N.13
 
     global minimum: f(x=1, y=1) = 0
     bounds: -10 <= x, y <= 10
     '''
+    x, y = xy[0], xy[1]
     return sin(3.0*pi*x)**2 + (x-1)**2 * (1+sin(3.0*pi*y)**2) + (y-1)**2 * (1+sin(2.0*pi*y)**2)
 
 
-def matyas(x,y):
+def matyas(xy):
     '''
     Matyas Function
 
     global minimum: f(x=0, y=0) = 0
     bounds: -10 <= x, y <= 10
     '''
+    x, y = xy[0], xy[1]
     return 0.26*(x**2 + y**2) - 0.48*x*y
 
 
-def mccormick(x,y):
+def mccormick(xy):
     '''
     McCormick Function
 
@@ -216,6 +218,7 @@ def mccormick(x,y):
         -1.5 <= x <= 4
         -3 <= y <= 4
     '''
+    x, y = xy[0], xy[1]
     return sin(x+y) + (x-y)**2 - 1.5*x + 2.5*y + 1
 
 
@@ -254,7 +257,7 @@ def rosenbrock(x):
     return total
 
 
-def schaffer_n2(x,y):
+def schaffer_n2(xy):
     '''
     Schaffer Function N.2
 
@@ -263,10 +266,11 @@ def schaffer_n2(x,y):
     global minimum: f(x=0, y=0) = 0
     bounds: -100 <= x, y <= 100
     '''
+    x, y = xy[0], xy[1]
     return 0.5 + (sin(x**2 - y**2)**2 - 0.5)/(1+0.001*(x**2+y**2))**2
 
 
-def schaffer_n4(x,y):
+def schaffer_n4(xy):
     '''
     Schaffer Function N.4
 
@@ -277,6 +281,7 @@ def schaffer_n4(x,y):
         f(x=0, y=-1.25313) = 0.292579
     bounds: -100 <= x, y <= 100
     '''
+    x, y = xy[0], xy[1]
     return 0.5 + (cos(sin(abs(x**2 - y**2)))**2 - 0.5)/(1+0.001*(x**2 + y**2))**2
 
 
@@ -315,13 +320,23 @@ def styblinski_tang(x):
     return sum([item**4 - 16*item**2 + 5*item for item in x]) / 2.0
 
 
-def three_hump_camel(x,y):
+def sum_of_different_powers(x):
+    '''
+    Sum of Different Powers
+    reference: https://www.sfu.ca/~ssurjano/sumpow.html
+    global minimum: f(x)=0, when x=[0,...,0]
+    '''
+    return sum([abs(item)**(i+2) for i, item in enumerate(x)])
+
+    
+def three_hump_camel(xy):
     '''
     Three-Hump Camel Function
 
     global minimum: f(x=0, y=0) = 0
     bounds: -5 <= x, y <= 5
     '''
+    x, y = xy[0], xy[1]
     return 2.0*x**2 - 1.05*x**4 + (x**6 / 6.0) + x*y + y**2
 
 
