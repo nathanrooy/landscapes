@@ -1,4 +1,4 @@
-<p  align="center"><img src="https://raw.githubusercontent.com/nathanrooy/landscapes/docs/images/logo.png"></p>
+<p  align="center"><img src="https://github.com/nathanrooy/landscapes/blob/master/docs/images/logo.png"></p>
 
 [![Build Status](https://travis-ci.org/nathanrooy/landscapes.svg?branch=master)](https://travis-ci.org/nathanrooy/landscapes)
 [![GitHub license](https://img.shields.io/github/license/nathanrooy/landscapes.svg)](https://github.com/nathanrooy/landscapes/blob/master/LICENSE)
