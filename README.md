@@ -324,7 +324,7 @@ import osmnx as ox
 import networkx as nx
 import pandas as pd
 ```
-Next, load the brewery locations (available here) and prepare the <a target="_blank" href="https://en.wikipedia.org/wiki/OpenStreetMap">Open Street Map</a> (OSM) network graph.
+Next, load the brewery locations (available <a target="_blank" href="https://github.com/nathanrooy/landscapes/blob/master/docs/brewery_locations.csv">here</a>) and prepare the <a target="_blank" href="https://en.wikipedia.org/wiki/OpenStreetMap">Open Street Map</a> (OSM) network graph.
 ```py
 pts_df = pd.read_csv('brewery_locations.csv')
 
