@@ -283,7 +283,7 @@ To calculate the total travel distance, simply call the function with the list o
 tsp_cost(pts)
 >>> 3.2043803044101096
 ```
-The flag `close_loop` simply specifies whether the distance between point[0] and point[-1] should be calculated.
+The flag `close_loop` simply specifies whether the distance between the first and last points should be calculated.
 
 <b>Example 2: Specifying points using Latitude and Longitude</b>
 
