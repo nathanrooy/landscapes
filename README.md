@@ -344,8 +344,8 @@ G = ox.graph_from_bbox(bbox[0], bbox[1], bbox[2], bbox[3], network_type='drive')
 Downloading the osm graph might take a bit depending on internet speed. Next, let's create a new cost function that takes in two brewery names and returns the network distance in meters.
 ```py
 def osm_dist(n0, n1):
-    p0 = locs_df[locs_df['name']==n0][['lat','lng']].values[0]
-    p1 = locs_df[locs_df['name']==n1][['lat','lng']].values[0]
+    p0 = pts_df[pts_df['name']==n0][['lat','lng']].values[0]
+    p1 = pts_df[pts_df['name']==n1][['lat','lng']].values[0]
 
     p0_node = ox.get_nearest_node(G, p0)
     p1_node = ox.get_nearest_node(G, p1)
