@@ -329,7 +329,7 @@ def sum_of_different_powers(x):
     return sum([abs(item)**(i+2) for i, item in enumerate(x)])
 
     
-def three_hump_camel(xy):
+def camel_hump_3(xy):
     '''
     Three-Hump Camel Function
 
@@ -338,6 +338,41 @@ def three_hump_camel(xy):
     '''
     x, y = xy[0], xy[1]
     return 2.0*x**2 - 1.05*x**4 + (x**6 / 6.0) + x*y + y**2
+
+
+def camel_hump_6(xy):
+    '''Six-Hump Camel Function
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    The six-hump camel function is usually evaluated on the rectangle bounded
+    by:
+        x1 in [-3, 3]
+        x2 in [-2, 2]
+
+    Global minimum(s):
+        1) f( 0.0898, -0.7126) = -1.0316
+        2) f(-0.0898,  0.7126) = -1.0316
+    
+    References
+    ----------
+    Molga, M., & Smutnicki, C. Test functions for optimization needs (2005)
+    '''
+
+    x, y = xy[0], xy[1]
+    a = (4-(2.1*x**2)+(x**4)/3.0) * x**2
+    b = x*y
+    c = (-4+(4*y**2)) * y**2
+    return a + b + c
+
 
 
 class tsp():
