@@ -7,6 +7,8 @@ from landscapes.single_objective import beale
 from landscapes.single_objective import booth
 from landscapes.single_objective import branin
 from landscapes.single_objective import bukin_n6
+from landscapes.single_objective import camel_hump_3
+from landscapes.single_objective import camel_hump_6
 from landscapes.single_objective import cross_in_tray
 from landscapes.single_objective import drop_wave
 from landscapes.single_objective import easom
@@ -24,7 +26,6 @@ from landscapes.single_objective import schaffer_n4
 from landscapes.single_objective import schwefel
 from landscapes.single_objective import sphere
 from landscapes.single_objective import styblinski_tang
-from landscapes.single_objective import three_hump_camel
 from landscapes.single_objective import sum_of_different_powers
 
 class test_single_objective(unittest.TestCase):
@@ -50,16 +51,17 @@ class test_single_objective(unittest.TestCase):
     def test_bukin_n6(self):
         self.assertEqual(bukin_n6([-10,1]), 0)
 
-    def test_cross_in_tray_1(self):
-        self.assertLess(abs(-2.06261 - cross_in_tray([1.34941, 1.34941])), 1e-5)
+    def test_camel_hump_3(self):
+        self.assertEqual(camel_hump_3([0,0]), 0)
 
-    def test_cross_in_tray_2(self):
-        self.assertLess(abs(-2.06261 - cross_in_tray([1.34941, -1.34941])), 1e-5)
+    def test_camel_hump_6(self):
+        self.assertLess(abs(-1.0316 - camel_hump_6([ 0.0898, -0.7126])), 1e-4)
+        self.assertLess(abs(-1.0316 - camel_hump_6([-0.0898,  0.7126])), 1e-4)
 
-    def test_cross_in_tray_3(self):
-        self.assertLess(abs(-2.06261 - cross_in_tray([-1.34941, 1.34941])), 1e-5)
-
-    def test_cross_in_tray_4(self):
+    def test_cross_in_tray(self):
+        self.assertLess(abs(-2.06261 - cross_in_tray([ 1.34941,  1.34941])), 1e-5)
+        self.assertLess(abs(-2.06261 - cross_in_tray([ 1.34941, -1.34941])), 1e-5)
+        self.assertLess(abs(-2.06261 - cross_in_tray([-1.34941,  1.34941])), 1e-5)
         self.assertLess(abs(-2.06261 - cross_in_tray([-1.34941, -1.34941])), 1e-5)
 
     def test_drop_wave(self):
@@ -87,15 +89,9 @@ class test_single_objective(unittest.TestCase):
         self.assertLess(himmelblau([3.584428, -1.848126]), 1e-10)
 
     def test_holder_table_1(self):
-        self.assertLess(abs(-19.2085 - holder_table([8.05502, 9.66459])), 1e-5)
-
-    def test_holder_table_2(self):
-        self.assertLess(abs(-19.2085 - holder_table([-8.05502, 9.66459])), 1e-5)
-
-    def test_holder_table_3(self):
-        self.assertLess(abs(-19.2085 - holder_table([8.05502, -9.66459])), 1e-5)
-
-    def test_holder_table_4(self):
+        self.assertLess(abs(-19.2085 - holder_table([ 8.05502,  9.66459])), 1e-5)
+        self.assertLess(abs(-19.2085 - holder_table([-8.05502,  9.66459])), 1e-5)
+        self.assertLess(abs(-19.2085 - holder_table([ 8.05502, -9.66459])), 1e-5)
         self.assertLess(abs(-19.2085 - holder_table([-8.05502, -9.66459])), 1e-5)
 
     def test_levi_n13(self):
@@ -109,23 +105,17 @@ class test_single_objective(unittest.TestCase):
 
     def test_rastrigin_1(self):
         self.assertEqual(rastrigin([0]), 0)
-
-    def test_rastrigin_2(self):
         self.assertEqual(rastrigin([0,0,0,0,0]), 0)
 
     def test_rosenbrock_1(self):
         self.assertEqual(rosenbrock([1]), 0)
-
-    def test_rosenbrock_2(self):
         self.assertEqual(rosenbrock([1,1,1,1,1]), 0)
 
     def test_schaffer_n2(self):
         self.assertEqual(schaffer_n2([0,0]), 0)
 
     def test_schaffer_n4_1(self):
-        self.assertLess(abs(0.292579 - schaffer_n4([0, 1.25313])), 1e-6)
-
-    def test_schaffer_n4_2(self):
+        self.assertLess(abs(0.292579 - schaffer_n4([0,  1.25313])), 1e-6)
         self.assertLess(abs(0.292579 - schaffer_n4([0, -1.25313])), 1e-6)
 
     def test_schwefel_1(self):
@@ -136,8 +126,6 @@ class test_single_objective(unittest.TestCase):
 
     def test_sphere_1(self):
         self.assertEqual(sphere([0]), 0)
-
-    def test_sphere_2(self):
         self.assertEqual(sphere([0,0,0,0,0]), 0)
 
     def test_styblinski_tang_1(self):
@@ -152,13 +140,7 @@ class test_single_objective(unittest.TestCase):
 
     def test_sum_of_different_powers_1(self):
         self.assertEqual(sum_of_different_powers([0]), 0)
-
-    def test_sum_of_different_powers_2(self):
         self.assertEqual(sum_of_different_powers([0,0,0,0,0]), 0)
-
-    def test_three_hump_camel(self):
-        self.assertEqual(three_hump_camel([0,0]), 0)
-
 
 
 if __name__ == '__main__':
