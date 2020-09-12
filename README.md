@@ -21,6 +21,45 @@ wget https://github.com/nathanrooy/landscapes/archive/master.zip
 unzip master.zip
 cd landscapes-master
 ```
+## Available Functions
+| name | continuous | differentiable | seperable | scalable | unimodal | multimodal |
+| --- | --- | --- | --- | --- | --- | --- |
+| Ackley | ✔️ | ✔️ | | ✔️ | | ✔️ | 
+| Bartels Conn | ✔️ | | ✔️ | | | ✔️ |
+| Beale | 
+| Booth | 
+| Beale |
+| Branin | 
+| Bukin n6 |
+| 3-Hump Camel |
+| 6-Hump Camel |
+| Colville |
+| Cross-in-Tray |
+| Drop Wave |
+| Easom |
+| Eggholder |
+| Goldstein Price | ✔️ | ✔️ | | | | ✔️ |
+| Griewank | ✔️ | ✔️ | | ✔️ | | ✔️ |
+| Himmelblau |
+| Holder-Table |
+| Levi n13 |
+| Matyas |
+| McCormick |
+| Rastrigin |
+| Rotated Hyper-Ellipsoid |
+| Rosenbrock |
+| Schaffer n2 |
+| Schaffer n4 |
+| Schwefel |
+| Sphere |
+| Step |
+| Styblinski-Tang |
+| Sum of Different Powers |
+| Sum of Squares |
+| Trid |
+| Tripod |
+| Zakharov | 
+
 
 ## Usage
 
