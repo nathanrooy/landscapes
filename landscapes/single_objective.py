@@ -8,11 +8,12 @@
 #--- IMPORT DEPENDENCIES ------------------------------------------------------+
 
 from math import cos
-from math import sin
-from math import pi
-from math import exp
-from math import sqrt
 from math import e
+from math import exp
+from math import floor
+from math import pi
+from math import sin
+from math import sqrt
 
 #--- FUNCTIONS ----------------------------------------------------------------+
 
@@ -479,6 +480,9 @@ def sphere(x):
     '''
     return sum([item * item for item in x])
 
+
+def step(xy):
+    return sum([floor(abs(v)) for v in xy])
 
 def styblinski_tang(x):
     '''

@@ -28,12 +28,16 @@ from landscapes.single_objective import schaffer_n2
 from landscapes.single_objective import schaffer_n4
 from landscapes.single_objective import schwefel
 from landscapes.single_objective import sphere
+from landscapes.single_objective import step
 from landscapes.single_objective import styblinski_tang
 from landscapes.single_objective import sum_of_different_powers
 from landscapes.single_objective import sum_of_squares
 from landscapes.single_objective import trid
 from landscapes.single_objective import tripod
 from landscapes.single_objective import zakharov
+
+D_MIN = 1
+D_MAX = 20
 
 class test_single_objective(unittest.TestCase):
 
@@ -148,6 +152,10 @@ class test_single_objective(unittest.TestCase):
     def test_sphere_1(self):
         self.assertEqual(sphere([0]), 0)
         self.assertEqual(sphere([0,0,0,0,0]), 0)
+
+    def test_step(self):
+        for d in range(D_MIN, D_MAX + 1):
+            self.assertEqual(step([0 for i in range(0, d)]), 0)
 
     def test_styblinski_tang_1(self):
         self.assertTrue(-39.16617 <= styblinski_tang([-2.903534]) <= -39.16616)
