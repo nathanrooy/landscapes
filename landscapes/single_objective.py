@@ -31,6 +31,32 @@ def ackley(xy):
             exp(0.5 * (cos(2.0*pi*x) + cos(2*pi*y))) + e + 20)
 
 
+def bartels_conn(xy):
+    '''Bartels Conn Function
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    Bounds: x_i in [-500, 500] for i=1,2
+    Global minimum: f(x)=1 at x=[0,0]
+
+    References
+    ----------
+    Momin Jamil and Xin-She Yang, A literature survey of benchmark functions for
+    global optimization problems, Int. Journal of Mathematical Modelling and 
+    Numerical Optimisation, Vol. 4, Issue. 2 (2013).
+    '''
+    x1, x2 = xy[0], xy[1]
+    return abs(x1**2 + x2**2 + x1*x2) + abs(sin(x1)) + abs(cos(x2))
+
+
 def beale(xy):
     '''
     Beale Function
@@ -136,6 +162,38 @@ def camel_hump_6(xy):
     c = (-4+(4*y**2)) * y**2
     return a + b + c
 
+
+def colville(xy):
+    '''Colville Function
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    Bounds: The Colville function is a 4-dimensional function usually evaluated
+    on the hypercube defined by x_i in [-10, 10] for i=1,2,3,4.
+
+    Global minimum: f(x)=0 at x=[1,1,1,1]
+
+    References
+    ----------
+    A.-R. Hedar, “Global Optimization Test Problems” 
+    '''
+
+    x1, x2, x3, x4 = xy[0], xy[1], xy[2], xy[3]
+    a = 100*(x1**2 - x2)**2
+    b = (x1-1)**2
+    c = (x3-1)**2
+    d = 90*(x3**2 - x4)**2
+    e = 10.1*((x2-1)**2 + (x4-1)**2)
+    f = 19.8*(x2-1)*(x4-1)
+    return a + b + c + d + e + f
 
 def cross_in_tray(xy):
     '''
@@ -490,6 +548,40 @@ def trid(xy):
     a = sum([(v-1)**2 for v in xy])
     b = sum([(xy[i+1]*xy[i]) for i, v in enumerate(xy[1:])])
     return a - b
+
+
+def tripod(xy):
+    '''Tripod Function
+    
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    Bounds: x_i in [-100, 100] for i=1,2
+    Global minimum: f(x)=0 at x=[0,-50]
+
+    References
+    ----------
+    S. Rahnamyan, H. R. Tizhoosh, N. M. M. Salama, “A Novel Population 
+    Initialization Method for Accelerating Evolutionary Algorithms” 
+    Computers and Mathematics with Applications, vol. 53, no. 10, 
+    pp. 1605-1614, 2007.
+    '''
+
+    x1, x2 = xy[0], xy[1]
+    p_x1 = 1 if x1>=0 else 0
+    p_x2 = 1 if x2>=0 else 0
+
+    a = p_x2 * (1 + p_x1)
+    b = abs(x1 + 50*p_x2*(1-2*p_x1))
+    c = abs(x2 + 50*(1-2*p_x2))
+    return a + b + c
 
 
 def zakharov(x):
