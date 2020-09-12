@@ -2,12 +2,14 @@ import unittest
 from math import pi
 
 from landscapes.single_objective import ackley
+from landscapes.single_objective import bartels_conn
 from landscapes.single_objective import beale
 from landscapes.single_objective import booth
 from landscapes.single_objective import branin
 from landscapes.single_objective import bukin_n6
 from landscapes.single_objective import camel_hump_3
 from landscapes.single_objective import camel_hump_6
+from landscapes.single_objective import colville
 from landscapes.single_objective import cross_in_tray
 from landscapes.single_objective import drop_wave
 from landscapes.single_objective import easom
@@ -30,12 +32,16 @@ from landscapes.single_objective import styblinski_tang
 from landscapes.single_objective import sum_of_different_powers
 from landscapes.single_objective import sum_of_squares
 from landscapes.single_objective import trid
+from landscapes.single_objective import tripod
 from landscapes.single_objective import zakharov
 
 class test_single_objective(unittest.TestCase):
 
     def test_ackley(self):
         self.assertEqual(ackley([0,0,0]), 0)
+
+    def test_bartels_conn(self):
+        self.assertEqual(bartels_conn([0,0]), 1)
 
     def test_beale(self):
         self.assertEqual(beale([3, 0.5]), 0)
@@ -61,6 +67,9 @@ class test_single_objective(unittest.TestCase):
     def test_camel_hump_6(self):
         self.assertLess(abs(-1.0316 - camel_hump_6([ 0.0898, -0.7126])), 1e-4)
         self.assertLess(abs(-1.0316 - camel_hump_6([-0.0898,  0.7126])), 1e-4)
+
+    def test_colville(self):
+        self.assertEqual(colville([1,1,1,1]), 0)
 
     def test_cross_in_tray(self):
         self.assertLess(abs(-2.06261 - cross_in_tray([ 1.34941,  1.34941])), 1e-5)
@@ -170,6 +179,9 @@ class test_single_objective(unittest.TestCase):
         x = [i*(d+1.0-i) for i in range(1, d+1)]
         sol = -d*(d+4.0)*(d-1)/6.0
         self.assertEqual(trid(x), sol)
+
+    def test_tripod(self):
+        self.assertEqual(tripod([0,-50]), 0)
 
     def test_zakharov(self):
         self.assertEqual(zakharov([0]), 0)
