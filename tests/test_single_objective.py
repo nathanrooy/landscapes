@@ -1,5 +1,4 @@
 import unittest
-
 from math import pi
 
 from landscapes.single_objective import ackley
@@ -14,12 +13,14 @@ from landscapes.single_objective import drop_wave
 from landscapes.single_objective import easom
 from landscapes.single_objective import eggholder
 from landscapes.single_objective import goldstein_price
+from landscapes.single_objective import griewank
 from landscapes.single_objective import himmelblau
 from landscapes.single_objective import holder_table
 from landscapes.single_objective import levi_n13
 from landscapes.single_objective import matyas
 from landscapes.single_objective import mccormick
 from landscapes.single_objective import rastrigin
+from landscapes.single_objective import rotated_hyper_ellipsoid
 from landscapes.single_objective import rosenbrock
 from landscapes.single_objective import schaffer_n2
 from landscapes.single_objective import schaffer_n4
@@ -27,6 +28,9 @@ from landscapes.single_objective import schwefel
 from landscapes.single_objective import sphere
 from landscapes.single_objective import styblinski_tang
 from landscapes.single_objective import sum_of_different_powers
+from landscapes.single_objective import sum_of_squares
+from landscapes.single_objective import trid
+from landscapes.single_objective import zakharov
 
 class test_single_objective(unittest.TestCase):
 
@@ -76,6 +80,10 @@ class test_single_objective(unittest.TestCase):
     def test_goldstein_price(self):
         self.assertEqual(goldstein_price([0,-1]), 3)
 
+    def test_griewank(self):
+        self.assertEqual(griewank([0]), 0)
+        self.assertEqual(griewank([0,0,0,0,0]), 0)
+
     def test_himmelblau_1(self):
         self.assertEqual(himmelblau([3,2]), 0)
 
@@ -106,6 +114,10 @@ class test_single_objective(unittest.TestCase):
     def test_rastrigin_1(self):
         self.assertEqual(rastrigin([0]), 0)
         self.assertEqual(rastrigin([0,0,0,0,0]), 0)
+
+    def test_rotated_hyper_ellipsoid(self):
+        self.assertEqual(rotated_hyper_ellipsoid([0]), 0)
+        self.assertEqual(rotated_hyper_ellipsoid([0,0,0,0,0]), 0)
 
     def test_rosenbrock_1(self):
         self.assertEqual(rosenbrock([1]), 0)
@@ -141,6 +153,27 @@ class test_single_objective(unittest.TestCase):
     def test_sum_of_different_powers_1(self):
         self.assertEqual(sum_of_different_powers([0]), 0)
         self.assertEqual(sum_of_different_powers([0,0,0,0,0]), 0)
+
+    def test_sum_of_squares(self):
+        self.assertEqual(sum_of_squares([0]), 0)
+        self.assertEqual(sum_of_squares([0,0,0,0,0]), 0)
+
+    def test_trid(self):
+        # dimensions = 1
+        d = 1
+        x = [i*(d+1-i) for i in range(1, d+1)]
+        sol = -d*(d+4)*(d-1)/6.0
+        self.assertEqual(trid(x), sol)
+
+        # dimensions = 5
+        d = 5
+        x = [i*(d+1.0-i) for i in range(1, d+1)]
+        sol = -d*(d+4.0)*(d-1)/6.0
+        self.assertEqual(trid(x), sol)
+
+    def test_zakharov(self):
+        self.assertEqual(zakharov([0]), 0)
+        self.assertEqual(zakharov([0,0,0,0,0]), 0)
 
 
 if __name__ == '__main__':

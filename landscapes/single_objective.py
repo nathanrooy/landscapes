@@ -92,6 +92,51 @@ def bukin_n6(xy):
     return 100 * sqrt(abs(y-0.01*x**2)) + 0.01*abs(x+10)
 
 
+def camel_hump_3(xy):
+    '''
+    Three-Hump Camel Function
+
+    global minimum: f(x=0, y=0) = 0
+    bounds: -5 <= x, y <= 5
+    '''
+    x, y = xy[0], xy[1]
+    return 2.0*x**2 - 1.05*x**4 + (x**6 / 6.0) + x*y + y**2
+
+
+def camel_hump_6(xy):
+    '''Six-Hump Camel Function
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    The six-hump camel function is usually evaluated on the rectangle bounded
+    by:
+        x in [-3, 3]
+        y in [-2, 2]
+
+    Global minimum(s):
+        1) f( 0.0898, -0.7126) = -1.0316
+        2) f(-0.0898,  0.7126) = -1.0316
+    
+    References
+    ----------
+    Molga, M., & Smutnicki, C. Test functions for optimization needs (2005)
+    '''
+
+    x, y = xy[0], xy[1]
+    a = (4-(2.1*x**2)+(x**4)/3.0) * x**2
+    b = x*y
+    c = (-4+(4*y**2)) * y**2
+    return a + b + c
+
+
 def cross_in_tray(xy):
     '''
     Cross-in-tray Fucntion
@@ -153,6 +198,35 @@ def goldstein_price(xy):
     x, y = xy[0], xy[1]
     return ((1 + (x + y + 1)**2 * (19 - 14*x + 3*x**2 - 14*y + 6*x*y + 3*y**2)) *
             (30 + (2*x-3*y)**2 * (18 - 32*x + 12*x**2 + 48*y - 36*x*y + 27*y**2)))
+
+
+def griewank(xy):
+    '''Griwank Function
+
+    Parameters
+    ----------
+        x: list or 1-d numpy array
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    Bounds: x_i in [-600, 600] for all i=1,...,d
+    Global minimum: f(x)=0 at x=(0,...,0)
+
+    References
+    ----------
+    A. O. Griewank, “Generalized Descent for Global Optimization,” Journal of 
+    Optimization Theory and Applications, vol. 34, no. 1, pp. 11-39, 1981.
+    '''
+
+    a, b, = 0, 1
+    for i, v in enumerate(xy):
+        a += v**2 / 4000.0
+        b *= cos(v/sqrt(i+1))
+    return a - b + 1
 
 
 def himmelblau(xy):
@@ -223,17 +297,58 @@ def mccormick(xy):
 
 
 def rastrigin(x, safe_mode=False):
-    '''
-    Rastrigin Function
+    '''Rastrigin Function
 
+    Parameters
+    ----------
+        x : list
+        safe_mode : bool (optional, default = False)
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    Bounds: -5.12 <= x_i <= 5.12 for all i=1,...,d
+    Global minimum: f(x)=0 at x=(0,...,0)
+
+    References
+    ----------
     wikipedia: https://en.wikipedia.org/wiki/Rastrigin_function
-
-    global minimum at x=0, where f(x)=0
-    bounds: -5.12 <= x_i <= 5.12
     '''
+
     if safe_mode:
-        for item in x: assert x<=5.12 and x>=-5.12, 'input exceeds bounds of [-5.12, 5.12]'
+        for item in x:
+            assert x<=5.12 and x>=-5.12, 'input exceeds bounds of [-5.12, 5.12]'
     return len(x)*10.0 +  sum([item*item - 10.0*cos(2.0*pi*item) for item in x])
+
+
+def rotated_hyper_ellipsoid(xy):
+    '''Rotated Hyper-Ellipsoid
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    Bounds: the rotated hyper-ellipsoid is usually evaluated on the hypercube 
+    defined by x_i in [-65.536, 65.536] for all i=1,...,d
+
+    Global minimum: f(x)=0 at x=(0,...,0)
+
+    References
+    ----------
+    Molga, M., & Smutnicki, C. Test functions for optimization needs (2005)
+    '''
+    a = 0
+    for i in range(0, len(xy)): a += sum([xy[j]**2 for j in range(0, i)])
+    return a
 
 
 def rosenbrock(x):
@@ -328,20 +443,9 @@ def sum_of_different_powers(x):
     '''
     return sum([abs(item)**(i+2) for i, item in enumerate(x)])
 
-    
-def camel_hump_3(xy):
-    '''
-    Three-Hump Camel Function
 
-    global minimum: f(x=0, y=0) = 0
-    bounds: -5 <= x, y <= 5
-    '''
-    x, y = xy[0], xy[1]
-    return 2.0*x**2 - 1.05*x**4 + (x**6 / 6.0) + x*y + y**2
-
-
-def camel_hump_6(xy):
-    '''Six-Hump Camel Function
+def sum_of_squares(xy):
+    '''Sum of Squares Function
 
     Parameters
     ----------
@@ -353,25 +457,78 @@ def camel_hump_6(xy):
 
     Notes
     -----
-    The six-hump camel function is usually evaluated on the rectangle bounded
-    by:
-        x1 in [-3, 3]
-        x2 in [-2, 2]
+    Bounds: x_i in [-10, 10] for all i=1,...,d
+    Global minimum: f(x)=0 at x=(0,...,0)
 
-    Global minimum(s):
-        1) f( 0.0898, -0.7126) = -1.0316
-        2) f(-0.0898,  0.7126) = -1.0316
-    
     References
     ----------
-    Molga, M., & Smutnicki, C. Test functions for optimization needs (2005)
+    A.-R. Hedar, “Global Optimization Test Problems” 
+    '''
+    return sum([(i+1) * v**2 for i, v in enumerate(xy)])
+
+
+def trid(xy):
+    '''Trid Function
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    Bounds: x in [-d^2, d^2] for i=1,...,d
+    Global minimum: f(x)=-d(d+4)(d-1)/6 at x_i=i(d+1-i) for all i=1,...,d
+
+    References
+    ----------
+    A.-R. Hedar, “Global Optimization Test Problems”
+    '''
+    a = sum([(v-1)**2 for v in xy])
+    b = sum([(xy[i+1]*xy[i]) for i, v in enumerate(xy[1:])])
+    return a - b
+
+
+def zakharov(x):
+    '''Zakharov Function
+
+    Parameters
+    ----------
+        x : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    The Zakharov has no local minima except a single global one.
+
+    Bounds:
+        The function is usually evaluated within the hypercube defined by 
+        x_i in [-5, 10] for i = 1,...,d
+
+    Global minimum:
+        f(x) = 0 at x = (0,...,0)
+
+    References
+    ----------
+    Shahryar Rahnamayan, Hamid R. Tizhoosh, Magdy M.A. Salama,
+    "A novel population initialization method for accelerating evolutionary 
+    algorithms" - Computers & Mathematics with Applications
+    Volume 53, Issue 10, 2007, Pages 1605-1614, ISSN 0898-1221
     '''
 
-    x, y = xy[0], xy[1]
-    a = (4-(2.1*x**2)+(x**4)/3.0) * x**2
-    b = x*y
-    c = (-4+(4*y**2)) * y**2
-    return a + b + c
+    a, b = 0, 0
+    for i, val in enumerate(x):
+        a += val**2
+        b += 0.5*i*val
+    return a + b**2 + b**4
+
+
 
 
 
