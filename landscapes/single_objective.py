@@ -482,7 +482,29 @@ def sphere(x):
 
 
 def step(xy):
+    '''Step Function
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    Bounds: x_i in [-100, 100] for i=1,...,d
+    Global minimum: f(x)=0 at x=[0,...,0]
+
+    References
+    ----------
+    Momin Jamil and Xin-She Yang, A literature survey of benchmark functions for
+    global optimization problems, Int. Journal of Mathematical Modelling and 
+    Numerical Optimisation, Vol. 4, Issue. 2 (2013).
+    '''
     return sum([floor(abs(v)) for v in xy])
+
 
 def styblinski_tang(x):
     '''
