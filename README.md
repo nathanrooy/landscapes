@@ -24,41 +24,41 @@ cd landscapes-master
 
 ## Available functions from: `single_objective`
 | name | method | dimensions | 
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| [Ackley](#Ackley) | `ackley` | 2 |
-| Bartels Conn |
-| Beale |
-| Booth |
-| Branin |
-| Bukin n6 | ✔️ | | | | | ✔️ |
-| 3-Hump Camel | ✔️ | ✔️ | | | | ✔️ |
-| 6-Hump Camel | ✔️ | ✔️ | | | | ✔️ |
-| Colville | ✔️ | ✔️ | | | | ✔️ |
-| Cross-in-Tray | ✔️ | | | | | ✔️ |
-| Drop Wave |
-| Easom | ✔️ 
-| Eggholder |
-| Goldstein Price | ✔️ | ✔️ | | | | ✔️ |
-| Griewank | ✔️ | ✔️ | | ✔️ | | ✔️ |
-| Himmelblau |
-| Holder-Table |
-| Levi n13 |
-| Matyas |
-| McCormick |
-| Rastrigin |
-| Rotated Hyper-Ellipsoid |
-| Rosenbrock |
-| Schaffer n2 |
-| Schaffer n4 |
-| Schwefel |
-| Sphere |
-| Step |
-| Styblinski-Tang |
-| Sum of Different Powers |
-| Sum of Squares |
-| Trid |
-| Tripod |
-| Zakharov | 
+| :--- | :---: | :---: |
+| [Ackley](#Ackley) | `ackley()` | 2 |
+| Bartels Conn | | |
+| Beale | | |
+| Booth | | |
+| Branin | | |
+| Bukin n6 | | |
+| 3-Hump Camel | | |
+| 6-Hump Camel | | |
+| Colville | | |
+| Cross-in-Tray | | |
+| Drop Wave | | |
+| Easom | | |
+| Eggholder | | |
+| Goldstein Price | | |
+| Griewank | | |
+| Himmelblau | | |
+| Holder-Table | | |
+| Levi n13 | | |
+| Matyas | | |
+| McCormick | | |
+| Rastrigin | | |
+| Rotated Hyper-Ellipsoid | | |
+| Rosenbrock | | |
+| Schaffer n2 | | |
+| Schaffer n4 | | |
+| Schwefel | | |
+| Sphere | | |
+| Step | | |
+| Styblinski-Tang | | |
+| Sum of Different Powers | | |
+| Sum of Squares | | |
+| Trid | | |
+| Tripod | | |
+| Zakharov |  | |
 
 ## Usage
 
