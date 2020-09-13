@@ -42,7 +42,7 @@ D_MAX = 20
 class test_single_objective(unittest.TestCase):
 
     def test_ackley(self):
-        self.assertEqual(ackley([0,0,0]), 0)
+        self.assertEqual(ackley([0,0]), 0)
 
     def test_bartels_conn(self):
         self.assertEqual(bartels_conn([0,0]), 1)
