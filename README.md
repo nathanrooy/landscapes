@@ -22,6 +22,44 @@ unzip master.zip
 cd landscapes-master
 ```
 
+## Available functions from: `single_objective`
+| function name | method | dimensions | 
+| :--- | :--- | :---: |
+| [Ackley](#ackley-function) | `ackley()` | 2 |
+| Bartels Conn | `bartels_conn()` | 2 |
+| [Beale](#beale-function) | `beale()` | 2 |
+| [Booth](#booth-function) | `booth()` | 2 |
+| Branin | `branin()` | 2 |
+| [Bukin n6](#bukin-n6-function) | `bukin_n6()` | 2 |
+| 3-Hump Camel | `camel_hump_3()` | 2 |
+| 6-Hump Camel | `camel_hump_6()` | 2 |
+| Colville | `colville()` | 4 |
+| [Cross-in-Tray](#cross-in-tray-function) | `cross_in_tray()` | 2 |
+| Drop Wave | `drop_wave()` | 2 |
+| [Easom](#easom-function) | `easom()` | 2 |
+| [Eggholder](#eggholder-function) | `eggholder()` | 2 |
+| [Goldstein–Price](#goldsteinprice-function) | `goldstein_price()` | 2 |
+| Griewank | `griewank()` | any |
+| [Himmelblau](#himmelblaus-function) | `himmelblau()` | 2 |
+| [Hölder table](#hölder-table-function) | `holder_table()` | 2 |
+| [Lévi function N.13](#lévi-function-n13) | `levi_n13()` | 2 |
+| [Matyas](#matyas-function) | `matyas()` | 2 |
+| [McCormick](#mccormick-function) | `mccormick()` | 2 |
+| [Rastrigin](#rastrigin-function) | `rastrigin()` | any |
+| Rotated Hyper-Ellipsoid | `rotated_hyper_ellipsoid()` | any |
+| [Rosenbrock](#rosenbrock-function) | `rosenbrock()` | any |
+| [Schaffer N.2](#schaffer-function-n2) | `schaffer_n2()` | 2 |
+| [Schaffer N.4](#schaffer-function-n4) | `schaffer_n4()` | 2 |
+| Schwefel | `schwefel()` | any |
+| [Sphere](#sphere-function) | `sphere()` | any |
+| Step | `step()` | any |
+| [Styblinski–Tang](#styblinskitang-function) | `styblinski_tang()` | any |
+| Sum of Different Powers | `sum_of_different_powers()` | any |
+| Sum of Squares | `sum_of_squares()` | any |
+| Trid | `trid()` | any |
+| Tripod | `tripod()` | 2 |
+| Zakharov | `zakharov()` | any |
+
 ## Usage
 
 As a simple example, let's use the <a target="_blank" href="https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method">Nelder-Mead method</a> via <a target="_blank" href="https://www.scipy.org/">SciPy</a> to minimize the sphere function. We'll start off by importing the `sphere` function from Landscapes and the `minimize` method from SciPy.
@@ -49,7 +87,6 @@ The output of which should look close to this:
 ```
 
 ## Function Reference - Single Objective
-
 
 ### Ackley function
 ```py
