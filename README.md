@@ -25,7 +25,7 @@ cd landscapes-master
 ## Available functions from: `single_objective`
 | name | method | dimensions | 
 | :--- | :---: | :---: |
-| [Ackley](#Ackley) | `ackley()` | 2 |
+| [Ackley](#ackley-function) | `ackley()` | 2 |
 | Bartels Conn | | |
 | Beale | | |
 | Booth | | |
