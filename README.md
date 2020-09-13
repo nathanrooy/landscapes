@@ -21,22 +21,22 @@ wget https://github.com/nathanrooy/landscapes/archive/master.zip
 unzip master.zip
 cd landscapes-master
 ```
-## Available Functions
-| name | continuous | differentiable | seperable | scalable | unimodal | multimodal |
-| --- | --- | --- | --- | --- | --- | --- |
-| Ackley | ✔️ | ✔️ | | ✔️ | | ✔️ | 
-| Bartels Conn | ✔️ | | ✔️ | | | ✔️ |
-| Beale | 
-| Booth | 
+
+## Available functions from: `single_objective`
+| name | method | dimensions | 
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| [Ackley](#Ackley) | `ackley` | 2 |
+| Bartels Conn |
 | Beale |
-| Branin | 
-| Bukin n6 |
-| 3-Hump Camel |
-| 6-Hump Camel |
-| Colville |
-| Cross-in-Tray |
+| Booth |
+| Branin |
+| Bukin n6 | ✔️ | | | | | ✔️ |
+| 3-Hump Camel | ✔️ | ✔️ | | | | ✔️ |
+| 6-Hump Camel | ✔️ | ✔️ | | | | ✔️ |
+| Colville | ✔️ | ✔️ | | | | ✔️ |
+| Cross-in-Tray | ✔️ | | | | | ✔️ |
 | Drop Wave |
-| Easom |
+| Easom | ✔️ 
 | Eggholder |
 | Goldstein Price | ✔️ | ✔️ | | | | ✔️ |
 | Griewank | ✔️ | ✔️ | | ✔️ | | ✔️ |
@@ -59,7 +59,6 @@ cd landscapes-master
 | Trid |
 | Tripod |
 | Zakharov | 
-
 
 ## Usage
 
@@ -88,7 +87,6 @@ The output of which should look close to this:
 ```
 
 ## Function Reference - Single Objective
-
 
 ### Ackley function
 ```py
