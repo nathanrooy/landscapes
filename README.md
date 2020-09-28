@@ -200,7 +200,7 @@ from landscapes.single_objective import levi_n13
 
 ### Matyas function
 ```py
-from landscapes.single_objective import mccormick
+from landscapes.single_objective import matyas
 ```
 | global minimum | bounds | usage | 
 | --- | --- | --- |
@@ -281,7 +281,7 @@ from landscapes.single_objective import styblinski_tang
 
 ### Three-hump camel function
 ```py
-from landscapes.single_objective import three_hump_camel
+from landscapes.single_objective import camel_hump_3
 ```
 | global minimum | bounds | usage | 
 | --- | --- | --- |
