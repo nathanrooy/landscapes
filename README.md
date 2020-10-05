@@ -39,26 +39,26 @@ cd landscapes-master
 | [Easom](#easom-function) | `easom()` | 2 |
 | [Eggholder](#eggholder-function) | `eggholder()` | 2 |
 | [Goldstein–Price](#goldsteinprice-function) | `goldstein_price()` | 2 |
-| Griewank | `griewank()` | any |
+| Griewank | `griewank()` | n |
 | [Himmelblau](#himmelblaus-function) | `himmelblau()` | 2 |
 | [Hölder table](#hölder-table-function) | `holder_table()` | 2 |
 | [Lévi function N.13](#lévi-function-n13) | `levi_n13()` | 2 |
 | [Matyas](#matyas-function) | `matyas()` | 2 |
 | [McCormick](#mccormick-function) | `mccormick()` | 2 |
-| [Rastrigin](#rastrigin-function) | `rastrigin()` | any |
-| Rotated Hyper-Ellipsoid | `rotated_hyper_ellipsoid()` | any |
-| [Rosenbrock](#rosenbrock-function) | `rosenbrock()` | any |
+| [Rastrigin](#rastrigin-function) | `rastrigin()` | n |
+| Rotated Hyper-Ellipsoid | `rotated_hyper_ellipsoid()` | n |
+| [Rosenbrock](#rosenbrock-function) | `rosenbrock()` | n |
 | [Schaffer N.2](#schaffer-function-n2) | `schaffer_n2()` | 2 |
 | [Schaffer N.4](#schaffer-function-n4) | `schaffer_n4()` | 2 |
-| Schwefel | `schwefel()` | any |
-| [Sphere](#sphere-function) | `sphere()` | any |
-| Step | `step()` | any |
-| [Styblinski–Tang](#styblinskitang-function) | `styblinski_tang()` | any |
-| Sum of Different Powers | `sum_of_different_powers()` | any |
-| Sum of Squares | `sum_of_squares()` | any |
-| Trid | `trid()` | any |
+| Schwefel | `schwefel()` | n |
+| [Sphere](#sphere-function) | `sphere()` | n |
+| Step | `step()` | n |
+| [Styblinski–Tang](#styblinskitang-function) | `styblinski_tang()` | n |
+| Sum of Different Powers | `sum_of_different_powers()` | n |
+| Sum of Squares | `sum_of_squares()` | n |
+| Trid | `trid()` | n |
 | Tripod | `tripod()` | 2 |
-| Zakharov | `zakharov()` | any |
+| Zakharov | `zakharov()` | n |
 
 ## Usage
 
