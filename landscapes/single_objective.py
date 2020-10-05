@@ -437,31 +437,6 @@ def cross_in_tray(xy):
     return -0.0001*(abs(sin(x)*sin(y)*exp(abs(100-(sqrt(x**2 + y**2)/pi))))+1)**0.1
 
 
-def dixon_price(x):
-    '''Dixon and Price Function
-
-    Parameters
-    ----------
-        x : list
-
-    Returns
-    -------
-        float
-
-    Notes
-    -----
-    global minimum: f(x*)=0 at x_i = 2^-(((2^i)-2)/(2^i))
-    bounds: x_i in [-10, 10] for i=1,...,n
-
-    References
-    ----------
-    L. C. W. Dixon, R. C. Price, “The Truncated Newton Method for Sparse 
-    Unconstrained Optimisation Using Automatic Differentiation,” Journal of 
-    Optimization Theory and Applications, vol. 60, no. 2, pp. 261-275, 1989.
-    '''
-    return (x[0] - 1.0)**2.0 + sum([i*(2.0*x[i]**2.0 - x[i-1])**2.0 for i in range(1, len(x))])
-
-
 def deckkers_aarts(xy):
     '''Deckkers-Aarts Function
 
@@ -487,6 +462,31 @@ def deckkers_aarts(xy):
 
     x, y = xy[0], xy[1]
     return 10*5 * x**2 + y**2 - (x**2 + y**2)**2 + 10**(-5) * (x**2 + y**2)**4
+
+
+def dixon_price(x):
+    '''Dixon and Price Function
+
+    Parameters
+    ----------
+        x : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x_i = 2^-(((2^i)-2)/(2^i))
+    bounds: x_i in [-10, 10] for i=1,...,n
+
+    References
+    ----------
+    L. C. W. Dixon, R. C. Price, “The Truncated Newton Method for Sparse 
+    Unconstrained Optimisation Using Automatic Differentiation,” Journal of 
+    Optimization Theory and Applications, vol. 60, no. 2, pp. 261-275, 1989.
+    '''
+    return (x[0] - 1.0)**2.0 + sum([i*(2.0*x[i]**2.0 - x[i-1])**2.0 for i in range(1, len(x))])
 
 
 def drop_wave(xy):
@@ -681,17 +681,6 @@ def keane(xy):
     return n / d
 
 
-def levi_n13(xy):
-    '''
-    Levi Function N.13
-
-    global minimum: f(x=1, y=1) = 0
-    bounds: -10 <= x, y <= 10
-    '''
-    x, y = xy[0], xy[1]
-    return sin(3.0*pi*x)**2 + (x-1)**2 * (1+sin(3.0*pi*y)**2) + (y-1)**2 * (1+sin(2.0*pi*y)**2)
-
-
 def leon(xy):
     '''Leon Function
 
@@ -715,6 +704,17 @@ def leon(xy):
     '''
     x, y = xy[0], xy[1]
     return 100*(y-x**3)*2 + (1-x)**2
+
+    
+def levi_n13(xy):
+    '''
+    Levi Function N.13
+
+    global minimum: f(x=1, y=1) = 0
+    bounds: -10 <= x, y <= 10
+    '''
+    x, y = xy[0], xy[1]
+    return sin(3.0*pi*x)**2 + (x-1)**2 * (1+sin(3.0*pi*y)**2) + (y-1)**2 * (1+sin(2.0*pi*y)**2)
 
 
 def matyas(xy):
