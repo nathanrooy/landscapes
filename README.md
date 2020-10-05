@@ -26,28 +26,47 @@ cd landscapes-master
 | function name | method | dimensions | 
 | :--- | :--- | :---: |
 | [Ackley](#ackley-function) | `ackley()` | 2 |
+| Ackley N.2 | `ackley_n2()` | 2 |
+| Adjiman | `adjiman()` | 2 |
 | Bartels Conn | `bartels_conn()` | 2 |
+| Bird | `bird()` | 2 |
 | [Beale](#beale-function) | `beale()` | 2 |
+| Bohachevsky N.1 | `bohachevsky_n1()` | 2 |
+| Bohachevsky N.2 | `bohachevsky_n2()` | 2 |
+| Bohachevsky N.3 | `bohachevsky_n3()` | 2 |
 | [Booth](#booth-function) | `booth()` | 2 |
 | Branin | `branin()` | 2 |
+| Brent | `brent()` | 2 |
+| Brown | `brown()` | n |
 | [Bukin n6](#bukin-n6-function) | `bukin_n6()` | 2 |
 | 3-Hump Camel | `camel_hump_3()` | 2 |
 | 6-Hump Camel | `camel_hump_6()` | 2 |
 | Colville | `colville()` | 4 |
 | [Cross-in-Tray](#cross-in-tray-function) | `cross_in_tray()` | 2 |
+| Deckkers-Aarts | `deckkers_aarts()` | 2 |
+| Dixon & Price | `dixon_price()` | n |
 | Drop Wave | `drop_wave()` | 2 |
 | [Easom](#easom-function) | `easom()` | 2 |
 | [Eggholder](#eggholder-function) | `eggholder()` | 2 |
+| Exponential | `exponential()` | n |
 | [Goldstein–Price](#goldsteinprice-function) | `goldstein_price()` | 2 |
 | Griewank | `griewank()` | n |
 | [Himmelblau](#himmelblaus-function) | `himmelblau()` | 2 |
 | [Hölder table](#hölder-table-function) | `holder_table()` | 2 |
+| Hosaki | `hosaki()` | 2 |
+| Keane | `keane()` | 2 |
+| Leon | `leon()` | 2 |
 | [Lévi function N.13](#lévi-function-n13) | `levi_n13()` | 2 |
 | [Matyas](#matyas-function) | `matyas()` | 2 |
 | [McCormick](#mccormick-function) | `mccormick()` | 2 |
+| Parsopoulos | `parsopoulos()` | 2 |
+| Pen Holder | `pen_holder()` | 2 |
+| Plateau | `plateau()` | n |
+| Qing | `qing()` | n |
 | [Rastrigin](#rastrigin-function) | `rastrigin()` | n |
 | Rotated Hyper-Ellipsoid | `rotated_hyper_ellipsoid()` | n |
 | [Rosenbrock](#rosenbrock-function) | `rosenbrock()` | n |
+| Salomon | `salomon()` | n |
 | [Schaffer N.2](#schaffer-function-n2) | `schaffer_n2()` | 2 |
 | [Schaffer N.4](#schaffer-function-n4) | `schaffer_n4()` | 2 |
 | Schwefel | `schwefel()` | n |
@@ -58,6 +77,7 @@ cd landscapes-master
 | Sum of Squares | `sum_of_squares()` | n |
 | Trid | `trid()` | n |
 | Tripod | `tripod()` | 2 |
+| Wolfe | `wolfe()` | 3 |
 | Zakharov | `zakharov()` | n |
 
 ## Usage
