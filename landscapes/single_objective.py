@@ -32,6 +32,58 @@ def ackley(xy):
             exp(0.5 * (cos(2.0*pi*x) + cos(2*pi*y))) + e + 20)
 
 
+def ackley_n2(xy):
+    '''Ackley N.2
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum: f(x*)=-200 at x=(0,0)
+    bounds: x_i in [-32, 32] for i=1,2
+
+    References
+    ----------
+    D. H. Ackley, “A Connectionist Machine for Genetic Hill-Climbing,” Kluwer,
+    1987.
+    '''
+    x, y = xy[0], xy[1]
+    return -200*exp(-0.2 * sqrt(x**2 + y**2))
+
+
+def adjiman(xy):
+    '''Adjiman Function
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    bounds: x in [-1,2], y in [-1,1]
+    global minimum: f(x)=-2.02180678 at x=[2.0, 0.10578]
+
+    References
+    ----------
+    C. S. Adjiman, S. Sallwig, C. A. Flouda, A. Neumaier, “A Global Optimization
+    Method, aBB for General Twice-Differentiable NLPs-1, Theoretical Advances,”
+    Computers Chemical Engineering, vol. 22, no. 9, pp. 1137-1158, 1998.
+    '''
+
+    x, y = xy[0], xy[1]
+    return (cos(x) * sin(y)) - (x / (y**2.0 + 1.0))
+
+
 def bartels_conn(xy):
     '''Bartels Conn Function
 
@@ -71,6 +123,122 @@ def beale(xy):
             (2.625 - x + x*y**3)**2)
 
 
+def bird(xy):
+    '''Bird Function
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum(s): f(x) = -106.76453 at 
+        x=[ 4.70105,  3.15294] and 
+        x=[-1.58214, -3.13024]
+        
+    bounds: x_i in [-2*pi, 2*pi] for i=1,2
+
+    References
+    ----------
+    S. K. Mishra, “Global Optimization By Differential Evolution and Particle 
+    Swarm Methods: Evaluation On Some Benchmark Functions,” Munich Research 
+    Papers in Economics, [Available Online]:
+    http://mpra.ub.uni-muenchen.de/1005/
+    '''
+    x, y = xy[0], xy[1]
+    return sin(x)*exp((1-cos(y))**2) + cos(y)*exp((1-sin(x))**2) + (x-y)**2
+
+
+def bohachevsky_n1(xy):
+    '''Bohachevsky N.1
+
+    Parameters
+    ----------
+        xy : list
+    
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimim: f(x*)=0 at x*=(0,0)
+    bounds: x_i in [-100, 100] for i=1,2
+
+    References
+    ----------
+    [1] I. O. Bohachevsky, M. E. Johnson, M. L. Stein, “General Simulated Annealing
+    for Function Optimization,” Technometrics, vol. 28, no. 3, pp. 209-217, 
+    1986.
+
+    [2] http://www.sfu.ca/~ssurjano/boha.html
+    '''
+
+    x, y = xy[0], xy[1]
+    return x**2 + 2*y**2 - 0.3*cos(3.0*pi*x) - 0.4*cos(4*pi*y) + 0.7
+
+
+def bohachevsky_n2(xy):
+    '''Bohachevsky N.2
+
+    Parameters
+    ----------
+        xy : list
+    
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimim: f(x*)=0 at x*=(0,0)
+    bounds: x_i in [-100, 100] for i=1,2
+
+    References
+    ----------
+    [1] I. O. Bohachevsky, M. E. Johnson, M. L. Stein, “General Simulated Annealing
+    for Function Optimization,” Technometrics, vol. 28, no. 3, pp. 209-217, 
+    1986.
+
+    [2] http://www.sfu.ca/~ssurjano/boha.html
+    '''
+
+    x, y = xy[0], xy[1]
+    return x**2 + 2*y**2 - 0.3*cos(3*pi*x)*cos(4*pi*y) + 0.3
+
+
+def bohachevsky_n3(xy):
+    '''Bohachevsky N.3
+
+    Parameters
+    ----------
+        xy : list
+    
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimim: f(x*)=0 at x*=(0,0)
+    bounds: x_i in [-100, 100] for i=1,2
+
+    References
+    ----------
+    [1] I. O. Bohachevsky, M. E. Johnson, M. L. Stein, “General Simulated Annealing
+    for Function Optimization,” Technometrics, vol. 28, no. 3, pp. 209-217, 
+    1986.
+
+    [2] http://www.sfu.ca/~ssurjano/boha.html
+    '''
+    x, y = xy[0], xy[1]
+    return x**2 + 2*y**2 - 0.3*cos(3*pi*x + 4*pi*y) + 0.3
+
+
 def booth(xy):
     '''
     Booth Function
@@ -104,6 +272,63 @@ def branin(xy):
     t = 1/(8*pi)
     x, y = xy[0], xy[1]
     return a * (y - b*x**2 + c*x - r)**2 + s*(1-t)*cos(x) + s
+
+
+def brent(xy):
+    '''Brent Function
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum: f(x)=0 at x=[-10, -10]]
+    bounds: x_i=[-10, 2] for i=1,2
+
+    References
+    ----------
+    S. K. Mishra, “Global Optimization By Differential Evolution and Particle 
+    Swarm Methods: Evaluation On Some Benchmark Functions,” Munich Research 
+    Papers in Economics, [Available Online]:
+    http://mpra.ub.uni-muenchen.de/1005/
+    '''
+
+    x, y, = xy[0], xy[1]
+    return (x + 10.0)**2.0 + (y + 10.0)**2.0 + exp(-x**2.0 - y**2.0)
+
+
+def brown(x):
+    '''Brown Function
+
+    Parameters
+    ----------
+        x : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum: f(x)=0 at x=(0,...,0)
+    bounds: x_i in [-1,4] for i=1,...,n
+
+    References
+    ----------
+    O. Begambre, J. E. Laier, “A hybrid Particle Swarm Optimization - Simplex 
+    Algorithm (PSOS) for Structural Damage Identification,” Journal of Advances
+    in Engineering Software, vol. 40, no. 9, pp. 883-891, 2009.
+    '''
+
+    return sum([
+        ((x[i]**2)**(x[i+1]**2 + 1.0)) + 
+        ((x[i+1]**2)**(x[i]+1.0)) 
+        for i in range(len(x)-1)])
 
 
 def bukin_n6(xy):
@@ -196,6 +421,7 @@ def colville(xy):
     f = 19.8*(x2-1)*(x4-1)
     return a + b + c + d + e + f
 
+
 def cross_in_tray(xy):
     '''
     Cross-in-tray Fucntion
@@ -209,6 +435,58 @@ def cross_in_tray(xy):
     '''
     x, y = xy[0], xy[1]
     return -0.0001*(abs(sin(x)*sin(y)*exp(abs(100-(sqrt(x**2 + y**2)/pi))))+1)**0.1
+
+
+def dixon_price(x):
+    '''Dixon and Price Function
+
+    Parameters
+    ----------
+        x : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x_i = 2^-(((2^i)-2)/(2^i))
+    bounds: x_i in [-10, 10] for i=1,...,n
+
+    References
+    ----------
+    L. C. W. Dixon, R. C. Price, “The Truncated Newton Method for Sparse 
+    Unconstrained Optimisation Using Automatic Differentiation,” Journal of 
+    Optimization Theory and Applications, vol. 60, no. 2, pp. 261-275, 1989.
+    '''
+    return (x[0] - 1.0)**2.0 + sum([i*(2.0*x[i]**2.0 - x[i-1])**2.0 for i in range(1, len(x))])
+
+
+def deckkers_aarts(xy):
+    '''Deckkers-Aarts Function
+
+    Parameters
+    ----------
+        x : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum: f(x*)=-24771.093749 at x*=[0, 15] and x*=[0, -15]
+    bounds: x_i in [-20, 20] for i=1,2
+
+    References
+    ----------
+    M. M. Ali, C. Khompatraporn, Z. B. Zabinsky, “A Numerical Evaluation of 
+    Several Stochastic Algorithms on Selected Continuous Global Optimization 
+    Test Problems,” Journal of Global Optimization, vol. 31, pp. 635-672, 2005.
+    '''
+
+    x, y = xy[0], xy[1]
+    return 10*5 * x**2 + y**2 - (x**2 + y**2)**2 + 10**(-5) * (x**2 + y**2)**4
 
 
 def drop_wave(xy):
@@ -245,6 +523,31 @@ def eggholder(xy):
     x, y = xy[0], xy[1]
     return (-(y+47)*sin(sqrt(abs((x/2.0) + (y+47)))) -
             x*sin(sqrt(abs(x-(y+47)))))
+
+
+def exponential(x):
+    '''Exponential Function
+
+    Parameters
+    ----------
+        x: list or 1-d numpy array
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum: f(x*)=-1 at x*=(0,..,0)
+    bounds: x_i in [-1, 1] for i=1,2
+    
+    References
+    ----------
+    S. Rahnamyan, H. R. Tizhoosh, N. M. M. Salama, “Opposition-Based 
+    Differential Evolution (ODE) with Variable Jumping Rate,” IEEE Sympousim 
+    Foundations Computation Intelligence, Honolulu, HI, pp. 81-88, 2007.
+    '''
+    return -exp(-0.5*sum([v**2 for v in x]))
 
 
 def goldstein_price(xy):
@@ -320,6 +623,64 @@ def holder_table(xy):
     return -abs(sin(x)*cos(y)*exp(abs(1-(sqrt(x**2 + y**2)/pi))))
 
 
+def hosaki(xy):
+    '''Hosaki Function
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum: f(x*)=-2.345811 at x*=[4,2]
+    bounds: 
+        x1 in [0, 5]
+        x2 in [0, 6]
+
+    References
+    ----------
+    G. A. Bekey, M. T. Ung, “A Comparative Evaluation of Two Global Search 
+    Algorithms,” IEEE Transaction on Systems, Man and Cybernetics, vol. 4, 
+    no. 1, pp. 112-116, 1974.
+    '''
+    x, y = xy[0], xy[1]
+    return (1 - 8*x + 7*x**2 - (7.0/3.0)*x**3 + 0.25*x**4) * y**2 * exp(-y)
+         
+
+def keane(xy):
+    '''Keane Function
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum: f(x*)=0.6736675 at:
+        x* = [0, 1.3932490]
+        x* = [1.3932490, 0]
+    bounds: x_i in [-10, 10] for i=1,2
+
+    References
+    ----------
+    Momin Jamil and Xin-She Yang, A literature survey of benchmark functions for
+    global optimization problems, Int. Journal of Mathematical Modelling and
+    Numerical Optimisation}, Vol. 4, No. 2, pp. 150–194 (2013), arXiv:1308.4008
+    '''
+    x, y = xy[0], xy[1]
+    n = (sin(x-y)**2) * (sin(x+y)**2)
+    d = sqrt(x**2 + y**2)
+    return n / d
+
+
 def levi_n13(xy):
     '''
     Levi Function N.13
@@ -329,6 +690,31 @@ def levi_n13(xy):
     '''
     x, y = xy[0], xy[1]
     return sin(3.0*pi*x)**2 + (x-1)**2 * (1+sin(3.0*pi*y)**2) + (y-1)**2 * (1+sin(2.0*pi*y)**2)
+
+
+def leon(xy):
+    '''Leon Function
+
+    Parameters
+    ----------
+        xy : list
+    
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x*=(1,1)
+    bounds: x_i in [-10, 10] for i=1,2
+    
+    References
+    ----------
+     A. Lavi, T. P. Vogel (eds), “Recent Advances in Optimization Techniques,” 
+     John Wliley & Sons, 1966.
+    '''
+    x, y = xy[0], xy[1]
+    return 100*(y-x**3)*2 + (1-x)**2
 
 
 def matyas(xy):
@@ -353,6 +739,111 @@ def mccormick(xy):
     '''
     x, y = xy[0], xy[1]
     return sin(x+y) + (x-y)**2 - 1.5*x + 2.5*y + 1
+
+
+def parsopoulos(xy):
+    '''Parsopoulos Function
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    there are infinate global minimums in R^2
+    global minimum(s): 
+        f(x*)=0 at x*=(k*pi/2, l*pi) 
+        where:
+            k=(+/-)1, (+/-)3,...
+            l = 0, (+/-)1, (+/-)2,...
+    bounds: x_i in [-11,11] for i=1,2
+
+    References
+    ----------
+
+    '''
+    return cos(xy[0])**2 + sin(xy[1])**2
+
+
+def pen_holder(xy):
+    '''Pen Holder Function
+
+    Parameters
+    ----------
+        xy : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum(s):
+        f(x*)=-0.9635348 at x*=[ 9.6461677,  9.6461676]
+        f(x*)=-0.9635348 at x*=[-9.6461677,  9.6461676]
+        f(x*)=-0.9635348 at x*=[ 9.6461677, -9.6461676]
+        f(x*)=-0.9635348 at x*=[-9.6461677, -9.6461676]
+
+    bounds: x_i in [-11, 11] for i=1,2
+
+    References
+    ----------
+    S. K. Mishra, “Global Optimization By Differential Evolution and Particle 
+    Swarm Methods: Evaluation On Some Benchmark Functions,” Munich Research 
+    Papers in Economics, [Available Online]:
+    http://mpra.ub.uni-muenchen.de/1005/
+    '''
+
+    return -exp(-(abs(cos(xy[0])*cos(xy[1])*exp(abs(1 - sqrt(xy[0]**2 + xy[1]**2)/pi))))**-1)
+
+
+def plateau(x):
+    '''Plateau Function
+
+    Parameters
+    ----------
+        x : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum: f(x*)=30 at x*=(0,...,0)
+    bounds: x_i in [-5.12, 5.12] for i=1,...,n
+    '''
+    
+    return 30 + sum([floor(abs(v)) for v in x])
+
+
+def qing(x):
+    '''Qing Function
+
+    Parameters
+    ----------
+        x : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x*=(+/-sqrt(i),...,+/-sqrt(i))
+    bounds: x_i in [-500, 500] for i=1,...,n
+
+    References
+    ----------
+    A. Qing, “Dynamic Differential Evolution Strategy and Applications in 
+    Electromagnetic Inverse Scattering Problems,” IEEE Transactions on 
+    Geoscience and remote Sensing, vol. 44, no. 1, pp. 116-125, 2006.
+    '''
+    return sum([(v**2 - (i+1))**2 for i, v in enumerate(x)])
 
 
 def rastrigin(x, safe_mode=False):
@@ -429,6 +920,32 @@ def rosenbrock(x):
     for i in range(len(x)-1):
         total += 100*(x[i+1] - x[i]*x[i])**2 + (1-x[i])**2
     return total
+
+
+def salomon(x):
+    '''Salomon Function
+
+    Parameters
+    ----------
+        x : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x*=(0,...,0)
+    bounds: x_i in [-100, 100] for i=1,...,n
+
+    Reference
+    ---------
+    R. Salomon, “Re-evaluating Genetic Algorithm Performance Under Corodinate 
+    Rotation of Benchmark Functions: A Survey of Some Theoretical and Practical 
+    Aspects of Genetic Algorithms,” BioSystems, vol. 39, no. 3, pp. 263-278, 
+    1996.
+    '''
+    return 1 - cos(2*pi*sqrt(sum([v**2 for v in x]))) + 0.1*sqrt(sum([v**2 for v in x]))
 
 
 def schaffer_n2(xy):
@@ -608,6 +1125,31 @@ def tripod(xy):
     b = abs(x1 + 50*p_x2*(1-2*p_x1))
     c = abs(x2 + 50*(1-2*p_x2))
     return a + b + c
+
+
+def wolfe(xyz):
+    '''Wolfe Function
+
+    Parameters
+    ----------
+        xyz : list
+
+    Returns
+    -------
+        float
+
+    Notes
+    -----
+    global minimum: f(x)=0 at x=[0,0,0]
+    bounds: x_i in [0, 2] for i=1,2,3
+
+    References
+    ----------
+    H. P. Schwefel, “Numerical Optimization for Computer Models,” John Wiley 
+    Sons, 1981.
+    '''
+    x, y, z = xyz[0], xyz[1], xyz[2]
+    return (4.0/3.0)*(x**2.0 + y**2.0 - x*y)**0.75 + z
 
 
 def zakharov(x):
