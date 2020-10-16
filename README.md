@@ -58,6 +58,7 @@ cd landscapes-master
 | Leon | `leon()` | 2 |
 | [Lévi function N.13](#lévi-function-n13) | `levi_n13()` | 2 |
 | [Matyas](#matyas-function) | `matyas()` | 2 |
+| Michalewicz | `michalewicz` | n|
 | [McCormick](#mccormick-function) | `mccormick()` | 2 |
 | Parsopoulos | `parsopoulos()` | 2 |
 | Pen Holder | `pen_holder()` | 2 |
