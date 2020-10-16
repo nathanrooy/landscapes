@@ -103,7 +103,7 @@ def bartels_conn(xy):
     References
     ----------
     Momin Jamil and Xin-She Yang, A literature survey of benchmark functions for
-    global optimization problems, Int. Journal of Mathematical Modelling and 
+    global optimization problems, Int. Journal of Mathematical Modelling and
     Numerical Optimisation, Vol. 4, Issue. 2 (2013).
     '''
     x1, x2 = xy[0], xy[1]
@@ -136,16 +136,16 @@ def bird(xy):
 
     Notes
     -----
-    global minimum(s): f(x) = -106.76453 at 
-        x=[ 4.70105,  3.15294] and 
+    global minimum(s): f(x) = -106.76453 at
+        x=[ 4.70105,  3.15294] and
         x=[-1.58214, -3.13024]
-        
+
     bounds: x_i in [-2*pi, 2*pi] for i=1,2
 
     References
     ----------
-    S. K. Mishra, “Global Optimization By Differential Evolution and Particle 
-    Swarm Methods: Evaluation On Some Benchmark Functions,” Munich Research 
+    S. K. Mishra, “Global Optimization By Differential Evolution and Particle
+    Swarm Methods: Evaluation On Some Benchmark Functions,” Munich Research
     Papers in Economics, [Available Online]:
     http://mpra.ub.uni-muenchen.de/1005/
     '''
@@ -159,7 +159,7 @@ def bohachevsky_n1(xy):
     Parameters
     ----------
         xy : list
-    
+
     Returns
     -------
         float
@@ -172,7 +172,7 @@ def bohachevsky_n1(xy):
     References
     ----------
     [1] I. O. Bohachevsky, M. E. Johnson, M. L. Stein, “General Simulated Annealing
-    for Function Optimization,” Technometrics, vol. 28, no. 3, pp. 209-217, 
+    for Function Optimization,” Technometrics, vol. 28, no. 3, pp. 209-217,
     1986.
 
     [2] http://www.sfu.ca/~ssurjano/boha.html
@@ -188,7 +188,7 @@ def bohachevsky_n2(xy):
     Parameters
     ----------
         xy : list
-    
+
     Returns
     -------
         float
@@ -201,7 +201,7 @@ def bohachevsky_n2(xy):
     References
     ----------
     [1] I. O. Bohachevsky, M. E. Johnson, M. L. Stein, “General Simulated Annealing
-    for Function Optimization,” Technometrics, vol. 28, no. 3, pp. 209-217, 
+    for Function Optimization,” Technometrics, vol. 28, no. 3, pp. 209-217,
     1986.
 
     [2] http://www.sfu.ca/~ssurjano/boha.html
@@ -217,7 +217,7 @@ def bohachevsky_n3(xy):
     Parameters
     ----------
         xy : list
-    
+
     Returns
     -------
         float
@@ -230,7 +230,7 @@ def bohachevsky_n3(xy):
     References
     ----------
     [1] I. O. Bohachevsky, M. E. Johnson, M. L. Stein, “General Simulated Annealing
-    for Function Optimization,” Technometrics, vol. 28, no. 3, pp. 209-217, 
+    for Function Optimization,” Technometrics, vol. 28, no. 3, pp. 209-217,
     1986.
 
     [2] http://www.sfu.ca/~ssurjano/boha.html
@@ -292,8 +292,8 @@ def brent(xy):
 
     References
     ----------
-    S. K. Mishra, “Global Optimization By Differential Evolution and Particle 
-    Swarm Methods: Evaluation On Some Benchmark Functions,” Munich Research 
+    S. K. Mishra, “Global Optimization By Differential Evolution and Particle
+    Swarm Methods: Evaluation On Some Benchmark Functions,” Munich Research
     Papers in Economics, [Available Online]:
     http://mpra.ub.uni-muenchen.de/1005/
     '''
@@ -320,14 +320,14 @@ def brown(x):
 
     References
     ----------
-    O. Begambre, J. E. Laier, “A hybrid Particle Swarm Optimization - Simplex 
+    O. Begambre, J. E. Laier, “A hybrid Particle Swarm Optimization - Simplex
     Algorithm (PSOS) for Structural Damage Identification,” Journal of Advances
     in Engineering Software, vol. 40, no. 9, pp. 883-891, 2009.
     '''
 
     return sum([
-        ((x[i]**2)**(x[i+1]**2 + 1.0)) + 
-        ((x[i+1]**2)**(x[i]+1.0)) 
+        ((x[i]**2)**(x[i+1]**2 + 1.0)) +
+        ((x[i+1]**2)**(x[i]+1.0))
         for i in range(len(x)-1)])
 
 
@@ -376,7 +376,7 @@ def camel_hump_6(xy):
     Global minimum(s):
         1) f( 0.0898, -0.7126) = -1.0316
         2) f(-0.0898,  0.7126) = -1.0316
-    
+
     References
     ----------
     Molga, M., & Smutnicki, C. Test functions for optimization needs (2005)
@@ -409,7 +409,7 @@ def colville(xy):
 
     References
     ----------
-    A.-R. Hedar, “Global Optimization Test Problems” 
+    A.-R. Hedar, “Global Optimization Test Problems”
     '''
 
     x1, x2, x3, x4 = xy[0], xy[1], xy[2], xy[3]
@@ -455,8 +455,8 @@ def deckkers_aarts(xy):
 
     References
     ----------
-    M. M. Ali, C. Khompatraporn, Z. B. Zabinsky, “A Numerical Evaluation of 
-    Several Stochastic Algorithms on Selected Continuous Global Optimization 
+    M. M. Ali, C. Khompatraporn, Z. B. Zabinsky, “A Numerical Evaluation of
+    Several Stochastic Algorithms on Selected Continuous Global Optimization
     Test Problems,” Journal of Global Optimization, vol. 31, pp. 635-672, 2005.
     '''
 
@@ -482,8 +482,8 @@ def dixon_price(x):
 
     References
     ----------
-    L. C. W. Dixon, R. C. Price, “The Truncated Newton Method for Sparse 
-    Unconstrained Optimisation Using Automatic Differentiation,” Journal of 
+    L. C. W. Dixon, R. C. Price, “The Truncated Newton Method for Sparse
+    Unconstrained Optimisation Using Automatic Differentiation,” Journal of
     Optimization Theory and Applications, vol. 60, no. 2, pp. 261-275, 1989.
     '''
     return (x[0] - 1.0)**2.0 + sum([i*(2.0*x[i]**2.0 - x[i-1])**2.0 for i in range(1, len(x))])
@@ -540,11 +540,11 @@ def exponential(x):
     -----
     global minimum: f(x*)=-1 at x*=(0,..,0)
     bounds: x_i in [-1, 1] for i=1,2
-    
+
     References
     ----------
-    S. Rahnamyan, H. R. Tizhoosh, N. M. M. Salama, “Opposition-Based 
-    Differential Evolution (ODE) with Variable Jumping Rate,” IEEE Sympousim 
+    S. Rahnamyan, H. R. Tizhoosh, N. M. M. Salama, “Opposition-Based
+    Differential Evolution (ODE) with Variable Jumping Rate,” IEEE Sympousim
     Foundations Computation Intelligence, Honolulu, HI, pp. 81-88, 2007.
     '''
     return -exp(-0.5*sum([v**2 for v in x]))
@@ -580,7 +580,7 @@ def griewank(xy):
 
     References
     ----------
-    A. O. Griewank, “Generalized Descent for Global Optimization,” Journal of 
+    A. O. Griewank, “Generalized Descent for Global Optimization,” Journal of
     Optimization Theory and Applications, vol. 34, no. 1, pp. 11-39, 1981.
     '''
 
@@ -637,19 +637,19 @@ def hosaki(xy):
     Notes
     -----
     global minimum: f(x*)=-2.345811 at x*=[4,2]
-    bounds: 
+    bounds:
         x1 in [0, 5]
         x2 in [0, 6]
 
     References
     ----------
-    G. A. Bekey, M. T. Ung, “A Comparative Evaluation of Two Global Search 
-    Algorithms,” IEEE Transaction on Systems, Man and Cybernetics, vol. 4, 
+    G. A. Bekey, M. T. Ung, “A Comparative Evaluation of Two Global Search
+    Algorithms,” IEEE Transaction on Systems, Man and Cybernetics, vol. 4,
     no. 1, pp. 112-116, 1974.
     '''
     x, y = xy[0], xy[1]
     return (1 - 8*x + 7*x**2 - (7.0/3.0)*x**3 + 0.25*x**4) * y**2 * exp(-y)
-         
+
 
 def keane(xy):
     '''Keane Function
@@ -687,7 +687,7 @@ def leon(xy):
     Parameters
     ----------
         xy : list
-    
+
     Returns
     -------
         float
@@ -696,16 +696,16 @@ def leon(xy):
     -----
     global minimum: f(x*)=0 at x*=(1,1)
     bounds: x_i in [-10, 10] for i=1,2
-    
+
     References
     ----------
-     A. Lavi, T. P. Vogel (eds), “Recent Advances in Optimization Techniques,” 
+     A. Lavi, T. P. Vogel (eds), “Recent Advances in Optimization Techniques,”
      John Wliley & Sons, 1966.
     '''
     x, y = xy[0], xy[1]
     return 100*(y-x**3)*2 + (1-x)**2
 
-    
+
 def levi_n13(xy):
     '''
     Levi Function N.13
@@ -755,8 +755,8 @@ def parsopoulos(xy):
     Notes
     -----
     there are infinate global minimums in R^2
-    global minimum(s): 
-        f(x*)=0 at x*=(k*pi/2, l*pi) 
+    global minimum(s):
+        f(x*)=0 at x*=(k*pi/2, l*pi)
         where:
             k=(+/-)1, (+/-)3,...
             l = 0, (+/-)1, (+/-)2,...
@@ -792,8 +792,8 @@ def pen_holder(xy):
 
     References
     ----------
-    S. K. Mishra, “Global Optimization By Differential Evolution and Particle 
-    Swarm Methods: Evaluation On Some Benchmark Functions,” Munich Research 
+    S. K. Mishra, “Global Optimization By Differential Evolution and Particle
+    Swarm Methods: Evaluation On Some Benchmark Functions,” Munich Research
     Papers in Economics, [Available Online]:
     http://mpra.ub.uni-muenchen.de/1005/
     '''
@@ -817,7 +817,7 @@ def plateau(x):
     global minimum: f(x*)=30 at x*=(0,...,0)
     bounds: x_i in [-5.12, 5.12] for i=1,...,n
     '''
-    
+
     return 30 + sum([floor(abs(v)) for v in x])
 
 
@@ -839,8 +839,8 @@ def qing(x):
 
     References
     ----------
-    A. Qing, “Dynamic Differential Evolution Strategy and Applications in 
-    Electromagnetic Inverse Scattering Problems,” IEEE Transactions on 
+    A. Qing, “Dynamic Differential Evolution Strategy and Applications in
+    Electromagnetic Inverse Scattering Problems,” IEEE Transactions on
     Geoscience and remote Sensing, vol. 44, no. 1, pp. 116-125, 2006.
     '''
     return sum([(v**2 - (i+1))**2 for i, v in enumerate(x)])
@@ -887,7 +887,7 @@ def rotated_hyper_ellipsoid(xy):
 
     Notes
     -----
-    Bounds: the rotated hyper-ellipsoid is usually evaluated on the hypercube 
+    Bounds: the rotated hyper-ellipsoid is usually evaluated on the hypercube
     defined by x_i in [-65.536, 65.536] for all i=1,...,d
 
     Global minimum: f(x)=0 at x=(0,...,0)
@@ -940,9 +940,9 @@ def salomon(x):
 
     Reference
     ---------
-    R. Salomon, “Re-evaluating Genetic Algorithm Performance Under Corodinate 
-    Rotation of Benchmark Functions: A Survey of Some Theoretical and Practical 
-    Aspects of Genetic Algorithms,” BioSystems, vol. 39, no. 3, pp. 263-278, 
+    R. Salomon, “Re-evaluating Genetic Algorithm Performance Under Corodinate
+    Rotation of Benchmark Functions: A Survey of Some Theoretical and Practical
+    Aspects of Genetic Algorithms,” BioSystems, vol. 39, no. 3, pp. 263-278,
     1996.
     '''
     return 1 - cos(2*pi*sqrt(sum([v**2 for v in x]))) + 0.1*sqrt(sum([v**2 for v in x]))
@@ -1017,7 +1017,7 @@ def step(xy):
     References
     ----------
     Momin Jamil and Xin-She Yang, A literature survey of benchmark functions for
-    global optimization problems, Int. Journal of Mathematical Modelling and 
+    global optimization problems, Int. Journal of Mathematical Modelling and
     Numerical Optimisation, Vol. 4, Issue. 2 (2013).
     '''
     return sum([floor(abs(v)) for v in xy])
@@ -1063,7 +1063,7 @@ def sum_of_squares(xy):
 
     References
     ----------
-    A.-R. Hedar, “Global Optimization Test Problems” 
+    A.-R. Hedar, “Global Optimization Test Problems”
     '''
     return sum([(i+1) * v**2 for i, v in enumerate(xy)])
 
@@ -1095,7 +1095,7 @@ def trid(xy):
 
 def tripod(xy):
     '''Tripod Function
-    
+
     Parameters
     ----------
         xy : list
@@ -1111,9 +1111,9 @@ def tripod(xy):
 
     References
     ----------
-    S. Rahnamyan, H. R. Tizhoosh, N. M. M. Salama, “A Novel Population 
-    Initialization Method for Accelerating Evolutionary Algorithms” 
-    Computers and Mathematics with Applications, vol. 53, no. 10, 
+    S. Rahnamyan, H. R. Tizhoosh, N. M. M. Salama, “A Novel Population
+    Initialization Method for Accelerating Evolutionary Algorithms”
+    Computers and Mathematics with Applications, vol. 53, no. 10,
     pp. 1605-1614, 2007.
     '''
 
@@ -1145,7 +1145,7 @@ def wolfe(xyz):
 
     References
     ----------
-    H. P. Schwefel, “Numerical Optimization for Computer Models,” John Wiley 
+    H. P. Schwefel, “Numerical Optimization for Computer Models,” John Wiley
     Sons, 1981.
     '''
     x, y, z = xyz[0], xyz[1], xyz[2]
@@ -1168,7 +1168,7 @@ def zakharov(x):
     The Zakharov has no local minima except a single global one.
 
     Bounds:
-        The function is usually evaluated within the hypercube defined by 
+        The function is usually evaluated within the hypercube defined by
         x_i in [-5, 10] for i = 1,...,d
 
     Global minimum:
@@ -1177,7 +1177,7 @@ def zakharov(x):
     References
     ----------
     Shahryar Rahnamayan, Hamid R. Tizhoosh, Magdy M.A. Salama,
-    "A novel population initialization method for accelerating evolutionary 
+    "A novel population initialization method for accelerating evolutionary
     algorithms" - Computers & Mathematics with Applications
     Volume 53, Issue 10, 2007, Pages 1605-1614, ISSN 0898-1221
     '''
@@ -1196,16 +1196,16 @@ class tsp():
     def __init__(self, dist_func, close_loop=True):
         self.dist_func = dist_func
         self.close_loop = close_loop
-    
+
     def dist(self, xy):
         # sequentially calculate distance between all tsp nodes
         dist = 0
         for i in range(len(xy)-1): dist += self.dist_func(xy[i+1], xy[i])
 
-        # close the tsp loop by calculating the distance 
+        # close the tsp loop by calculating the distance
         # between the first and last points
         if self.close_loop: dist += self.dist_func(xy[0], xy[-1])
-        
+
         return dist
 
 
