@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='landscapes',
-    version='0.0.9',
+    version='0.0.10',
     author='Nathan A. Rooy',
     author_email='nathanrooy@gmail.com',
     url='https://github.com/nathanrooy/landscapes',
