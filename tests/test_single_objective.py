@@ -35,6 +35,7 @@ from landscapes.single_objective import keane
 from landscapes.single_objective import levi_n13
 from landscapes.single_objective import leon
 from landscapes.single_objective import matyas
+from landscapes.single_objective import michalewicz
 from landscapes.single_objective import mccormick
 from landscapes.single_objective import parsopoulos
 from landscapes.single_objective import pen_holder
@@ -171,7 +172,7 @@ class test_single_objective(unittest.TestCase):
     def test_keane(self):
         self.assertLess(abs(0.6736675 - keane([0, 1.3932490])), 1e-6)
         self.assertLess(abs(0.6736675 - keane([1.3932490, 0])), 1e-6)
-        
+
     def test_levi_n13(self):
         self.assertLess(levi_n13([1,1]), 1e-10)
 
@@ -180,6 +181,9 @@ class test_single_objective(unittest.TestCase):
 
     def test_matyas(self):
         self.assertEqual(matyas([0,0]), 0)
+
+    def test_michalewicz(self):
+        self.assertTrue( -1.8013 <= michalewicz([2.20,1.57]))
 
     def test_mccormick(self):
         self.assertLess(abs(-1.9133 - mccormick([-0.54719, -1.54719])), 1e-4)
@@ -202,7 +206,7 @@ class test_single_objective(unittest.TestCase):
     def test_qing(self):
         for d in range(1, D_MAX +1):
             self.assertLess(qing([sqrt(i) for i in range(1, d+1)]), 1e-6)
-        
+
     def test_rastrigin_1(self):
         self.assertEqual(rastrigin([0]), 0)
         self.assertEqual(rastrigin([0,0,0,0,0]), 0)
