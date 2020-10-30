@@ -4,7 +4,7 @@
 [![GitHub license](https://img.shields.io/github/license/nathanrooy/landscapes?style=flat-square)](https://github.com/nathanrooy/landscapes/blob/master/LICENSE)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/landscapes.svg?style=flat-square)](https://pypi.org/pypi/landscapes/)
 [![PyPi Version](https://img.shields.io/pypi/v/landscapes.svg?style=flat-square)](https://pypi.org/project/landscapes)
-[![Downloads](https://img.shields.io/pypi/dw/landscapes?style=flat-square)](https://pepy.tech/project/landscapes)
+[![Downloads](https://img.shields.io/pypi/dm/landscapes?style=flat-square)](https://pepy.tech/project/landscapes)
 
 ## Installation
 There are a couple ways in which you can use this library. The first and probably the easiest is by using pip and PyPi:
