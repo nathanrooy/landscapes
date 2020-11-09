@@ -18,6 +18,7 @@ from landscapes.single_objective import brown
 from landscapes.single_objective import bukin_n6
 from landscapes.single_objective import camel_hump_3
 from landscapes.single_objective import camel_hump_6
+from landscapes.single_objective import carrom_table
 from landscapes.single_objective import colville
 from landscapes.single_objective import cross_in_tray
 from landscapes.single_objective import deckkers_aarts
@@ -115,6 +116,12 @@ class test_single_objective(unittest.TestCase):
     def test_camel_hump_6(self):
         self.assertLess(abs(-1.0316 - camel_hump_6([ 0.0898, -0.7126])), 1e-4)
         self.assertLess(abs(-1.0316 - camel_hump_6([-0.0898,  0.7126])), 1e-4)
+
+    def test_carrom_table(self):
+        self.assertLess(abs(-24.1568155 -carrom_table([ 9.6461572,  9.6461572])), 1e-6)
+        self.assertLess(abs(-24.1568155 -carrom_table([ 9.6461572, -9.6461572])), 1e-6)
+        self.assertLess(abs(-24.1568155 -carrom_table([-9.6461572,  9.6461572])), 1e-6)
+        self.assertLess(abs(-24.1568155 -carrom_table([-9.6461572, -9.6461572])), 1e-6)
 
     def test_colville(self):
         self.assertEqual(colville([1,1,1,1]), 0)

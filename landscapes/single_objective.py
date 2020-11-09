@@ -389,6 +389,23 @@ def camel_hump_6(xy):
     return a + b + c
 
 
+def carrom_table(xy):
+    '''Carrom Table
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+
+    References
+    ----------
+
+    '''
+    x, y = xy[0], xy[1]
+    return (exp(2*abs(1 - (sqrt(x**2 + y**2)/pi))) * cos(x)**2 * cos(y)**2) / -30.0
+
+
 def colville(xy):
     '''Colville Function
 
