@@ -22,6 +22,7 @@ from landscapes.single_objective import carrom_table
 from landscapes.single_objective import colville
 from landscapes.single_objective import cosine_mixture
 from landscapes.single_objective import cross_in_tray
+from landscapes.single_objective import cube
 from landscapes.single_objective import deckkers_aarts
 from landscapes.single_objective import dixon_price
 from landscapes.single_objective import drop_wave
@@ -138,6 +139,10 @@ class test_single_objective(unittest.TestCase):
         self.assertLess(abs(-2.06261 - cross_in_tray([ 1.34941, -1.34941])), 1e-5)
         self.assertLess(abs(-2.06261 - cross_in_tray([-1.34941,  1.34941])), 1e-5)
         self.assertLess(abs(-2.06261 - cross_in_tray([-1.34941, -1.34941])), 1e-5)
+
+
+    def test_cube(self):
+        self.assertEqual(cube([1,1]), 0)
 
     def test_deckkers_aarts(self):
         self.assertLess(abs(-24771.09375 - deckkers_aarts([0,  15])), 1e-5)

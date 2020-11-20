@@ -486,6 +486,27 @@ def cross_in_tray(xy):
     return -0.0001*(abs(sin(x)*sin(y)*exp(abs(100-(sqrt(x**2 + y**2)/pi))))+1)**0.1
 
 
+def cube(xy):
+    '''CUBE
+
+    Parameters
+    ----------
+    xy : list of length 2
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x*=(0,0)
+    bounds: x_i in [-10, 10] for i=1,2
+    '''
+    
+    x, y = xy[0], xy[1]
+    return 100 * (y - x**3)**2 + (1 - x)**2
+
+
 def deckkers_aarts(xy):
     '''Deckkers-Aarts Function
 
