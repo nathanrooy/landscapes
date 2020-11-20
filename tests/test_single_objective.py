@@ -20,6 +20,7 @@ from landscapes.single_objective import camel_hump_3
 from landscapes.single_objective import camel_hump_6
 from landscapes.single_objective import carrom_table
 from landscapes.single_objective import colville
+from landscapes.single_objective import cosine_mixture
 from landscapes.single_objective import cross_in_tray
 from landscapes.single_objective import deckkers_aarts
 from landscapes.single_objective import dixon_price
@@ -125,6 +126,12 @@ class test_single_objective(unittest.TestCase):
 
     def test_colville(self):
         self.assertEqual(colville([1,1,1,1]), 0)
+
+    def test_cosine_mixture(self):
+        for d in range(D_MIN, D_MAX, 1):
+            g_min = -0.1 * d
+            x = [0 for i in range(0, d)]
+            self.assertLess(abs(g_min - cosine_mixture(x)), 1e-6)
 
     def test_cross_in_tray(self):
         self.assertLess(abs(-2.06261 - cross_in_tray([ 1.34941,  1.34941])), 1e-5)

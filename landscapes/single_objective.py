@@ -394,14 +394,20 @@ def carrom_table(xy):
 
     Parameters
     ----------
+    xy : list
 
     Returns
     -------
+    float
 
     References
     ----------
-
+    [1]  S. K. Mishra, “Global Optimization By Differential Evolution and 
+    Particle Swarm Methods: Evaluation On Some Benchmark Functions,” Munich 
+    Research Papers in Economics, [Available Online]: 
+    http://mpra.ub.uni-muenchen.de/1005/
     '''
+
     x, y = xy[0], xy[1]
     return (exp(2*abs(1 - (sqrt(x**2 + y**2)/pi))) * cos(x)**2 * cos(y)**2) / -30.0
 
@@ -437,6 +443,32 @@ def colville(xy):
     e = 10.1*((x2-1)**2 + (x4-1)**2)
     f = 19.8*(x2-1)*(x4-1)
     return a + b + c + d + e + f
+
+
+def cosine_mixture(x):
+    '''COSINE MIXTURE
+
+    Parameters
+    ----------
+    x : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum: f(x_i)=-0.1N for x_i=0 for i=1,...,n
+    bounds: x_i in [-1, 1] for i=1,...,n
+
+    References
+    ----------
+    M. M. Ali, C. Khompatraporn, Z. B. Zabinsky, “A Numerical Evaluation of
+    Several Stochastic Algorithms on Selected Continuous Global Optimization
+    Test Problems,” Journal of Global Optimization, vol. 31, pp. 635-672, 2005.
+    '''
+
+    return -0.1 * sum([cos(5*pi*v) for v in x]) - sum([v**2 for v in x])
 
 
 def cross_in_tray(xy):
