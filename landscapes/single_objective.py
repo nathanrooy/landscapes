@@ -531,6 +531,18 @@ def cube(xy):
     return 100 * (y - x**3)**2 + (1 - x)**2
 
 
+def damavandi(xy):
+    x, y = xy[0], xy[1]
+
+    # division by zero causes errors...
+    if x==2 and y==2: return 0
+    n = sin(pi*(x - 2)) * sin(pi*(y - 2))
+    d = pi**2 *(x - 2) * (y - 2)
+    a = 1.0 - (abs(n / d))**5
+    b = 2.0 + (x - 7)**2 + 2*(y - 7)**2
+    return a * b
+
+
 def deckkers_aarts(xy):
     '''Deckkers-Aarts Function
 
