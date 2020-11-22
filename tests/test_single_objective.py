@@ -5,8 +5,10 @@ from math import sqrt
 from landscapes.single_objective import ackley
 from landscapes.single_objective import ackley_n2
 from landscapes.single_objective import adjiman
+from landscapes.single_objective import amgm
 from landscapes.single_objective import bartels_conn
 from landscapes.single_objective import beale
+from landscapes.single_objective import bent_cigar
 from landscapes.single_objective import bird
 from landscapes.single_objective import bohachevsky_n1
 from landscapes.single_objective import bohachevsky_n2
@@ -20,9 +22,11 @@ from landscapes.single_objective import camel_hump_3
 from landscapes.single_objective import camel_hump_6
 from landscapes.single_objective import carrom_table
 from landscapes.single_objective import chichinadze
+from landscapes.single_objective import chung_reynolds
 from landscapes.single_objective import colville
 from landscapes.single_objective import cosine_mixture
 from landscapes.single_objective import cross_in_tray
+from landscapes.single_objective import csendes
 from landscapes.single_objective import cube
 from landscapes.single_objective import damavandi
 from landscapes.single_objective import deckkers_aarts
@@ -31,6 +35,7 @@ from landscapes.single_objective import drop_wave
 from landscapes.single_objective import easom
 from landscapes.single_objective import eggholder
 from landscapes.single_objective import exponential
+from landscapes.single_objective import freudenstein_roth
 from landscapes.single_objective import goldstein_price
 from landscapes.single_objective import griewank
 from landscapes.single_objective import himmelblau
@@ -46,6 +51,7 @@ from landscapes.single_objective import parsopoulos
 from landscapes.single_objective import pen_holder
 from landscapes.single_objective import plateau
 from landscapes.single_objective import qing
+from landscapes.single_objective import quartic
 from landscapes.single_objective import rastrigin
 from landscapes.single_objective import rotated_hyper_ellipsoid
 from landscapes.single_objective import rosenbrock
@@ -77,11 +83,22 @@ class test_single_objective(unittest.TestCase):
     def test_adjiman(self):
         self.assertLess(abs(-2.02180678 - adjiman([2.0, 0.10578])), 1e-6)
 
+    def test_amgm(self):
+        self.assertEqual(amgm([1,1,1]), 0)
+        self.assertEqual(amgm([1.5,1.5,1.5]), 0)
+        self.assertEqual(amgm([0, 0, 0]), 0)
+        self.assertNotEqual(amgm([1,2,3,4,5,6,7]), 0)
+
     def test_bartels_conn(self):
         self.assertEqual(bartels_conn([0,0]), 1)
 
     def test_beale(self):
         self.assertEqual(beale([3, 0.5]), 0)
+
+    def test_bent_cigar(self):
+        for d in range(D_MIN, D_MAX, 1):
+            x = [0 for i in range(0, d)]
+            self.assertEqual(bent_cigar(x), 0)
 
     def test_bird(self):
         self.assertLess(abs(-106.764536 - bird([ 4.701055,  3.152946])), 1e-6)
@@ -130,6 +147,11 @@ class test_single_objective(unittest.TestCase):
     def test_chichinadze(self):
         self.assertLess(abs(-42.9443870 - chichinadze([6.189866586965680, 0.5])), 1e-6)
 
+    def test_chung_reynolds(self):
+        for d in range(D_MIN, D_MAX+1, 1):
+            x = [0 for i in range(0, d)]
+            self.assertEqual(chung_reynolds(x), 0)
+
     def test_colville(self):
         self.assertEqual(colville([1,1,1,1]), 0)
 
@@ -144,6 +166,11 @@ class test_single_objective(unittest.TestCase):
         self.assertLess(abs(-2.06261 - cross_in_tray([ 1.34941, -1.34941])), 1e-5)
         self.assertLess(abs(-2.06261 - cross_in_tray([-1.34941,  1.34941])), 1e-5)
         self.assertLess(abs(-2.06261 - cross_in_tray([-1.34941, -1.34941])), 1e-5)
+
+    def test_csendes(self):
+        for d in range(D_MIN, D_MAX, 1):
+            x = [0 for i in range(0, d)]
+            self.assertEqual(csendes(x), 0)
 
     def test_cube(self):
         self.assertEqual(cube([1,1]), 0)
@@ -172,6 +199,9 @@ class test_single_objective(unittest.TestCase):
     def test_exponential(self):
         for d in range(D_MIN, D_MAX + 1):
             self.assertEqual(exponential([0 for _ in range(1, d+1)]), -1)
+
+    def test_freudenstein_roth(self):
+        self.assertEqual(freudenstein_roth([5,4]), 0)
 
     def test_goldstein_price(self):
         self.assertEqual(goldstein_price([0,-1]), 3)
@@ -232,6 +262,11 @@ class test_single_objective(unittest.TestCase):
     def test_qing(self):
         for d in range(1, D_MAX +1):
             self.assertLess(qing([sqrt(i) for i in range(1, d+1)]), 1e-6)
+
+    def test_quartic(self):
+        for d in range(D_MIN, D_MAX+1, 1):
+            x = [0 for i in range(0, d)]
+            self.assertEqual(quartic(x), 0)
 
     def test_rastrigin_1(self):
         self.assertEqual(rastrigin([0]), 0)

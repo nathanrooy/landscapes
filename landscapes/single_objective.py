@@ -15,8 +15,10 @@ from math import pi
 from math import sin
 from math import sqrt
 
-#--- FUNCTIONS ----------------------------------------------------------------+
+from landscapes.utils import prod
+from landscapes.utils import safe_division as safe_div
 
+#--- FUNCTIONS ----------------------------------------------------------------+
 
 def ackley(xy):
     '''
@@ -84,6 +86,38 @@ def adjiman(xy):
     return (cos(x) * sin(y)) - (x / (y**2.0 + 1.0))
 
 
+def amgm(x):
+    '''AMGM: Arithmetic Mean-Geometric Mean (Mishra's Function No.11)
+
+    Parameters
+    ----------
+    x : list, len(x)>=2
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum:  f(x*)=0 at x*=(x_i -> x_1,=x_2,...,=x_3)
+    bounds: x_i in [0,10] for i=2,...,n
+
+    *There are an infinite number of global minimums when all values of x are
+    non-negative and equal.
+
+    f(1,1) = 0
+    f(6,6,6) = 0
+    f(0.5, 0.5, 0.5, 0.5) = 0
+    etc...
+    '''
+    assert len(x) >= 2, 'len(x) must be >= 2'
+    
+    d = len(x)
+    a = sum([abs(v) for v in x]) / d
+    b = abs(prod(x))**(1/d)
+    return (a-b)**2
+
+
 def bartels_conn(xy):
     '''Bartels Conn Function
 
@@ -121,6 +155,30 @@ def beale(xy):
     return ((1.500 - x + x*y)**2 +
             (2.250 - x + x*y**2)**2 +
             (2.625 - x + x*y**3)**2)
+
+
+def bent_cigar(x):
+    '''Bent Cigar
+
+    Parameters
+    ----------
+    x : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x*=(0,...,0)
+    bounds: x_i in [-100,100] for i=1,...,n
+
+    References
+    ----------
+    https://al-roomi.org/benchmarks/unconstrained/n-dimensions/164-bent-cigar-function
+    '''
+
+    return x[0]**2 + 1e6*sum([v**2 for v in x[1:]])
 
 
 def bird(xy):
@@ -436,6 +494,31 @@ def chichinadze(xy):
         1.0/sqrt(5)*exp(-((y - 0.5)**2)/2))
 
 
+def chung_reynolds(x):
+    '''Chung Reynolds
+
+    Parameters
+    ----------
+    x : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x*=(0,...,0)
+    bounds: x_i in [-100,100] for i=1,...,n
+
+    References
+    ----------
+    C. J. Chung, R. G. Reynolds, “CAEP: An Evolution-Based Tool for Real-Valued
+    Function Optimization Using Cultural Algorithms,” International Journal on
+    Artificial Intelligence Tool, vol. 7, no. 3, pp. 239-291, 1998.
+    '''
+    return sphere(x)**2
+
+
 def colville(xy):
     '''Colville Function
 
@@ -508,6 +591,32 @@ def cross_in_tray(xy):
     '''
     x, y = xy[0], xy[1]
     return -0.0001*(abs(sin(x)*sin(y)*exp(abs(100-(sqrt(x**2 + y**2)/pi))))+1)**0.1
+
+
+def csendes(x):
+    '''Csendes
+
+    Parameters
+    ----------
+    x : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum f(x*)=0 for x*=(0,...,0)
+    bounds: x_i in [-1,1] for i=1,...,n
+    
+    References
+    ----------
+    T. Csendes, D. Ratz, “Subdivision Direction Selection in Interval Methods 
+    for Global Optimization,” SIAM Journal on Numerical Analysis, vol. 34, 
+    no. 3, pp. 922-938.
+    '''
+    
+    return sum([v**6 * (2+sin(safe_div(1,v))) for v in x])
 
 
 def cube(xy):
@@ -675,6 +784,34 @@ def exponential(x):
     Foundations Computation Intelligence, Honolulu, HI, pp. 81-88, 2007.
     '''
     return -exp(-0.5*sum([v**2 for v in x]))
+
+
+def freudenstein_roth(xy):
+    '''Freudenstein Roth
+
+    Parameters
+    ----------
+    xy : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x*=(5,4)
+    bounds: x_i in [-10,10] for i=1,2
+    
+    References
+    ----------
+    S. S. Rao, “Engineering Optimization: Theory and Practice,” 
+    John Wiley & Sons, 2009.
+    '''
+
+    x, y = xy[0], xy[1]
+    a = (x - 13 + ((5-y)*y - 2)*y)**2
+    b = (x - 29 + ((y + 1)*y - 14)*y)**2
+    return a + b
 
 
 def goldstein_price(xy):
@@ -995,6 +1132,33 @@ def qing(x):
     Geoscience and remote Sensing, vol. 44, no. 1, pp. 116-125, 2006.
     '''
     return sum([(v**2 - (i+1))**2 for i, v in enumerate(x)])
+
+
+def quartic(x):
+    '''Quartic Function (does not include noise term)
+
+    Parameters
+    ----------
+    x : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x*=(0,...,0)
+    bounds: x_i in [-1.28, 1.28] for i=1,...,n
+
+    References
+    ----------
+    R. Storn, K. Price, “Differntial Evolution - A Simple and Efficient Adaptive 
+    Scheme for Global Optimization over Continuous Spaces,” Technical Report 
+    no. TR-95-012, International Computer Science Institute, Berkeley, CA, 1996. 
+    [Available Online]: http://www1.icsi.berkeley.edu/~storn/TR-95-012.pdf
+    '''
+
+    return sum([(i+1)*v**4 for i, v in enumerate(x)])
 
 
 def rastrigin(x, safe_mode=False):
