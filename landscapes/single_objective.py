@@ -412,6 +412,30 @@ def carrom_table(xy):
     return (exp(2*abs(1 - (sqrt(x**2 + y**2)/pi))) * cos(x)**2 * cos(y)**2) / -30.0
 
 
+def chichinadze(xy):
+    '''Chichinadze
+
+    Parameters
+    ----------
+    xy : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum: f(x*) = -42.9443870 at x*=(6.189866586965680, 0.5)
+    bounds: x_i in [-30, 30] for i=1,2
+    '''
+
+    x, y = xy[0], xy[1]
+    return (
+        x**2 - 12*x + 11 + 
+        10*cos(pi*x/2) + 8*sin(5*pi*x/2) - 
+        1.0/sqrt(5)*exp(-((y - 0.5)**2)/2))
+
+
 def colville(xy):
     '''Colville Function
 
@@ -502,9 +526,42 @@ def cube(xy):
     global minimum: f(x*)=0 at x*=(0,0)
     bounds: x_i in [-10, 10] for i=1,2
     '''
-    
+
     x, y = xy[0], xy[1]
     return 100 * (y - x**3)**2 + (1 - x)**2
+
+
+def damavandi(xy):
+    '''Damavandi
+
+    Parameters
+    ----------
+    xy : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x*=(2,2)
+    bounds: x_i in [0,14] for i=1,2
+
+    References
+    ----------
+    N. Damavandi, S. Safavi-Naeini, “A Hybrid Evolutionary Programming Method
+    for Circuit Optimization,” IEEE Transaction on Circuit and Systems I, 
+    vol. 52, no. 5, pp.902-910, 2005.
+    '''
+
+    x, y = xy[0], xy[1]
+    # division by zero causes errors...
+    if x==2 and y==2: return 0
+    n = sin(pi*(x - 2)) * sin(pi*(y - 2))
+    d = pi**2 *(x - 2) * (y - 2)
+    a = 1.0 - (abs(n / d))**5
+    b = 2.0 + (x - 7)**2 + 2*(y - 7)**2
+    return a * b
 
 
 def deckkers_aarts(xy):

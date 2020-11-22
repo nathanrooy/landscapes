@@ -19,10 +19,12 @@ from landscapes.single_objective import bukin_n6
 from landscapes.single_objective import camel_hump_3
 from landscapes.single_objective import camel_hump_6
 from landscapes.single_objective import carrom_table
+from landscapes.single_objective import chichinadze
 from landscapes.single_objective import colville
 from landscapes.single_objective import cosine_mixture
 from landscapes.single_objective import cross_in_tray
 from landscapes.single_objective import cube
+from landscapes.single_objective import damavandi
 from landscapes.single_objective import deckkers_aarts
 from landscapes.single_objective import dixon_price
 from landscapes.single_objective import drop_wave
@@ -125,6 +127,9 @@ class test_single_objective(unittest.TestCase):
         self.assertLess(abs(-24.1568155 -carrom_table([-9.6461572,  9.6461572])), 1e-6)
         self.assertLess(abs(-24.1568155 -carrom_table([-9.6461572, -9.6461572])), 1e-6)
 
+    def test_chichinadze(self):
+        self.assertLess(abs(-42.9443870 - chichinadze([6.189866586965680, 0.5])), 1e-6)
+
     def test_colville(self):
         self.assertEqual(colville([1,1,1,1]), 0)
 
@@ -140,9 +145,11 @@ class test_single_objective(unittest.TestCase):
         self.assertLess(abs(-2.06261 - cross_in_tray([-1.34941,  1.34941])), 1e-5)
         self.assertLess(abs(-2.06261 - cross_in_tray([-1.34941, -1.34941])), 1e-5)
 
-
     def test_cube(self):
         self.assertEqual(cube([1,1]), 0)
+
+    def test_damavandi(self):
+        self.assertEqual(damavandi([2,2]), 0)
 
     def test_deckkers_aarts(self):
         self.assertLess(abs(-24771.09375 - deckkers_aarts([0,  15])), 1e-5)
