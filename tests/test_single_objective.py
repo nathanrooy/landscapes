@@ -23,6 +23,7 @@ from landscapes.single_objective import chichinadze
 from landscapes.single_objective import colville
 from landscapes.single_objective import cosine_mixture
 from landscapes.single_objective import cross_in_tray
+from landscapes.single_objective import csendes
 from landscapes.single_objective import cube
 from landscapes.single_objective import damavandi
 from landscapes.single_objective import deckkers_aarts
@@ -144,6 +145,11 @@ class test_single_objective(unittest.TestCase):
         self.assertLess(abs(-2.06261 - cross_in_tray([ 1.34941, -1.34941])), 1e-5)
         self.assertLess(abs(-2.06261 - cross_in_tray([-1.34941,  1.34941])), 1e-5)
         self.assertLess(abs(-2.06261 - cross_in_tray([-1.34941, -1.34941])), 1e-5)
+
+    def test_csendes(self):
+        for d in range(D_MIN, D_MAX, 1):
+            x = [0 for i in range(0, d)]
+            self.assertEqual(csendes(x), 0)
 
     def test_cube(self):
         self.assertEqual(cube([1,1]), 0)

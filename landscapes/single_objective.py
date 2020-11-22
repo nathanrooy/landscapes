@@ -15,8 +15,9 @@ from math import pi
 from math import sin
 from math import sqrt
 
-#--- FUNCTIONS ----------------------------------------------------------------+
+from landscapes.utils import safe_division as safe_div
 
+#--- FUNCTIONS ----------------------------------------------------------------+
 
 def ackley(xy):
     '''
@@ -508,6 +509,32 @@ def cross_in_tray(xy):
     '''
     x, y = xy[0], xy[1]
     return -0.0001*(abs(sin(x)*sin(y)*exp(abs(100-(sqrt(x**2 + y**2)/pi))))+1)**0.1
+
+
+def csendes(x):
+    '''Csendes
+
+    Parameters
+    ----------
+    x : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum f(x*)=0 for x*=(0,...,0)
+    bounds: x_i in [-1,1] for i=1,...,n
+    
+    References
+    ----------
+    T. Csendes, D. Ratz, “Subdivision Direction Selection in Interval Methods 
+    for Global Optimization,” SIAM Journal on Numerical Analysis, vol. 34, 
+    no. 3, pp. 922-938.
+    '''
+    
+    return sum([v**6 * (2+sin(safe_div(1,v))) for v in x])
 
 
 def cube(xy):
