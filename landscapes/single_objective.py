@@ -124,6 +124,30 @@ def beale(xy):
             (2.625 - x + x*y**3)**2)
 
 
+def bent_cigar(x):
+    '''Bent Cigar
+
+    Parameters
+    ----------
+    x : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x*=(0,...,0)
+    bounds: x_i in [-100,100] for i=1,...,n
+
+    References
+    ----------
+    https://al-roomi.org/benchmarks/unconstrained/n-dimensions/164-bent-cigar-function
+    '''
+
+    return x[0]**2 + 1e6*sum([v**2 for v in x[1:]])
+
+
 def bird(xy):
     '''Bird Function
 
@@ -725,7 +749,7 @@ def freudenstein_roth(xy):
     S. S. Rao, “Engineering Optimization: Theory and Practice,” 
     John Wiley & Sons, 2009.
     '''
-    
+
     x, y = xy[0], xy[1]
     a = (x - 13 + ((5-y)*y - 2)*y)**2
     b = (x - 29 + ((y + 1)*y - 14)*y)**2

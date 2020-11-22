@@ -7,6 +7,7 @@ from landscapes.single_objective import ackley_n2
 from landscapes.single_objective import adjiman
 from landscapes.single_objective import bartels_conn
 from landscapes.single_objective import beale
+from landscapes.single_objective import bent_cigar
 from landscapes.single_objective import bird
 from landscapes.single_objective import bohachevsky_n1
 from landscapes.single_objective import bohachevsky_n2
@@ -84,6 +85,11 @@ class test_single_objective(unittest.TestCase):
 
     def test_beale(self):
         self.assertEqual(beale([3, 0.5]), 0)
+
+    def test_bent_cigar(self):
+        for d in range(D_MIN, D_MAX, 1):
+            x = [0 for i in range(0, d)]
+            self.assertEqual(bent_cigar(x), 0)
 
     def test_bird(self):
         self.assertLess(abs(-106.764536 - bird([ 4.701055,  3.152946])), 1e-6)
@@ -182,7 +188,7 @@ class test_single_objective(unittest.TestCase):
 
     def test_freudenstein_roth(self):
         self.assertEqual(freudenstein_roth([5,4]), 0)
-        
+
     def test_goldstein_price(self):
         self.assertEqual(goldstein_price([0,-1]), 3)
 
