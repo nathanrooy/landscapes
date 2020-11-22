@@ -412,6 +412,30 @@ def carrom_table(xy):
     return (exp(2*abs(1 - (sqrt(x**2 + y**2)/pi))) * cos(x)**2 * cos(y)**2) / -30.0
 
 
+def chichinadze(xy):
+    '''Chichinadze
+
+    Parameters
+    ----------
+    xy : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum: f(x*) = -42.9443870 at x*=(6.189866586965680, 0.5)
+    bounds: x_i in [-30, 30] for i=1,2
+    '''
+
+    x, y = xy[0], xy[1]
+    return (
+        x**2 - 12*x + 11 + 
+        10*cos(pi*x/2) + 8*sin(5*pi*x/2) - 
+        1.0/sqrt(5)*exp(-((y - 0.5)**2)/2))
+
+
 def colville(xy):
     '''Colville Function
 
@@ -502,7 +526,7 @@ def cube(xy):
     global minimum: f(x*)=0 at x*=(0,0)
     bounds: x_i in [-10, 10] for i=1,2
     '''
-    
+
     x, y = xy[0], xy[1]
     return 100 * (y - x**3)**2 + (1 - x)**2
 
