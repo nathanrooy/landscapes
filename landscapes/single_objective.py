@@ -704,6 +704,34 @@ def exponential(x):
     return -exp(-0.5*sum([v**2 for v in x]))
 
 
+def freudenstein_roth(xy):
+    '''Freudenstein Roth
+
+    Parameters
+    ----------
+    xy : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x*=(5,4)
+    bounds: x_i in [-10,10] for i=1,2
+    
+    References
+    ----------
+    S. S. Rao, “Engineering Optimization: Theory and Practice,” 
+    John Wiley & Sons, 2009.
+    '''
+    
+    x, y = xy[0], xy[1]
+    a = (x - 13 + ((5-y)*y - 2)*y)**2
+    b = (x - 29 + ((y + 1)*y - 14)*y)**2
+    return a + b
+
+
 def goldstein_price(xy):
     '''
     Goldstein-Price Function

@@ -32,6 +32,7 @@ from landscapes.single_objective import drop_wave
 from landscapes.single_objective import easom
 from landscapes.single_objective import eggholder
 from landscapes.single_objective import exponential
+from landscapes.single_objective import freudenstein_roth
 from landscapes.single_objective import goldstein_price
 from landscapes.single_objective import griewank
 from landscapes.single_objective import himmelblau
@@ -179,6 +180,9 @@ class test_single_objective(unittest.TestCase):
         for d in range(D_MIN, D_MAX + 1):
             self.assertEqual(exponential([0 for _ in range(1, d+1)]), -1)
 
+    def test_freudenstein_roth(self):
+        self.assertEqual(freudenstein_roth([5,4]), 0)
+        
     def test_goldstein_price(self):
         self.assertEqual(goldstein_price([0,-1]), 3)
 
