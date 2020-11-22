@@ -5,6 +5,7 @@ from math import sqrt
 from landscapes.single_objective import ackley
 from landscapes.single_objective import ackley_n2
 from landscapes.single_objective import adjiman
+from landscapes.single_objective import amgm
 from landscapes.single_objective import bartels_conn
 from landscapes.single_objective import beale
 from landscapes.single_objective import bent_cigar
@@ -81,6 +82,12 @@ class test_single_objective(unittest.TestCase):
 
     def test_adjiman(self):
         self.assertLess(abs(-2.02180678 - adjiman([2.0, 0.10578])), 1e-6)
+
+    def test_amgm(self):
+        self.assertEqual(amgm([1,1,1]), 0)
+        self.assertEqual(amgm([1.5,1.5,1.5]), 0)
+        self.assertEqual(amgm([0, 0, 0]), 0)
+        self.assertNotEqual(amgm([1,2,3,4,5,6,7]), 0)
 
     def test_bartels_conn(self):
         self.assertEqual(bartels_conn([0,0]), 1)

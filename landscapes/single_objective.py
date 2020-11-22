@@ -15,6 +15,7 @@ from math import pi
 from math import sin
 from math import sqrt
 
+from landscapes.utils import prod
 from landscapes.utils import safe_division as safe_div
 
 #--- FUNCTIONS ----------------------------------------------------------------+
@@ -83,6 +84,38 @@ def adjiman(xy):
 
     x, y = xy[0], xy[1]
     return (cos(x) * sin(y)) - (x / (y**2.0 + 1.0))
+
+
+def amgm(x):
+    '''AMGM: Arithmetic Mean-Geometric Mean (Mishra's Function No.11)
+
+    Parameters
+    ----------
+    x : list, len(x)>=2
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum:  f(x*)=0 at x*=(x_i -> x_1,=x_2,...,=x_3)
+    bounds: x_i in [0,10] for i=2,...,n
+
+    *There are an infinite number of global minimums when all values of x are
+    non-negative and equal.
+
+    f(1,1) = 0
+    f(6,6,6) = 0
+    f(0.5, 0.5, 0.5, 0.5) = 0
+    etc...
+    '''
+    assert len(x) >= 2, 'len(x) must be >= 2'
+    
+    d = len(x)
+    a = sum([abs(v) for v in x]) / d
+    b = abs(prod(x))**(1/d)
+    return (a-b)**2
 
 
 def bartels_conn(xy):
@@ -485,7 +518,7 @@ def chung_reynolds(x):
     '''
     return sphere(x)**2
 
-    
+
 def colville(xy):
     '''Colville Function
 
