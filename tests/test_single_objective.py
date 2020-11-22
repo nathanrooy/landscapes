@@ -21,6 +21,7 @@ from landscapes.single_objective import camel_hump_3
 from landscapes.single_objective import camel_hump_6
 from landscapes.single_objective import carrom_table
 from landscapes.single_objective import chichinadze
+from landscapes.single_objective import chung_reynolds
 from landscapes.single_objective import colville
 from landscapes.single_objective import cosine_mixture
 from landscapes.single_objective import cross_in_tray
@@ -49,6 +50,7 @@ from landscapes.single_objective import parsopoulos
 from landscapes.single_objective import pen_holder
 from landscapes.single_objective import plateau
 from landscapes.single_objective import qing
+from landscapes.single_objective import quartic
 from landscapes.single_objective import rastrigin
 from landscapes.single_objective import rotated_hyper_ellipsoid
 from landscapes.single_objective import rosenbrock
@@ -137,6 +139,11 @@ class test_single_objective(unittest.TestCase):
 
     def test_chichinadze(self):
         self.assertLess(abs(-42.9443870 - chichinadze([6.189866586965680, 0.5])), 1e-6)
+
+    def test_chung_reynolds(self):
+        for d in range(D_MIN, D_MAX+1, 1):
+            x = [0 for i in range(0, d)]
+            self.assertEqual(chung_reynolds(x), 0)
 
     def test_colville(self):
         self.assertEqual(colville([1,1,1,1]), 0)
@@ -248,6 +255,11 @@ class test_single_objective(unittest.TestCase):
     def test_qing(self):
         for d in range(1, D_MAX +1):
             self.assertLess(qing([sqrt(i) for i in range(1, d+1)]), 1e-6)
+
+    def test_quartic(self):
+        for d in range(D_MIN, D_MAX+1, 1):
+            x = [0 for i in range(0, d)]
+            self.assertEqual(quartic(x), 0)
 
     def test_rastrigin_1(self):
         self.assertEqual(rastrigin([0]), 0)

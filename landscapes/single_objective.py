@@ -461,6 +461,31 @@ def chichinadze(xy):
         1.0/sqrt(5)*exp(-((y - 0.5)**2)/2))
 
 
+def chung_reynolds(x):
+    '''Chung Reynolds
+
+    Parameters
+    ----------
+    x : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x*=(0,...,0)
+    bounds: x_i in [-100,100] for i=1,...,n
+
+    References
+    ----------
+    C. J. Chung, R. G. Reynolds, “CAEP: An Evolution-Based Tool for Real-Valued
+    Function Optimization Using Cultural Algorithms,” International Journal on
+    Artificial Intelligence Tool, vol. 7, no. 3, pp. 239-291, 1998.
+    '''
+    return sphere(x)**2
+
+    
 def colville(xy):
     '''Colville Function
 
@@ -1074,6 +1099,33 @@ def qing(x):
     Geoscience and remote Sensing, vol. 44, no. 1, pp. 116-125, 2006.
     '''
     return sum([(v**2 - (i+1))**2 for i, v in enumerate(x)])
+
+
+def quartic(x):
+    '''Quartic Function (does not include noise term)
+
+    Parameters
+    ----------
+    x : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x*=(0,...,0)
+    bounds: x_i in [-1.28, 1.28] for i=1,...,n
+
+    References
+    ----------
+    R. Storn, K. Price, “Differntial Evolution - A Simple and Efficient Adaptive 
+    Scheme for Global Optimization over Continuous Spaces,” Technical Report 
+    no. TR-95-012, International Computer Science Institute, Berkeley, CA, 1996. 
+    [Available Online]: http://www1.icsi.berkeley.edu/~storn/TR-95-012.pdf
+    '''
+
+    return sum([(i+1)*v**4 for i, v in enumerate(x)])
 
 
 def rastrigin(x, safe_mode=False):
