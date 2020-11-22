@@ -28,9 +28,11 @@ cd landscapes-master
 | [Ackley](#ackley-function) | `ackley()` | 2 |
 | Ackley N.2 | `ackley_n2()` | 2 |
 | Adjiman | `adjiman()` | 2 |
+| AMGM | `amgm()` | n |
 | Bartels Conn | `bartels_conn()` | 2 |
 | Bird | `bird()` | 2 |
 | [Beale](#beale-function) | `beale()` | 2 |
+| Bent Cigar | `bent_cigar()` | n |
 | Bohachevsky N.1 | `bohachevsky_n1()` | 2 |
 | Bohachevsky N.2 | `bohachevsky_n2()` | 2 |
 | Bohachevsky N.3 | `bohachevsky_n3()` | 2 |
@@ -41,14 +43,22 @@ cd landscapes-master
 | [Bukin n6](#bukin-n6-function) | `bukin_n6()` | 2 |
 | 3-Hump Camel | `camel_hump_3()` | 2 |
 | 6-Hump Camel | `camel_hump_6()` | 2 |
+| Carrom Table | `carrom_table()` | 2 |
+| Chichinadze | `chichinadze()` | 2 |
+| Chung Reynolds | `chung_reynolds()` | n |
 | Colville | `colville()` | 4 |
+| Cosine Mixture | `cosine_mixture()` | n |
 | [Cross-in-Tray](#cross-in-tray-function) | `cross_in_tray()` | 2 |
+| Csendes | `csendes()` | n |
+| Cube | `cube()` | 2 |
+| Damavandi | `damavandi()` | 2 |
 | Deckkers-Aarts | `deckkers_aarts()` | 2 |
 | Dixon & Price | `dixon_price()` | n |
 | Drop Wave | `drop_wave()` | 2 |
 | [Easom](#easom-function) | `easom()` | 2 |
 | [Eggholder](#eggholder-function) | `eggholder()` | 2 |
 | Exponential | `exponential()` | n |
+| Freudenstein Roth | `freudenstein_roth()` | 2 |
 | [Goldstein–Price](#goldsteinprice-function) | `goldstein_price()` | 2 |
 | Griewank | `griewank()` | n |
 | [Himmelblau](#himmelblaus-function) | `himmelblau()` | 2 |
@@ -64,6 +74,7 @@ cd landscapes-master
 | Pen Holder | `pen_holder()` | 2 |
 | Plateau | `plateau()` | n |
 | Qing | `qing()` | n |
+| Quartic | `quartic()` | n |
 | [Rastrigin](#rastrigin-function) | `rastrigin()` | n |
 | Rotated Hyper-Ellipsoid | `rotated_hyper_ellipsoid()` | n |
 | [Rosenbrock](#rosenbrock-function) | `rosenbrock()` | n |
