@@ -532,8 +532,29 @@ def cube(xy):
 
 
 def damavandi(xy):
-    x, y = xy[0], xy[1]
+    '''Damavandi
 
+    Parameters
+    ----------
+    xy : list
+
+    Returns
+    -------
+    float
+
+    Notes
+    -----
+    global minimum: f(x*)=0 at x*=(2,2)
+    bounds: x_i in [0,14] for i=1,2
+
+    References
+    ----------
+    N. Damavandi, S. Safavi-Naeini, “A Hybrid Evolutionary Programming Method
+    for Circuit Optimization,” IEEE Transaction on Circuit and Systems I, 
+    vol. 52, no. 5, pp.902-910, 2005.
+    '''
+
+    x, y = xy[0], xy[1]
     # division by zero causes errors...
     if x==2 and y==2: return 0
     n = sin(pi*(x - 2)) * sin(pi*(y - 2))
