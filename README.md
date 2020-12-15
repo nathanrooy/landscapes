@@ -4,6 +4,7 @@
 [![GitHub license](https://img.shields.io/github/license/nathanrooy/landscapes?style=flat-square)](https://github.com/nathanrooy/landscapes/blob/master/LICENSE)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/landscapes.svg?style=flat-square)](https://pypi.org/pypi/landscapes/)
 [![PyPi Version](https://img.shields.io/pypi/v/landscapes.svg?style=flat-square)](https://pypi.org/project/landscapes)
+[![codecov](https://img.shields.io/codecov/c/github/nathanrooy/landscapes.svg?style=flat-square)](https://codecov.io/gh/nathanrooy/landscapes)
 [![Downloads](https://img.shields.io/pypi/dm/landscapes?style=flat-square)](https://pepy.tech/project/landscapes)
 
 ## Installation
