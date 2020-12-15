@@ -29,6 +29,8 @@ jobs:
         pip install flake8 pytest
     - name: Test with unittest
       run: python -m unittest tests/test_single_objective.py
+    - uses: codecov/codecov-action@v1
+      if: ${{ matrix.python-version == '3.8' }}
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
