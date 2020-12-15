@@ -33,7 +33,7 @@ jobs:
       if: ${{ matrix.python-version == '3.8' }}
       run: |
         pip install coverage
-        coverage run tests/test_single_objective.py
+        coverage run -m unittest tests/test_single_objective.py 
         bash <(curl -s https://codecov.io/bash)
     - name: Lint with flake8
       run: |
