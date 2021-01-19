@@ -746,7 +746,7 @@ def easom(xy):
     bounds: -100 <= x, y <= 100
     '''
     x, y = xy[0], xy[1]
-    return -cos(x)*cos(y)*exp(-((x-pi)**2 + (y-pi)**2))
+    return -cos(x)*cos(y)*exp(-((x-pi)**2 - (y-pi)**2))
 
 
 def eggholder(xy):
