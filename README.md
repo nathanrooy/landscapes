@@ -1,11 +1,11 @@
 <p  align="center"><img src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/logo.png"></p>
 
-[![gh-actions-ci](https://img.shields.io/github/workflow/status/nathanrooy/landscapes/ci?style=flat-square)](https://github.com/nathanrooy/landscapes/actions?query=workflow%3Aci)
-[![GitHub license](https://img.shields.io/github/license/nathanrooy/landscapes?style=flat-square)](https://github.com/nathanrooy/landscapes/blob/master/LICENSE)
-[![PyPI pyversions](https://img.shields.io/pypi/pyversions/landscapes.svg?style=flat-square)](https://pypi.org/pypi/landscapes/)
-[![PyPi Version](https://img.shields.io/pypi/v/landscapes.svg?style=flat-square)](https://pypi.org/project/landscapes)
-[![codecov](https://img.shields.io/codecov/c/github/nathanrooy/landscapes.svg?style=flat-square)](https://codecov.io/gh/nathanrooy/landscapes)
-[![Downloads](https://img.shields.io/pypi/dm/landscapes?style=flat-square)](https://pepy.tech/project/landscapes)
+[![ci](https://github.com/nathanrooy/landscapes/actions/workflows/ci.yml/badge.svg)](https://github.com/nathanrooy/landscapes/actions/workflows/ci.yml)
+[![GitHub license](https://img.shields.io/github/license/nathanrooy/landscapes)](https://github.com/nathanrooy/landscapes/blob/master/LICENSE)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/landscapes.svg)](https://pypi.org/pypi/landscapes/)
+[![PyPi Version](https://img.shields.io/pypi/v/landscapes.svg)](https://pypi.org/project/landscapes)
+[![codecov](https://img.shields.io/codecov/c/github/nathanrooy/landscapes.svg)](https://codecov.io/gh/nathanrooy/landscapes)
+[![Downloads](https://img.shields.io/pypi/dm/landscapes)](https://pepy.tech/project/landscapes)
 
 ## Installation
 There are a couple ways in which you can use this library. The first and probably the easiest is by using pip and PyPi:
