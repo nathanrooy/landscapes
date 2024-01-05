@@ -157,7 +157,7 @@ class test_single_objective(unittest.TestCase):
 
     def test_cosine_mixture(self):
         for d in range(D_MIN, D_MAX, 1):
-            g_min = -0.1 * d
+            g_min = 0.1 * d
             x = [0 for i in range(0, d)]
             self.assertLess(abs(g_min - cosine_mixture(x)), 1e-6)
 
