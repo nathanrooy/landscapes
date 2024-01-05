@@ -575,7 +575,7 @@ def cosine_mixture(x):
     Test Problems,” Journal of Global Optimization, vol. 31, pp. 635-672, 2005.
     '''
 
-    return -0.1 * sum([cos(5*pi*v) for v in x]) + sum([v**2 for v in x])
+    return 0.1 * sum([cos(5*pi*v) for v in x]) - sum([v**2 for v in x])
 
 
 def cross_in_tray(xy):
