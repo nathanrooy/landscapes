@@ -7,13 +7,22 @@
 
 #--- IMPORT DEPENDENCIES ------------------------------------------------------+
 
-from math import cos
+import numpy as np
+
+cos = np.cos
+exp = np.exp
+floor = np.floor
+sin = np.sin
+sqrt = np.sqrt
+
 from math import e
-from math import exp
-from math import floor
 from math import pi
-from math import sin
-from math import sqrt
+
+#from math import cos
+#from math import exp
+#from math import floor
+#from math import sin
+#from math import sqrt
 
 from landscapes.utils import prod
 from landscapes.utils import safe_division as safe_div
