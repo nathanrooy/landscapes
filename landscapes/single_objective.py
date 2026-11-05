@@ -7,14 +7,7 @@
 
 #--- IMPORT DEPENDENCIES ------------------------------------------------------+
 
-from math import cos
-from math import e
-from math import exp
-from math import floor
-from math import pi
-from math import prod
-from math import sin
-from math import sqrt
+from math import cos, e, exp, floor, pi, prod, sin, sqrt
 
 from landscapes.utils import safe_division as safe_div
 
@@ -111,7 +104,7 @@ def amgm(x):
     etc...
     '''
     assert len(x) >= 2, 'len(x) must be >= 2'
-    
+
     d = len(x)
     a = sum([abs(v) for v in x]) / d
     b = abs(prod(x))**(1/d)
@@ -460,9 +453,9 @@ def carrom_table(xy):
 
     References
     ----------
-    [1]  S. K. Mishra, “Global Optimization By Differential Evolution and 
-    Particle Swarm Methods: Evaluation On Some Benchmark Functions,” Munich 
-    Research Papers in Economics, [Available Online]: 
+    [1]  S. K. Mishra, “Global Optimization By Differential Evolution and
+    Particle Swarm Methods: Evaluation On Some Benchmark Functions,” Munich
+    Research Papers in Economics, [Available Online]:
     http://mpra.ub.uni-muenchen.de/1005/
     '''
 
@@ -489,8 +482,8 @@ def chichinadze(xy):
 
     x, y = xy[0], xy[1]
     return (
-        x**2 - 12*x + 11 + 
-        10*cos(pi*x/2) + 8*sin(5*pi*x/2) - 
+        x**2 - 12*x + 11 +
+        10*cos(pi*x/2) + 8*sin(5*pi*x/2) -
         1.0/sqrt(5)*exp(-((y - 0.5)**2)/2))
 
 
@@ -608,14 +601,14 @@ def csendes(x):
     -----
     global minimum f(x*)=0 for x*=(0,...,0)
     bounds: x_i in [-1,1] for i=1,...,n
-    
+
     References
     ----------
-    T. Csendes, D. Ratz, “Subdivision Direction Selection in Interval Methods 
-    for Global Optimization,” SIAM Journal on Numerical Analysis, vol. 34, 
+    T. Csendes, D. Ratz, “Subdivision Direction Selection in Interval Methods
+    for Global Optimization,” SIAM Journal on Numerical Analysis, vol. 34,
     no. 3, pp. 922-938.
     '''
-    
+
     return sum([v**6 * (2+sin(safe_div(1,v))) for v in x])
 
 
@@ -659,13 +652,14 @@ def damavandi(xy):
     References
     ----------
     N. Damavandi, S. Safavi-Naeini, “A Hybrid Evolutionary Programming Method
-    for Circuit Optimization,” IEEE Transaction on Circuit and Systems I, 
+    for Circuit Optimization,” IEEE Transaction on Circuit and Systems I,
     vol. 52, no. 5, pp.902-910, 2005.
     '''
 
     x, y = xy[0], xy[1]
     # division by zero causes errors...
-    if x==2 and y==2: return 0
+    if x == 2 and y == 2:
+        return 0
     n = sin(pi*(x - 2)) * sin(pi*(y - 2))
     d = pi**2 *(x - 2) * (y - 2)
     a = 1.0 - (abs(n / d))**5
@@ -722,7 +716,9 @@ def dixon_price(x):
     Unconstrained Optimisation Using Automatic Differentiation,” Journal of
     Optimization Theory and Applications, vol. 60, no. 2, pp. 261-275, 1989.
     '''
-    return (x[0] - 1.0)**2.0 + sum([i*(2.0*x[i]**2.0 - x[i-1])**2.0 for i in range(1, len(x))])
+    return (x[0] - 1.0)**2.0 + sum(
+        [i * (2.0 * x[i]**2.0 - x[i - 1])**2.0 for i in range(1, len(x))]
+    )
 
 
 def drop_wave(xy):
@@ -801,10 +797,10 @@ def freudenstein_roth(xy):
     -----
     global minimum: f(x*)=0 at x*=(5,4)
     bounds: x_i in [-10,10] for i=1,2
-    
+
     References
     ----------
-    S. S. Rao, “Engineering Optimization: Theory and Practice,” 
+    S. S. Rao, “Engineering Optimization: Theory and Practice,”
     John Wiley & Sons, 2009.
     '''
 
@@ -978,7 +974,11 @@ def levi_n13(xy):
     bounds: -10 <= x, y <= 10
     '''
     x, y = xy[0], xy[1]
-    return sin(3.0*pi*x)**2 + (x-1)**2 * (1+sin(3.0*pi*y)**2) + (y-1)**2 * (1+sin(2.0*pi*y)**2)
+    return (
+        sin(3.0*pi*x)**2
+        + (x-1)**2 * (1+sin(3.0*pi*y)**2)
+        + (y-1)**2 * (1+sin(2.0*pi*y)**2)
+    )
 
 
 def matyas(xy):
@@ -1005,7 +1005,8 @@ def michalewicz(x, m=10):
 
     Notes
     -----
-    The parameter m defines the steepness of they valleys and ridges; a larger m leads to a more difficult search. The recommended value of m is m = 10.
+    The parameter m defines the steepness of they valleys and ridges; a larger m
+    leads to a more difficult search. The recommended value of m is m = 10.
     global minimum for 2D: f(x)=-1.8013 at x*=(2.20,1.57)
     bounds: x_i in [0, π] for i=1,..., d
     '''
@@ -1086,7 +1087,9 @@ def pen_holder(xy):
     http://mpra.ub.uni-muenchen.de/1005/
     '''
 
-    return -exp(-(abs(cos(xy[0])*cos(xy[1])*exp(abs(1 - sqrt(xy[0]**2 + xy[1]**2)/pi))))**-1)
+    return -exp(
+        -(abs(cos(xy[0])*cos(xy[1])*exp(abs(1 - sqrt(xy[0]**2 + xy[1]**2)/pi))))**-1
+    )
 
 
 def plateau(x):
@@ -1152,9 +1155,9 @@ def quartic(x):
 
     References
     ----------
-    R. Storn, K. Price, “Differntial Evolution - A Simple and Efficient Adaptive 
-    Scheme for Global Optimization over Continuous Spaces,” Technical Report 
-    no. TR-95-012, International Computer Science Institute, Berkeley, CA, 1996. 
+    R. Storn, K. Price, “Differntial Evolution - A Simple and Efficient Adaptive
+    Scheme for Global Optimization over Continuous Spaces,” Technical Report
+    no. TR-95-012, International Computer Science Institute, Berkeley, CA, 1996.
     [Available Online]: http://www1.icsi.berkeley.edu/~storn/TR-95-012.pdf
     '''
 
@@ -1185,8 +1188,10 @@ def rastrigin(x, safe_mode=False):
 
     if safe_mode:
         for item in x:
-            assert x<=5.12 and x>=-5.12, 'input exceeds bounds of [-5.12, 5.12]'
-    return len(x)*10.0 +  sum([item*item - 10.0*cos(2.0*pi*item) for item in x])
+            assert item <= 5.12 and item >= -5.12, (
+                'input exceeds bounds of [-5.12, 5.12]'
+            )
+    return len(x)*10.0 + sum([item*item - 10.0*cos(2.0*pi*item) for item in x])
 
 
 def rotated_hyper_ellipsoid(xy):
@@ -1212,7 +1217,8 @@ def rotated_hyper_ellipsoid(xy):
     Molga, M., & Smutnicki, C. Test functions for optimization needs (2005)
     '''
     a = 0
-    for i in range(0, len(xy)): a += sum([xy[j]**2 for j in range(0, i)])
+    for i in range(len(xy)):
+        a += sum([xy[j]**2 for j in range(i)])
     return a
 
 
@@ -1507,7 +1513,7 @@ def zakharov(x):
 
 
 
-class tsp():
+class tsp:
     def __init__(self, dist_func, close_loop=True):
         self.dist_func = dist_func
         self.close_loop = close_loop
@@ -1515,11 +1521,13 @@ class tsp():
     def dist(self, xy):
         # sequentially calculate distance between all tsp nodes
         dist = 0
-        for i in range(len(xy)-1): dist += self.dist_func(xy[i+1], xy[i])
+        for i in range(len(xy) - 1):
+            dist += self.dist_func(xy[i + 1], xy[i])
 
         # close the tsp loop by calculating the distance
         # between the first and last points
-        if self.close_loop: dist += self.dist_func(xy[0], xy[-1])
+        if self.close_loop:
+            dist += self.dist_func(xy[0], xy[-1])
 
         return dist
 
