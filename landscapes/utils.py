@@ -17,25 +17,3 @@ def safe_division(n,d):
 
     try: return n/d
     except ZeroDivisionError: return 0
-
-
-def prod(x):
-    '''Product (replaces math.prod)
-
-    Parameters
-    ----------
-    x : list
-
-    Returns 
-    -------
-    float
-
-    Notes
-    -----
-    keeping this here for backwards compatibility since math.prod was 
-    introduced in py3.8
-    '''
-
-    total = 1
-    for v in x: total *= v 
-    return total

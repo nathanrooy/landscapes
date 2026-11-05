@@ -12,10 +12,10 @@ from math import e
 from math import exp
 from math import floor
 from math import pi
+from math import prod
 from math import sin
 from math import sqrt
 
-from landscapes.utils import prod
 from landscapes.utils import safe_division as safe_div
 
 #--- FUNCTIONS ----------------------------------------------------------------+

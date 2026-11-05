@@ -68,6 +68,7 @@ from landscapes.single_objective import trid
 from landscapes.single_objective import tripod
 from landscapes.single_objective import wolfe
 from landscapes.single_objective import zakharov
+import landscapes
 
 D_MIN = 1
 D_MAX = 20
@@ -341,6 +342,14 @@ class test_single_objective(unittest.TestCase):
     def test_zakharov(self):
         self.assertEqual(zakharov([0]), 0)
         self.assertEqual(zakharov([0,0,0,0,0]), 0)
+
+    def test_top_level_package_exports(self):
+        self.assertEqual(landscapes.__version__, "0.0.13")
+        self.assertTrue(callable(landscapes.sphere))
+        self.assertTrue(callable(landscapes.ackley))
+        self.assertTrue(callable(landscapes.rastrigin))
+        self.assertTrue(callable(landscapes.tsp))
+        self.assertEqual(landscapes.sphere([0, 0]), 0)
 
 
 if __name__ == '__main__':
