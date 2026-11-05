@@ -1,74 +1,77 @@
 import unittest
-from math import pi
-from math import sqrt
+from math import pi, sqrt
 
-from landscapes.single_objective import ackley
-from landscapes.single_objective import ackley_n2
-from landscapes.single_objective import adjiman
-from landscapes.single_objective import amgm
-from landscapes.single_objective import bartels_conn
-from landscapes.single_objective import beale
-from landscapes.single_objective import bent_cigar
-from landscapes.single_objective import bird
-from landscapes.single_objective import bohachevsky_n1
-from landscapes.single_objective import bohachevsky_n2
-from landscapes.single_objective import bohachevsky_n3
-from landscapes.single_objective import booth
-from landscapes.single_objective import branin
-from landscapes.single_objective import brent
-from landscapes.single_objective import brown
-from landscapes.single_objective import bukin_n6
-from landscapes.single_objective import camel_hump_3
-from landscapes.single_objective import camel_hump_6
-from landscapes.single_objective import carrom_table
-from landscapes.single_objective import chichinadze
-from landscapes.single_objective import chung_reynolds
-from landscapes.single_objective import colville
-from landscapes.single_objective import cosine_mixture
-from landscapes.single_objective import cross_in_tray
-from landscapes.single_objective import csendes
-from landscapes.single_objective import cube
-from landscapes.single_objective import damavandi
-from landscapes.single_objective import deckkers_aarts
-from landscapes.single_objective import dixon_price
-from landscapes.single_objective import drop_wave
-from landscapes.single_objective import easom
-from landscapes.single_objective import eggholder
-from landscapes.single_objective import exponential
-from landscapes.single_objective import freudenstein_roth
-from landscapes.single_objective import goldstein_price
-from landscapes.single_objective import griewank
-from landscapes.single_objective import himmelblau
-from landscapes.single_objective import holder_table
-from landscapes.single_objective import hosaki
-from landscapes.single_objective import keane
-from landscapes.single_objective import levi_n13
-from landscapes.single_objective import leon
-from landscapes.single_objective import matyas
-from landscapes.single_objective import michalewicz
-from landscapes.single_objective import mccormick
-from landscapes.single_objective import parsopoulos
-from landscapes.single_objective import pen_holder
-from landscapes.single_objective import plateau
-from landscapes.single_objective import qing
-from landscapes.single_objective import quartic
-from landscapes.single_objective import rastrigin
-from landscapes.single_objective import rotated_hyper_ellipsoid
-from landscapes.single_objective import rosenbrock
-from landscapes.single_objective import salomon
-from landscapes.single_objective import schaffer_n2
-from landscapes.single_objective import schaffer_n4
-from landscapes.single_objective import schwefel
-from landscapes.single_objective import sphere
-from landscapes.single_objective import step
-from landscapes.single_objective import styblinski_tang
-from landscapes.single_objective import sum_of_different_powers
-from landscapes.single_objective import sum_of_squares
-from landscapes.single_objective import trid
-from landscapes.single_objective import tripod
-from landscapes.single_objective import wolfe
-from landscapes.single_objective import zakharov
 import landscapes
+from landscapes.single_objective import (
+    ackley,
+    ackley_n2,
+    adjiman,
+    amgm,
+    bartels_conn,
+    beale,
+    bent_cigar,
+    bird,
+    bohachevsky_n1,
+    bohachevsky_n2,
+    bohachevsky_n3,
+    booth,
+    branin,
+    brent,
+    brown,
+    bukin_n6,
+    camel_hump_3,
+    camel_hump_6,
+    carrom_table,
+    chichinadze,
+    chung_reynolds,
+    colville,
+    cosine_mixture,
+    cross_in_tray,
+    csendes,
+    cube,
+    damavandi,
+    deckkers_aarts,
+    dixon_price,
+    drop_wave,
+    easom,
+    eggholder,
+    exponential,
+    freudenstein_roth,
+    goldstein_price,
+    griewank,
+    himmelblau,
+    holder_table,
+    hosaki,
+    keane,
+    leon,
+    levi_n13,
+    matyas,
+    mccormick,
+    michalewicz,
+    parsopoulos,
+    pen_holder,
+    plateau,
+    qing,
+    quartic,
+    rastrigin,
+    rosenbrock,
+    rotated_hyper_ellipsoid,
+    salomon,
+    schaffer_n2,
+    schaffer_n4,
+    schwefel,
+    sphere,
+    step,
+    styblinski_tang,
+    sum_of_different_powers,
+    sum_of_squares,
+    trid,
+    tripod,
+    tsp,
+    wolfe,
+    zakharov,
+)
+from landscapes.utils import safe_division
 
 D_MIN = 1
 D_MAX = 20
@@ -98,7 +101,7 @@ class test_single_objective(unittest.TestCase):
 
     def test_bent_cigar(self):
         for d in range(D_MIN, D_MAX, 1):
-            x = [0 for i in range(0, d)]
+            x = [0 for i in range(d)]
             self.assertEqual(bent_cigar(x), 0)
 
     def test_bird(self):
@@ -127,7 +130,7 @@ class test_single_objective(unittest.TestCase):
 
     def test_brown(self):
         for d in range(D_MIN, D_MAX + 1):
-            self.assertEqual(abs(brown([0 for i in range(0, d)])), 0)
+            self.assertEqual(abs(brown([0 for i in range(d)])), 0)
 
     def test_bukin_n6(self):
         self.assertEqual(bukin_n6([-10,1]), 0)
@@ -150,7 +153,7 @@ class test_single_objective(unittest.TestCase):
 
     def test_chung_reynolds(self):
         for d in range(D_MIN, D_MAX+1, 1):
-            x = [0 for i in range(0, d)]
+            x = [0 for i in range(d)]
             self.assertEqual(chung_reynolds(x), 0)
 
     def test_colville(self):
@@ -159,7 +162,7 @@ class test_single_objective(unittest.TestCase):
     def test_cosine_mixture(self):
         for d in range(D_MIN, D_MAX, 1):
             g_min = 0.1 * d
-            x = [0 for i in range(0, d)]
+            x = [0 for i in range(d)]
             self.assertLess(abs(g_min - cosine_mixture(x)), 1e-6)
 
     def test_cross_in_tray(self):
@@ -170,7 +173,7 @@ class test_single_objective(unittest.TestCase):
 
     def test_csendes(self):
         for d in range(D_MIN, D_MAX, 1):
-            x = [0 for i in range(0, d)]
+            x = [0 for i in range(d)]
             self.assertEqual(csendes(x), 0)
 
     def test_cube(self):
@@ -240,15 +243,15 @@ class test_single_objective(unittest.TestCase):
         self.assertEqual(matyas([0,0]), 0)
 
     def test_michalewicz(self):
-        self.assertTrue( -1.8013 <= michalewicz([2.20,1.57]))
+        self.assertTrue( michalewicz([2.20,1.57]) >= -1.8013)
 
     def test_mccormick(self):
         self.assertLess(abs(-1.9133 - mccormick([-0.54719, -1.54719])), 1e-4)
 
     def test_parsopoulos(self):
         for k in [-1, 1, -3, 3]:
-            for l in [0, -1, 1, -2, 2]:
-                self.assertLess(abs(parsopoulos([k*pi/2,  l*pi])), 1e-6)
+            for m in [0, -1, 1, -2, 2]:
+                self.assertLess(abs(parsopoulos([k*pi/2,  m*pi])), 1e-6)
 
     def test_pen_holder(self):
         self.assertLess(abs(-0.9635348 - pen_holder([ 9.6461677,  9.6461676])), 1e-6)
@@ -258,7 +261,7 @@ class test_single_objective(unittest.TestCase):
 
     def test_plateau(self):
         for d in range(D_MIN, D_MAX + 1):
-            self.assertEqual(plateau([0 for i in range(0, d)]), 30)
+            self.assertEqual(plateau([0 for i in range(d)]), 30)
 
     def test_qing(self):
         for d in range(1, D_MAX +1):
@@ -266,12 +269,17 @@ class test_single_objective(unittest.TestCase):
 
     def test_quartic(self):
         for d in range(D_MIN, D_MAX+1, 1):
-            x = [0 for i in range(0, d)]
+            x = [0 for i in range(d)]
             self.assertEqual(quartic(x), 0)
 
     def test_rastrigin_1(self):
         self.assertEqual(rastrigin([0]), 0)
         self.assertEqual(rastrigin([0,0,0,0,0]), 0)
+
+    def test_rastrigin_safe_mode(self):
+        self.assertEqual(rastrigin([0, 0], safe_mode=True), 0)
+        with self.assertRaises(AssertionError):
+            rastrigin([10.0, 0.0], safe_mode=True)
 
     def test_rotated_hyper_ellipsoid(self):
         self.assertEqual(rotated_hyper_ellipsoid([0]), 0)
@@ -283,7 +291,7 @@ class test_single_objective(unittest.TestCase):
 
     def test_salomon(self):
         for d in range(D_MIN, D_MAX + 1):
-            self.assertLess(abs(salomon([0 for i in range(0, d)])), 1e-6)
+            self.assertLess(abs(salomon([0 for i in range(d)])), 1e-6)
 
     def test_schaffer_n2(self):
         self.assertEqual(schaffer_n2([0,0]), 0)
@@ -294,7 +302,7 @@ class test_single_objective(unittest.TestCase):
 
     def test_schwefel(self):
         for d in range(D_MIN, 7):
-            self.assertLess(schwefel([420.96874 for i in range(0, d)]), 1e-4)
+            self.assertLess(schwefel([420.96874 for i in range(d)]), 1e-4)
 
     def test_sphere(self):
         self.assertEqual(sphere([0]), 0)
@@ -302,7 +310,7 @@ class test_single_objective(unittest.TestCase):
 
     def test_step(self):
         for d in range(D_MIN, D_MAX + 1):
-            self.assertEqual(step([0 for i in range(0, d)]), 0)
+            self.assertEqual(step([0 for i in range(d)]), 0)
 
     def test_styblinski_tang_1(self):
         self.assertTrue(-39.16617 <= styblinski_tang([-2.903534]) <= -39.16616)
@@ -342,6 +350,21 @@ class test_single_objective(unittest.TestCase):
     def test_zakharov(self):
         self.assertEqual(zakharov([0]), 0)
         self.assertEqual(zakharov([0,0,0,0,0]), 0)
+
+    def test_tsp(self):
+        def euclidean_dist(p1, p2):
+            return sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)
+
+        pts = [[0, 0], [0, 1], [1, 1], [1, 0]]
+        tsp_closed = tsp(euclidean_dist, close_loop=True)
+        tsp_open = tsp(euclidean_dist, close_loop=False)
+        self.assertAlmostEqual(tsp_closed.dist(pts), 4.0)
+        self.assertAlmostEqual(tsp_open.dist(pts), 3.0)
+
+    def test_utils_safe_division(self):
+        self.assertEqual(safe_division(10, 2), 5.0)
+        self.assertEqual(safe_division(10, 0), 0.0)
+        self.assertEqual(safe_division(10, 0.0), 0.0)
 
     def test_top_level_package_exports(self):
         self.assertEqual(landscapes.__version__, "0.0.13")

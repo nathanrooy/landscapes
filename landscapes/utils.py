@@ -15,5 +15,8 @@ def safe_division(n,d):
     Specifically for handling the case when the denominator is 0.
     '''
 
-    try: return n/d
-    except ZeroDivisionError: return 0
+    try:
+        return n / d
+    except ZeroDivisionError:
+        return 0
+
