@@ -7,13 +7,15 @@
 
 #--- IMPORT DEPENDENCIES ------------------------------------------------------+
 
+from collections.abc import Callable, Sequence
 from math import cos, e, exp, floor, pi, prod, sin, sqrt
+from typing import Any
 
 from landscapes.utils import safe_division as safe_div
 
 #--- FUNCTIONS ----------------------------------------------------------------+
 
-def ackley(xy):
+def ackley(xy: Sequence[float]) -> float:
     '''
     Ackley Function
 
@@ -27,7 +29,7 @@ def ackley(xy):
             exp(0.5 * (cos(2.0*pi*x) + cos(2*pi*y))) + e + 20)
 
 
-def ackley_n2(xy):
+def ackley_n2(xy: Sequence[float]) -> float:
     '''Ackley N.2
 
     Parameters
@@ -52,7 +54,7 @@ def ackley_n2(xy):
     return -200*exp(-0.2 * sqrt(x**2 + y**2))
 
 
-def adjiman(xy):
+def adjiman(xy: Sequence[float]) -> float:
     '''Adjiman Function
 
     Parameters
@@ -76,10 +78,10 @@ def adjiman(xy):
     '''
 
     x, y = xy[0], xy[1]
-    return (cos(x) * sin(y)) - (x / (y**2.0 + 1.0))
+    return (cos(x) * sin(y)) - (x / (y**2 + 1.0))
 
 
-def amgm(x):
+def amgm(x: Sequence[float]) -> float:
     '''AMGM: Arithmetic Mean-Geometric Mean (Mishra's Function No.11)
 
     Parameters
@@ -108,10 +110,10 @@ def amgm(x):
     d = len(x)
     a = sum([abs(v) for v in x]) / d
     b = abs(prod(x))**(1/d)
-    return (a-b)**2
+    return float((a-b)**2)
 
 
-def bartels_conn(xy):
+def bartels_conn(xy: Sequence[float]) -> float:
     '''Bartels Conn Function
 
     Parameters
@@ -137,7 +139,7 @@ def bartels_conn(xy):
     return abs(x1**2 + x2**2 + x1*x2) + abs(sin(x1)) + abs(cos(x2))
 
 
-def beale(xy):
+def beale(xy: Sequence[float]) -> float:
     '''
     Beale Function
 
@@ -150,7 +152,7 @@ def beale(xy):
             (2.625 - x + x*y**3)**2)
 
 
-def bent_cigar(x):
+def bent_cigar(x: Sequence[float]) -> float:
     '''Bent Cigar
 
     Parameters
@@ -174,7 +176,7 @@ def bent_cigar(x):
     return x[0]**2 + 1e6*sum([v**2 for v in x[1:]])
 
 
-def bird(xy):
+def bird(xy: Sequence[float]) -> float:
     '''Bird Function
 
     Parameters
@@ -204,7 +206,7 @@ def bird(xy):
     return sin(x)*exp((1-cos(y))**2) + cos(y)*exp((1-sin(x))**2) + (x-y)**2
 
 
-def bohachevsky_n1(xy):
+def bohachevsky_n1(xy: Sequence[float]) -> float:
     '''Bohachevsky N.1
 
     Parameters
@@ -233,7 +235,7 @@ def bohachevsky_n1(xy):
     return x**2 + 2*y**2 - 0.3*cos(3.0*pi*x) - 0.4*cos(4*pi*y) + 0.7
 
 
-def bohachevsky_n2(xy):
+def bohachevsky_n2(xy: Sequence[float]) -> float:
     '''Bohachevsky N.2
 
     Parameters
@@ -262,7 +264,7 @@ def bohachevsky_n2(xy):
     return x**2 + 2*y**2 - 0.3*cos(3*pi*x)*cos(4*pi*y) + 0.3
 
 
-def bohachevsky_n3(xy):
+def bohachevsky_n3(xy: Sequence[float]) -> float:
     '''Bohachevsky N.3
 
     Parameters
@@ -290,7 +292,7 @@ def bohachevsky_n3(xy):
     return x**2 + 2*y**2 - 0.3*cos(3*pi*x + 4*pi*y) + 0.3
 
 
-def booth(xy):
+def booth(xy: Sequence[float]) -> float:
     '''
     Booth Function
 
@@ -301,7 +303,7 @@ def booth(xy):
     return (x + 2*y - 7)**2 + (2*x + y - 5)**2
 
 
-def branin(xy):
+def branin(xy: Sequence[float]) -> float:
     '''
     Branin Function
 
@@ -325,7 +327,7 @@ def branin(xy):
     return a * (y - b*x**2 + c*x - r)**2 + s*(1-t)*cos(x) + s
 
 
-def brent(xy):
+def brent(xy: Sequence[float]) -> float:
     '''Brent Function
 
     Parameters
@@ -349,11 +351,11 @@ def brent(xy):
     http://mpra.ub.uni-muenchen.de/1005/
     '''
 
-    x, y, = xy[0], xy[1]
-    return (x + 10.0)**2.0 + (y + 10.0)**2.0 + exp(-x**2.0 - y**2.0)
+    x, y = xy[0], xy[1]
+    return (x + 10.0)**2 + (y + 10.0)**2 + exp(-x**2 - y**2)
 
 
-def brown(x):
+def brown(x: Sequence[float]) -> float:
     '''Brown Function
 
     Parameters
@@ -376,13 +378,13 @@ def brown(x):
     in Engineering Software, vol. 40, no. 9, pp. 883-891, 2009.
     '''
 
-    return sum([
+    return float(sum([
         ((x[i]**2)**(x[i+1]**2 + 1.0)) +
         ((x[i+1]**2)**(x[i]+1.0))
-        for i in range(len(x)-1)])
+        for i in range(len(x)-1)]))
 
 
-def bukin_n6(xy):
+def bukin_n6(xy: Sequence[float]) -> float:
     '''
     Bukin Function N.6
 
@@ -395,7 +397,7 @@ def bukin_n6(xy):
     return 100 * sqrt(abs(y-0.01*x**2)) + 0.01*abs(x+10)
 
 
-def camel_hump_3(xy):
+def camel_hump_3(xy: Sequence[float]) -> float:
     '''
     Three-Hump Camel Function
 
@@ -406,7 +408,7 @@ def camel_hump_3(xy):
     return 2.0*x**2 - 1.05*x**4 + (x**6 / 6.0) + x*y + y**2
 
 
-def camel_hump_6(xy):
+def camel_hump_6(xy: Sequence[float]) -> float:
     '''Six-Hump Camel Function
 
     Parameters
@@ -440,7 +442,7 @@ def camel_hump_6(xy):
     return a + b + c
 
 
-def carrom_table(xy):
+def carrom_table(xy: Sequence[float]) -> float:
     '''Carrom Table
 
     Parameters
@@ -463,7 +465,7 @@ def carrom_table(xy):
     return (exp(2*abs(1 - (sqrt(x**2 + y**2)/pi))) * cos(x)**2 * cos(y)**2) / -30.0
 
 
-def chichinadze(xy):
+def chichinadze(xy: Sequence[float]) -> float:
     '''Chichinadze
 
     Parameters
@@ -487,7 +489,7 @@ def chichinadze(xy):
         1.0/sqrt(5)*exp(-((y - 0.5)**2)/2))
 
 
-def chung_reynolds(x):
+def chung_reynolds(x: Sequence[float]) -> float:
     '''Chung Reynolds
 
     Parameters
@@ -512,7 +514,7 @@ def chung_reynolds(x):
     return sphere(x)**2
 
 
-def colville(xy):
+def colville(xy: Sequence[float]) -> float:
     '''Colville Function
 
     Parameters
@@ -545,7 +547,7 @@ def colville(xy):
     return a + b + c + d + e + f
 
 
-def cosine_mixture(x):
+def cosine_mixture(x: Sequence[float]) -> float:
     '''COSINE MIXTURE
 
     Parameters
@@ -571,7 +573,7 @@ def cosine_mixture(x):
     return 0.1 * sum([cos(5*pi*v) for v in x]) - sum([v**2 for v in x])
 
 
-def cross_in_tray(xy):
+def cross_in_tray(xy: Sequence[float]) -> float:
     '''
     Cross-in-tray Fucntion
 
@@ -583,10 +585,12 @@ def cross_in_tray(xy):
     bounds: -10 = x, y <= 10
     '''
     x, y = xy[0], xy[1]
-    return -0.0001*(abs(sin(x)*sin(y)*exp(abs(100-(sqrt(x**2 + y**2)/pi))))+1)**0.1
+    return float(
+        -0.0001*(abs(sin(x)*sin(y)*exp(abs(100-(sqrt(x**2 + y**2)/pi))))+1)**0.1
+    )
 
 
-def csendes(x):
+def csendes(x: Sequence[float]) -> float:
     '''Csendes
 
     Parameters
@@ -612,7 +616,7 @@ def csendes(x):
     return sum([v**6 * (2+sin(safe_div(1,v))) for v in x])
 
 
-def cube(xy):
+def cube(xy: Sequence[float]) -> float:
     '''CUBE
 
     Parameters
@@ -633,7 +637,7 @@ def cube(xy):
     return 100 * (y - x**3)**2 + (1 - x)**2
 
 
-def damavandi(xy):
+def damavandi(xy: Sequence[float]) -> float:
     '''Damavandi
 
     Parameters
@@ -667,7 +671,7 @@ def damavandi(xy):
     return a * b
 
 
-def deckkers_aarts(xy):
+def deckkers_aarts(xy: Sequence[float]) -> float:
     '''Deckkers-Aarts Function
 
     Parameters
@@ -694,7 +698,7 @@ def deckkers_aarts(xy):
     return 10*5 * x**2 + y**2 - (x**2 + y**2)**2 + 10**(-5) * (x**2 + y**2)**4
 
 
-def dixon_price(x):
+def dixon_price(x: Sequence[float]) -> float:
     '''Dixon and Price Function
 
     Parameters
@@ -716,12 +720,12 @@ def dixon_price(x):
     Unconstrained Optimisation Using Automatic Differentiation,” Journal of
     Optimization Theory and Applications, vol. 60, no. 2, pp. 261-275, 1989.
     '''
-    return (x[0] - 1.0)**2.0 + sum(
-        [i * (2.0 * x[i]**2.0 - x[i - 1])**2.0 for i in range(1, len(x))]
+    return (x[0] - 1.0)**2 + sum(
+        [i * (2.0 * x[i]**2 - x[i - 1])**2 for i in range(1, len(x))]
     )
 
 
-def drop_wave(xy):
+def drop_wave(xy: Sequence[float]) -> float:
     '''
     Drop-Wave Function
 
@@ -734,7 +738,7 @@ def drop_wave(xy):
     return -(1 + cos(12 * sqrt(x**2 + y**2))) / (0.5 * (x**2 + y**2) + 2)
 
 
-def easom(xy):
+def easom(xy: Sequence[float]) -> float:
     '''
     Easom Function
 
@@ -745,7 +749,7 @@ def easom(xy):
     return -cos(x)*cos(y)*exp(-(x-pi)**2 - (y-pi)**2)
 
 
-def eggholder(xy):
+def eggholder(xy: Sequence[float]) -> float:
     '''
     Eggholder Function
 
@@ -757,7 +761,7 @@ def eggholder(xy):
             x*sin(sqrt(abs(x-(y+47)))))
 
 
-def exponential(x):
+def exponential(x: Sequence[float]) -> float:
     '''Exponential Function
 
     Parameters
@@ -782,7 +786,7 @@ def exponential(x):
     return -exp(-0.5*sum([v**2 for v in x]))
 
 
-def freudenstein_roth(xy):
+def freudenstein_roth(xy: Sequence[float]) -> float:
     '''Freudenstein Roth
 
     Parameters
@@ -810,7 +814,7 @@ def freudenstein_roth(xy):
     return a + b
 
 
-def goldstein_price(xy):
+def goldstein_price(xy: Sequence[float]) -> float:
     '''
     Goldstein-Price Function
 
@@ -822,7 +826,7 @@ def goldstein_price(xy):
             (30 + (2*x-3*y)**2 * (18 - 32*x + 12*x**2 + 48*y - 36*x*y + 27*y**2)))
 
 
-def griewank(xy):
+def griewank(xy: Sequence[float]) -> float:
     '''Griwank Function
 
     Parameters
@@ -844,14 +848,14 @@ def griewank(xy):
     Optimization Theory and Applications, vol. 34, no. 1, pp. 11-39, 1981.
     '''
 
-    a, b, = 0, 1
+    a, b = 0.0, 1.0
     for i, v in enumerate(xy):
         a += v**2 / 4000.0
         b *= cos(v/sqrt(i+1))
     return a - b + 1
 
 
-def himmelblau(xy):
+def himmelblau(xy: Sequence[float]) -> float:
     '''
     Himmelblau's Function
 
@@ -868,7 +872,7 @@ def himmelblau(xy):
     return (x**2 + y - 11)**2 + (x + y**2 - 7)**2
 
 
-def holder_table(xy):
+def holder_table(xy: Sequence[float]) -> float:
     '''
     Holder Table Function
 
@@ -883,7 +887,7 @@ def holder_table(xy):
     return -abs(sin(x)*cos(y)*exp(abs(1-(sqrt(x**2 + y**2)/pi))))
 
 
-def hosaki(xy):
+def hosaki(xy: Sequence[float]) -> float:
     '''Hosaki Function
 
     Parameters
@@ -911,7 +915,7 @@ def hosaki(xy):
     return (1 - 8*x + 7*x**2 - (7.0/3.0)*x**3 + 0.25*x**4) * y**2 * exp(-y)
 
 
-def keane(xy):
+def keane(xy: Sequence[float]) -> float:
     '''Keane Function
 
     Parameters
@@ -941,7 +945,7 @@ def keane(xy):
     return n / d
 
 
-def leon(xy):
+def leon(xy: Sequence[float]) -> float:
     '''Leon Function
 
     Parameters
@@ -966,7 +970,7 @@ def leon(xy):
     return 100*(y-x**3)**2 + (1-x)**2
 
 
-def levi_n13(xy):
+def levi_n13(xy: Sequence[float]) -> float:
     '''
     Levi Function N.13
 
@@ -981,7 +985,7 @@ def levi_n13(xy):
     )
 
 
-def matyas(xy):
+def matyas(xy: Sequence[float]) -> float:
     '''
     Matyas Function
 
@@ -992,7 +996,7 @@ def matyas(xy):
     return 0.26*(x**2 + y**2) - 0.48*x*y
 
 
-def michalewicz(x, m=10):
+def michalewicz(x: Sequence[float], m: float = 10) -> float:
     '''Michalewicz Function
 
     Parameters
@@ -1017,7 +1021,7 @@ def michalewicz(x, m=10):
     return result
 
 
-def mccormick(xy):
+def mccormick(xy: Sequence[float]) -> float:
     '''
     McCormick Function
 
@@ -1030,7 +1034,7 @@ def mccormick(xy):
     return sin(x+y) + (x-y)**2 - 1.5*x + 2.5*y + 1
 
 
-def parsopoulos(xy):
+def parsopoulos(xy: Sequence[float]) -> float:
     '''Parsopoulos Function
 
     Parameters
@@ -1058,7 +1062,7 @@ def parsopoulos(xy):
     return cos(xy[0])**2 + sin(xy[1])**2
 
 
-def pen_holder(xy):
+def pen_holder(xy: Sequence[float]) -> float:
     '''Pen Holder Function
 
     Parameters
@@ -1092,7 +1096,7 @@ def pen_holder(xy):
     )
 
 
-def plateau(x):
+def plateau(x: Sequence[float]) -> float:
     '''Plateau Function
 
     Parameters
@@ -1112,7 +1116,7 @@ def plateau(x):
     return 30 + sum([floor(abs(v)) for v in x])
 
 
-def qing(x):
+def qing(x: Sequence[float]) -> float:
     '''Qing Function
 
     Parameters
@@ -1137,7 +1141,7 @@ def qing(x):
     return sum([(v**2 - (i+1))**2 for i, v in enumerate(x)])
 
 
-def quartic(x):
+def quartic(x: Sequence[float]) -> float:
     '''Quartic Function (does not include noise term)
 
     Parameters
@@ -1164,7 +1168,7 @@ def quartic(x):
     return sum([(i+1)*v**4 for i, v in enumerate(x)])
 
 
-def rastrigin(x, safe_mode=False):
+def rastrigin(x: Sequence[float], safe_mode: bool = False) -> float:
     '''Rastrigin Function
 
     Parameters
@@ -1194,7 +1198,7 @@ def rastrigin(x, safe_mode=False):
     return len(x)*10.0 + sum([item*item - 10.0*cos(2.0*pi*item) for item in x])
 
 
-def rotated_hyper_ellipsoid(xy):
+def rotated_hyper_ellipsoid(xy: Sequence[float]) -> float:
     '''Rotated Hyper-Ellipsoid
 
     Parameters
@@ -1216,13 +1220,13 @@ def rotated_hyper_ellipsoid(xy):
     ----------
     Molga, M., & Smutnicki, C. Test functions for optimization needs (2005)
     '''
-    a = 0
+    a = 0.0
     for i in range(len(xy)):
         a += sum([xy[j]**2 for j in range(i)])
     return a
 
 
-def rosenbrock(x):
+def rosenbrock(x: Sequence[float]) -> float:
     '''
     Rosenbrock Function
 
@@ -1237,13 +1241,13 @@ def rosenbrock(x):
         1 <= i <= n
     '''
 
-    total = 0
+    total = 0.0
     for i in range(len(x)-1):
         total += 100*(x[i+1] - x[i]*x[i])**2 + (1-x[i])**2
     return total
 
 
-def salomon(x):
+def salomon(x: Sequence[float]) -> float:
     '''Salomon Function
 
     Parameters
@@ -1269,7 +1273,7 @@ def salomon(x):
     return 1 - cos(2*pi*sqrt(sum([v**2 for v in x]))) + 0.1*sqrt(sum([v**2 for v in x]))
 
 
-def schaffer_n2(xy):
+def schaffer_n2(xy: Sequence[float]) -> float:
     '''
     Schaffer Function N.2
 
@@ -1282,7 +1286,7 @@ def schaffer_n2(xy):
     return 0.5 + (sin(x**2 - y**2)**2 - 0.5)/(1+0.001*(x**2+y**2))**2
 
 
-def schaffer_n4(xy):
+def schaffer_n4(xy: Sequence[float]) -> float:
     '''
     Schaffer Function N.4
 
@@ -1297,7 +1301,7 @@ def schaffer_n4(xy):
     return 0.5 + (cos(sin(abs(x**2 - y**2)))**2 - 0.5)/(1+0.001*(x**2 + y**2))**2
 
 
-def schwefel(x):
+def schwefel(x: Sequence[float]) -> float:
     '''
     Schwefel Function
 
@@ -1309,7 +1313,7 @@ def schwefel(x):
     return 418.9829*len(x) - sum([item * sin(sqrt(abs(item))) for item in x])
 
 
-def sphere(x):
+def sphere(x: Sequence[float]) -> float:
     '''
     Sphere Function
 
@@ -1319,7 +1323,7 @@ def sphere(x):
     return sum([item * item for item in x])
 
 
-def step(xy):
+def step(xy: Sequence[float]) -> float:
     '''Step Function
 
     Parameters
@@ -1344,7 +1348,7 @@ def step(xy):
     return sum([floor(abs(v)) for v in xy])
 
 
-def styblinski_tang(x):
+def styblinski_tang(x: Sequence[float]) -> float:
     '''
     Styblinski-Tang Function
 
@@ -1357,7 +1361,7 @@ def styblinski_tang(x):
     return sum([item**4 - 16*item**2 + 5*item for item in x]) / 2.0
 
 
-def sum_of_different_powers(x):
+def sum_of_different_powers(x: Sequence[float]) -> float:
     '''
     Sum of Different Powers
     reference: https://www.sfu.ca/~ssurjano/sumpow.html
@@ -1366,7 +1370,7 @@ def sum_of_different_powers(x):
     return sum([abs(item)**(i+2) for i, item in enumerate(x)])
 
 
-def sum_of_squares(xy):
+def sum_of_squares(xy: Sequence[float]) -> float:
     '''Sum of Squares Function
 
     Parameters
@@ -1389,7 +1393,7 @@ def sum_of_squares(xy):
     return sum([(i+1) * v**2 for i, v in enumerate(xy)])
 
 
-def trid(xy):
+def trid(xy: Sequence[float]) -> float:
     '''Trid Function
 
     Parameters
@@ -1414,7 +1418,7 @@ def trid(xy):
     return a - b
 
 
-def tripod(xy):
+def tripod(xy: Sequence[float]) -> float:
     '''Tripod Function
 
     Parameters
@@ -1448,7 +1452,7 @@ def tripod(xy):
     return a + b + c
 
 
-def wolfe(xyz):
+def wolfe(xyz: Sequence[float]) -> float:
     '''Wolfe Function
 
     Parameters
@@ -1470,10 +1474,10 @@ def wolfe(xyz):
     Sons, 1981.
     '''
     x, y, z = xyz[0], xyz[1], xyz[2]
-    return (4.0/3.0)*(x**2.0 + y**2.0 - x*y)**0.75 + z
+    return float((4.0/3.0)*(x**2 + y**2 - x*y)**0.75 + z)
 
 
-def zakharov(x):
+def zakharov(x: Sequence[float]) -> float:
     '''Zakharov Function
 
     Parameters
@@ -1503,7 +1507,7 @@ def zakharov(x):
     Volume 53, Issue 10, 2007, Pages 1605-1614, ISSN 0898-1221
     '''
 
-    a, b = 0, 0
+    a, b = 0.0, 0.0
     for i, val in enumerate(x):
         a += val**2
         b += 0.5*i*val
@@ -1514,13 +1518,15 @@ def zakharov(x):
 
 
 class tsp:
-    def __init__(self, dist_func, close_loop=True):
+    def __init__(
+        self, dist_func: Callable[[Any, Any], float], close_loop: bool = True
+    ) -> None:
         self.dist_func = dist_func
         self.close_loop = close_loop
 
-    def dist(self, xy):
+    def dist(self, xy: Sequence[Any]) -> float:
         # sequentially calculate distance between all tsp nodes
-        dist = 0
+        dist = 0.0
         for i in range(len(xy) - 1):
             dist += self.dist_func(xy[i + 1], xy[i])
 

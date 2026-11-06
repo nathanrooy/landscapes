@@ -1,4 +1,4 @@
-def safe_division(n,d):
+def safe_division(n: float, d: float) -> float:
     '''Safe Division
 
     Parameters
@@ -18,5 +18,6 @@ def safe_division(n,d):
     try:
         return n / d
     except ZeroDivisionError:
-        return 0
+        return 0.0
+
 
