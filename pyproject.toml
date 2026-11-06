@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "landscapes"
-version = "0.0.13"
+dynamic = ["version"]
 description = "A Python library of standardized optimization test functions"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -19,6 +19,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Operating System :: OS Independent",
     "Typing :: Typed",
 ]
@@ -33,6 +34,9 @@ dev = [
     "mypy>=1.0",
     "ruff>=0.8.0",
 ]
+
+[tool.setuptools.dynamic]
+version = { attr = "landscapes.__version__" }
 
 [tool.setuptools.packages.find]
 where = ["."]
