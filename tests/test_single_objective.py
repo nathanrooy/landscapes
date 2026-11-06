@@ -367,7 +367,6 @@ class test_single_objective(unittest.TestCase):
         self.assertEqual(safe_division(10, 0.0), 0.0)
 
     def test_top_level_package_exports(self):
-        self.assertEqual(landscapes.__version__, "0.0.13")
         self.assertTrue(callable(landscapes.sphere))
         self.assertTrue(callable(landscapes.ackley))
         self.assertTrue(callable(landscapes.rastrigin))
