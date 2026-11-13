@@ -1,11 +1,12 @@
 <p  align="center"><img src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/logo.png"></p>
 
-[![ci](https://github.com/nathanrooy/landscapes/actions/workflows/ci.yml/badge.svg)](https://github.com/nathanrooy/landscapes/actions/workflows/ci.yml)
-[![GitHub license](https://img.shields.io/github/license/nathanrooy/landscapes)](https://github.com/nathanrooy/landscapes/blob/master/LICENSE)
-[![PyPI pyversions](https://img.shields.io/pypi/pyversions/landscapes.svg)](https://pypi.org/pypi/landscapes/)
-[![PyPi Version](https://img.shields.io/pypi/v/landscapes.svg)](https://pypi.org/project/landscapes)
-[![codecov](https://img.shields.io/codecov/c/github/nathanrooy/landscapes.svg)](https://codecov.io/gh/nathanrooy/landscapes)
-[![Downloads](https://img.shields.io/pypi/dm/landscapes)](https://pepy.tech/project/landscapes)
+[![PyPi Version](https://img.shields.io/pypi/v/landscapes.svg?style=flat-square)](https://pypi.org/project/landscapes/)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/landscapes.svg?style=flat-square)](https://pypi.org/project/landscapes/)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/nathanrooy/landscapes/ci.yml?branch=master&style=flat-square)](https://github.com/nathanrooy/landscapes/actions/workflows/ci.yml)
+[![GitHub license](https://img.shields.io/github/license/nathanrooy/landscapes?style=flat-square)](https://github.com/nathanrooy/landscapes/blob/master/LICENSE)
+[![codecov](https://img.shields.io/codecov/c/github/nathanrooy/landscapes.svg?style=flat-square)](https://codecov.io/gh/nathanrooy/landscapes)
+[![Downloads](https://img.shields.io/pypi/dm/landscapes?style=flat-square)](https://pepy.tech/project/landscapes)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json&style=flat-square)](https://github.com/astral-sh/ruff)
 
 ## Installation
 There are a couple ways in which you can use this library. The first and probably the easiest is by using pip and PyPi:
@@ -21,6 +22,108 @@ Lastly, you can always clone/download this repo and use as is.
 wget https://github.com/nathanrooy/landscapes/archive/master.zip
 unzip master.zip
 cd landscapes-master
+```
+## Usage
+
+### Basic minimization with SciPy
+
+As a simple example, let's use the <a target="_blank" href="https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method">Nelder-Mead method</a> via <a target="_blank" href="https://www.scipy.org/">SciPy</a> to minimize the sphere function. We'll start off by importing the `sphere` function from Landscapes and the `minimize` method from SciPy.
+```py
+>>> from landscapes.single_objective import sphere
+>>> from scipy.optimize import minimize
+```
+Next, we'll call the `minimize` method using a starting location of [5,5].
+```py
+>>> minimize(sphere, x0=[5,5], method='Nelder-Mead')
+```
+The output of which should look close to this:
+```py
+ final_simplex: (array([[-3.33051318e-05, -1.93825710e-05],
+       [ 4.24925225e-05,  1.37129516e-05],
+       [ 3.09383247e-05, -4.04797876e-05]]), array([1.48491586e-09, 1.99365951e-09, 2.59579314e-09]))
+           fun: 1.4849158640215086e-09
+       message: 'Optimization terminated successfully.'
+          nfev: 80
+           nit: 44
+        status: 0
+       success: True
+             x: array([-3.33051318e-05, -1.93825710e-05])
+```
+
+### Benchmark function metadata
+
+Every benchmark function in `landscapes` provides standardized, zero-overhead metadata attributes (`bounds`, `dimensions`, `g_opt`) attached directly to the function object at import time. Below is an example of how to access these attributes.
+
+
+**Bounds: uniformly formatted as `list[tuple[float, float]]`**
+```py
+from landscapes.single_objective import ackley, himmelblau, sphere
+
+# the ackley function has two dimensions and thus two bounds
+>>> ackley.bounds
+[(-5.0, 5.0), (-5.0, 5.0)]
+```
+
+**Global minimum: function value and coordinate**
+```py
+# the global optima is a list of Solution objects
+>>> ackley.g_opt
+[Solution(f_opt=0.0, x_opt=[0.0, 0.0])]
+
+# the first global minima coordinate
+>>> ackley.g_opt[0].x_opt
+[0.0, 0.0]
+
+# the function value at the first global minima coordinate
+>>> ackley.g_opt[0].f_opt
+0.0
+```
+
+**Multiple global optima: all global solutions are preserved**
+```py
+# check number of global optima
+>>> len(himmelblau.g_opt)
+4
+
+# cycle through each solution
+>>> for opt in himmelblau.g_opt:
+...     print(f"f(x*) = {opt.f_opt} at x* = {opt.x_opt}")
+... 
+f(x*) = 0.0 at x* = [3.0, 2.0]
+f(x*) = 0.0 at x* = [-2.805118, 3.131312]
+f(x*) = 0.0 at x* = [-3.77931, -3.283186]
+f(x*) = 0.0 at x* = [3.584428, -1.848126]
+```
+
+**Scalable N-D Functions: scale bounds naturally using list multiplication**
+```py
+# None (denotes scalable dimension)
+>>> sphere.dimensions
+None
+
+>>> sphere.bounds * 5
+[(-5.12, 5.12), (-5.12, 5.12), (-5.12, 5.12), (-5.12, 5.12), (-5.12, 5.12)]
+```
+
+### Passing metadata directly to optimizers
+
+Because `bounds` follows standard `list[tuple[float, float]]` conventions, it can be passed directly into most optimizers without manual mapping:
+
+```py
+from scipy.optimize import minimize
+from landscapes.single_objective import ackley
+
+# pass bounds directly from the benchmark function
+result = minimize(
+    ackley,
+    x0=[2.0, 2.0],
+    bounds=ackley.bounds,
+    method="L-BFGS-B",
+)
+
+# easily check convergence against known global optimum
+>>> abs(result.fun - ackley.g_opt[0].f_opt) < 1e-6
+True
 ```
 
 ## Available functions from: `single_objective`
@@ -93,32 +196,6 @@ cd landscapes-master
 | Wolfe | `wolfe()` | 3 |
 | Zakharov | `zakharov()` | n |
 
-## Usage
-
-As a simple example, let's use the <a target="_blank" href="https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method">Nelder-Mead method</a> via <a target="_blank" href="https://www.scipy.org/">SciPy</a> to minimize the sphere function. We'll start off by importing the `sphere` function from Landscapes and the `minimize` method from SciPy.
-```py
->>> from landscapes.single_objective import sphere
->>> from scipy.optimize import minimize
-```
-Next, we'll call the `minimize` method using a starting location of [5,5].
-```py
->>> minimize(sphere, x0=[5,5], method='Nelder-Mead')
-```
-The output of which should look close to this:
-```py
- final_simplex: (array([[-3.33051318e-05, -1.93825710e-05],
-       [ 4.24925225e-05,  1.37129516e-05],
-       [ 3.09383247e-05, -4.04797876e-05]]), array([1.48491586e-09, 1.99365951e-09, 2.59579314e-09]))
-           fun: 1.4849158640215086e-09
-       message: 'Optimization terminated successfully.'
-          nfev: 80
-           nit: 44
-        status: 0
-       success: True
-             x: array([-3.33051318e-05, -1.93825710e-05])
-
-```
-
 ## Function Reference - Single Objective
 
 ### Ackley function
@@ -127,7 +204,7 @@ from landscapes.single_objective import ackley
 ```
 | global minimum | bounds | usage | 
 | --- | --- | --- |
-| f(x=0,y=0)=0 | -5.12 <= x, y <= 5.12 | `ackley([x,y])` |
+| f(x=0,y=0)=0 | -5 <= x, y <= 5 | `ackley([x,y])` |
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/ackley.png">
 
@@ -298,7 +375,7 @@ from landscapes.single_objective import sphere
 ```
 | global minimum | bounds | usage | 
 | --- | --- | --- |
-| f([0,...,0]) = 0 | -inf <= x_i <= inf | `sphere([x_1,...x_n])` |
+| f([0,...,0]) = 0 | -5.12 <= x_i <= 5.12 | `sphere([x_1,...x_n])` |
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/sphere.png">
 
