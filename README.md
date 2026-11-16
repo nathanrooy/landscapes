@@ -52,13 +52,37 @@ The output of which should look close to this:
 
 ### Benchmark function metadata
 
-Every benchmark function in `landscapes` provides standardized, zero-overhead metadata attributes (`bounds`, `dimensions`, `g_opt`) attached directly to the function object at import time. Below is an example of how to access these attributes.
+Every benchmark function in `landscapes` provides standardized, zero-overhead metadata attributes (`bounds`, `dimensions`, `g_opt`) attached directly to the function object at import time. Running Python's built-in `help()` displays a human-readable summary of the function, its metadata, and its literature citations:
+
+```py
+from landscapes.single_objective import ackley, himmelblau, sphere
+
+>>> help(himmelblau)
+Help on function himmelblau in module landscapes.single_objective:
+
+himmelblau(xy: collections.abc.Sequence[float]) -> float
+    Himmelblau's Function.
+
+    Benchmark Metadata
+    ------------------
+    Bounds: [(-5.0, 5.0), (-5.0, 5.0)]
+    Dimensions: 2
+    Global Optima:
+          1) f(x*) = 0.0, x* = [3.0, 2.0]
+          2) f(x*) = 0.0, x* = [-2.805118, 3.131312]
+          3) f(x*) = 0.0, x* = [-3.77931, -3.283186]
+          4) f(x*) = 0.0, x* = [3.584428, -1.848126]
+
+    References
+    ----------
+      [1] Wikipedia. (2020). Himmelblau's function. https://en.wikipedia.org/wiki/Himmelblau%27s_function
+```
+
+These attributes can also be accessed directly on the function object:
 
 
 **Bounds: uniformly formatted as `list[tuple[float, float]]`**
 ```py
-from landscapes.single_objective import ackley, himmelblau, sphere
-
 # the ackley function has two dimensions and thus two bounds
 >>> ackley.bounds
 [(-5.0, 5.0), (-5.0, 5.0)]

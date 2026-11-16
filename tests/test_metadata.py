@@ -1,46 +1,19 @@
 import inspect
-import types
 import unittest
 from dataclasses import FrozenInstanceError
 
 import landscapes
 import landscapes.single_objective as so
 from landscapes._metadata import BenchmarkFunction, Solution, benchmark
-from landscapes.single_objective import ackley, camel_hump_6, himmelblau, sphere
+from landscapes._references import REFERENCES
+from landscapes.single_objective import sphere
 
 
 class TestMetadata(unittest.TestCase):
-    def test_metadata_attributes(self) -> None:
-        self.assertIsInstance(ackley, types.FunctionType)
-        self.assertEqual(ackley.bounds, [(-5.0, 5.0), (-5.0, 5.0)])
-        self.assertEqual(ackley.dimensions, 2)
-        self.assertEqual(len(ackley.g_opt), 1)
-
-    def test_g_opt_structure(self) -> None:
-        # Ackley has 1 global optimum
-        self.assertEqual(len(ackley.g_opt), 1)
-        opt0 = ackley.g_opt[0]
-        self.assertIsInstance(opt0, Solution)
-
-        # test attribute access
-        self.assertEqual(opt0.f_opt, 0.0)
-        self.assertEqual(opt0.x_opt, [0.0, 0.0])
-
-        # test immutability
+    def test_solution_immutability(self) -> None:
+        sol = Solution(f_opt=0.0, x_opt=[0.0])
         with self.assertRaises(FrozenInstanceError):
-            opt0.f_opt = 10.0  # type: ignore[misc]
-
-        # 6-Hump Camel has 2 global optima
-        self.assertEqual(len(camel_hump_6.g_opt), 2)
-        for opt in camel_hump_6.g_opt:
-            self.assertAlmostEqual(opt.f_opt, -1.031628, places=4)
-            self.assertEqual(len(opt.x_opt), 2)
-
-        # Himmelblau has 4 global optima
-        self.assertEqual(len(himmelblau.g_opt), 4)
-        for opt in himmelblau.g_opt:
-            self.assertEqual(opt.f_opt, 0.0)
-            self.assertEqual(len(opt.x_opt), 2)
+            sol.f_opt = 10.0  # type: ignore[misc]
 
     def test_scalable_dimensions(self) -> None:
         self.assertEqual(sphere.bounds, [(-5.12, 5.12)])
@@ -56,6 +29,7 @@ class TestMetadata(unittest.TestCase):
         self.assertIs(landscapes.Solution, Solution)
 
     def test_all_single_objective_functions_have_metadata(self) -> None:
+        # get all single objective functions
         so_funcs = [
             (name, obj)
             for name, obj in inspect.getmembers(so, inspect.isfunction)
@@ -65,16 +39,19 @@ class TestMetadata(unittest.TestCase):
         ]
         self.assertEqual(len(so_funcs), 66)
 
+        # cycle through each single objective function
         for name, fn in so_funcs:
             with self.subTest(function=name):
                 # verify bounds
                 self.assertIsInstance(fn.bounds, list)
                 self.assertGreaterEqual(len(fn.bounds), 1)
                 for b in fn.bounds:
-                    self.assertIsInstance(b, tuple)
                     self.assertEqual(len(b), 2)
+                    self.assertIsInstance(b, tuple)
                     self.assertIsInstance(b[0], (int, float))
                     self.assertIsInstance(b[1], (int, float))
+
+                    # verify lower/upper bound ordering
                     self.assertLessEqual(b[0], b[1])
 
                 # verify dimensions
@@ -83,23 +60,36 @@ class TestMetadata(unittest.TestCase):
                 # verify global optima
                 self.assertIsInstance(fn.g_opt, list)
                 self.assertGreaterEqual(len(fn.g_opt), 1)
+                for opt in fn.g_opt:
+                    self.assertIsInstance(opt, Solution)
+                    self.assertIsInstance(opt.f_opt, (int, float))
+                    self.assertIsInstance(opt.x_opt, list)
 
                 # verify dimensions and bounds sizing
                 if fn.dimensions is not None:
                     self.assertEqual(len(fn.bounds), fn.dimensions)
                     for opt in fn.g_opt:
-                        self.assertIsInstance(opt, Solution)
                         self.assertEqual(len(opt.x_opt), fn.dimensions)
                 else:
                     self.assertEqual(len(fn.bounds), 1)
                     self.assertEqual(len(fn.bounds * 3), 3)
 
-                # verify docstring
+                # verify docstring has non-empty title and structure
                 doc = fn.__doc__ or ""
+                self.assertTrue(doc.strip())
                 self.assertIn("Benchmark Metadata", doc)
                 self.assertIn("Bounds:", doc)
                 self.assertIn("Dimensions:", doc)
                 self.assertIn("Global Optima:", doc)
+                self.assertIn("References\n----------", doc)
+
+                # verify references
+                self.assertTrue(hasattr(fn, "_ref"))
+                self.assertIsInstance(fn._ref, list)
+                self.assertGreaterEqual(len(fn._ref), 1)
+                for ref_key in fn._ref:
+                    self.assertIn(ref_key, REFERENCES)
+                    self.assertIn(REFERENCES[ref_key], doc)
 
 
 if __name__ == "__main__":

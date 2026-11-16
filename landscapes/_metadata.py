@@ -6,6 +6,8 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any, Protocol, cast
 
+from landscapes._references import REFERENCES
+
 
 @dataclass(frozen=True, slots=True)
 class Solution:
@@ -30,35 +32,40 @@ def _format_docstring(
     bounds: list[tuple[float, float]],
     dimensions: int | None,
     g_opt: list[Solution],
+    refs: list[str],
 ) -> str:
     """Construct a standardized benchmark docstring."""
-    title = base_doc.strip() if base_doc else ""
-    bounds_str = str(bounds)
+    title = base_doc.strip()
     dims_str = str(dimensions) if dimensions is not None else "n (scalable)"
 
-    opt_lines = [
+    # pretty print global optima
+    opt_str = "\n".join(
         f"      {i}) f(x*) = {opt.f_opt}, x* = {opt.x_opt}"
         for i, opt in enumerate(g_opt, 1)
-    ]
-    opt_str = "\n".join(opt_lines) if opt_lines else "      None specified"
+    )
 
+    # join all metadata together
     metadata_block = (
         f"Benchmark Metadata\n"
         f"------------------\n"
-        f"Bounds: {bounds_str}\n"
+        f"Bounds: {bounds}\n"
         f"Dimensions: {dims_str}\n"
         f"Global Optima:\n{opt_str}"
     )
 
-    if title:
-        return f"{title}\n\n{metadata_block}"
-    return metadata_block
+    # add the references
+    ref_lines = [f"  [{i}] {REFERENCES[k]}" for i, k in enumerate(refs, 1)]
+    ref_block = "References\n----------\n" + "\n".join(ref_lines)
+
+    # finish the docstring and return
+    return f"{title}\n\n{metadata_block}\n\n{ref_block}"
 
 
 def benchmark(
     bounds: list[tuple[float, float]],
+    g_opt: list[Solution],
+    _ref: list[str],
     dimensions: int | None = None,
-    g_opt: list[Solution] | None = None,
 ) -> Callable[[Callable[..., float]], BenchmarkFunction]:
     """Decorator for attaching metadata to a function."""
 
@@ -66,13 +73,15 @@ def benchmark(
         target: Any = fn
         target.bounds = bounds
         target.dimensions = dimensions
-        target.g_opt = g_opt if g_opt is not None else []
+        target.g_opt = g_opt
+        target._ref = _ref
 
         fn.__doc__ = _format_docstring(
             fn.__doc__ or "",
             bounds=bounds,
             dimensions=dimensions,
-            g_opt=target.g_opt,
+            g_opt=g_opt,
+            refs=_ref,
         )
 
         return cast(BenchmarkFunction, target)
