@@ -1,5 +1,5 @@
 import unittest
-from math import pi, sqrt
+from math import sqrt
 
 from landscapes._utils import safe_division
 from landscapes.single_objective import (
@@ -217,7 +217,7 @@ class test_single_objective(unittest.TestCase):
         for opt in deckkers_aarts.g_opt:
             self.assertLess(
                 abs(opt.f_opt - deckkers_aarts(opt.x_opt)),
-                1e-5,
+                1e-6,
             )
 
     def test_dixon_price(self):
@@ -238,7 +238,7 @@ class test_single_objective(unittest.TestCase):
     def test_eggholder(self):
         self.assertLess(
             abs(eggholder.g_opt[0].f_opt - eggholder(eggholder.g_opt[0].x_opt)),
-            1e-4,
+            1e-6,
         )
 
     def test_exponential(self):
@@ -309,20 +309,15 @@ class test_single_objective(unittest.TestCase):
     def test_mccormick(self):
         self.assertLess(
             abs(mccormick.g_opt[0].f_opt - mccormick(mccormick.g_opt[0].x_opt)),
-            1e-4,
+            1e-6,
         )
 
     def test_parsopoulos(self):
-        self.assertLess(
-            abs(parsopoulos(parsopoulos.g_opt[0].x_opt) - parsopoulos.g_opt[0].f_opt),
-            1e-6,
-        )
-        for k in [-1, 1, -3, 3]:
-            for m in [0, -1, 1, -2, 2]:
-                self.assertLess(
-                    abs(parsopoulos([k * pi / 2, m * pi]) - parsopoulos.g_opt[0].f_opt),
-                    1e-6,
-                )
+        for opt in parsopoulos.g_opt:
+            self.assertLess(
+                abs(parsopoulos(opt.x_opt) - opt.f_opt),
+                1e-6,
+            )
 
     def test_pen_holder(self):
         for opt in pen_holder.g_opt:
@@ -406,9 +401,9 @@ class test_single_objective(unittest.TestCase):
             )
 
     def test_schwefel(self):
-        for d in range(D_MIN, 7):
+        for d in range(D_MIN, D_MAX + 1):
             x = schwefel.g_opt[0].x_opt * d
-            self.assertLess(abs(schwefel(x) - schwefel.g_opt[0].f_opt), 1e-4)
+            self.assertLess(abs(schwefel(x) - schwefel.g_opt[0].f_opt), 1e-6)
 
     def test_sphere(self):
         self.assertEqual(sphere(sphere.g_opt[0].x_opt), sphere.g_opt[0].f_opt)

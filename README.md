@@ -196,7 +196,7 @@ True
 | Leon | `leon()` | 2 |
 | [Lévi function N.13](#lévi-function-n13) | `levi_n13()` | 2 |
 | [Matyas](#matyas-function) | `matyas()` | 2 |
-| Michalewicz | `michalewicz` | n|
+| Michalewicz | `michalewicz()` | n |
 | [McCormick](#mccormick-function) | `mccormick()` | 2 |
 | Parsopoulos | `parsopoulos()` | 2 |
 | Pen Holder | `pen_holder()` | 2 |
@@ -368,7 +368,7 @@ from landscapes.single_objective import rosenbrock
 ```
 | global minimum | bounds | usage | 
 | --- | --- | --- |
-| f([1,...,1]) = 0 | -inf <= x_i <= inf | `rosenbrock([x_1,...,x_n])` |
+| f([1,...,1]) = 0 | -5 <= x_i <= 10 | `rosenbrock([x_1,...,x_n])` |
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/rosenbrock.png">
 
@@ -387,9 +387,9 @@ from landscapes.single_objective import schaffer_n2
 ```py
 from landscapes.single_objective import schaffer_n4
 ```
-| global minimum | bounds | usage | 
+| global minimum(s) | bounds | usage | 
 | --- | --- | --- |
-| f(x=0, y=1.25313) = 0.292579 <br> f(x=0, y=-1.25313) = 0.292579 | -100 <= x, y <= 100 | `schaffer_n4([x,y])` |
+| f(x=0, y=1.25313) = 0.292579 <br> f(x=0, y=-1.25313) = 0.292579 <br> f(x=1.25313, y=0) = 0.292579 <br> f(x=-1.25313, y=0) = 0.292579 | -100 <= x, y <= 100 | `schaffer_n4([x,y])` |
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/schaffer_n4.png">
 
@@ -419,7 +419,7 @@ from landscapes.single_objective import camel_hump_3
 ```
 | global minimum | bounds | usage | 
 | --- | --- | --- |
-| -f(x=0, y=0) = 0 | -5 <= x_i <= 5 | `three_hump_camel([x,y])` |
+| f(x=0, y=0) = 0 | -5 <= x, y <= 5 | `camel_hump_3([x,y])` |
 
 <img width=400, src="https://raw.githubusercontent.com/nathanrooy/landscapes/master/docs/images/linear_color_scale/three_hump_camel.png">
 

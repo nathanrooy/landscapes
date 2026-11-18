@@ -48,7 +48,7 @@ def ackley(xy: Sequence[float]) -> float:
 def ackley_n2(xy: Sequence[float]) -> float:
     """Ackley N.2 Function."""
     x, y = xy[0], xy[1]
-    return -200 * exp(-0.2 * sqrt(x**2 + y**2))
+    return -200 * exp(-0.02 * sqrt(x**2 + y**2))
 
 
 @benchmark(
@@ -263,7 +263,7 @@ def brown(x: Sequence[float]) -> float:
         sum(
             [
                 ((x[i] ** 2) ** (x[i + 1] ** 2 + 1.0))
-                + ((x[i + 1] ** 2) ** (x[i] + 1.0))
+                + ((x[i + 1] ** 2) ** (x[i] ** 2 + 1.0))
                 for i in range(len(x) - 1)
             ]
         )
@@ -402,12 +402,12 @@ def colville(xy: Sequence[float]) -> float:
 @benchmark(
     bounds=[(-1.0, 1.0)],
     dimensions=None,
-    g_opt=[Solution(f_opt=0.1, x_opt=[0.0])],
+    g_opt=[Solution(f_opt=-0.1, x_opt=[0.0])],
     _ref=["ali2005"],
 )
 def cosine_mixture(x: Sequence[float]) -> float:
     """Cosine Mixture Function."""
-    return 0.1 * sum([cos(5 * pi * v) for v in x]) - sum([v**2 for v in x])
+    return -0.1 * sum([cos(5 * pi * v) for v in x]) + sum([v**2 for v in x])
 
 
 @benchmark(
@@ -488,15 +488,15 @@ def damavandi(xy: Sequence[float]) -> float:
     ],
     dimensions=2,
     g_opt=[
-        Solution(f_opt=-24771.09375, x_opt=[0.0, 15.0]),
-        Solution(f_opt=-24771.09375, x_opt=[0.0, -15.0]),
+        Solution(f_opt=-24776.5183423, x_opt=[0.0, 14.94511215]),
+        Solution(f_opt=-24776.5183423, x_opt=[0.0, -14.94511215]),
     ],
     _ref=["ali2005"],
 )
 def deckkers_aarts(xy: Sequence[float]) -> float:
     """Deckkers-Aarts Function."""
     x, y = xy[0], xy[1]
-    return 10 * 5 * x**2 + y**2 - (x**2 + y**2) ** 2 + 10 ** (-5) * (x**2 + y**2) ** 4
+    return 10**5 * x**2 + y**2 - (x**2 + y**2) ** 2 + 10 ** (-5) * (x**2 + y**2) ** 4
 
 
 @benchmark(
@@ -508,7 +508,7 @@ def deckkers_aarts(xy: Sequence[float]) -> float:
 def dixon_price(x: Sequence[float]) -> float:
     """Dixon and Price Function."""
     return (x[0] - 1.0) ** 2 + sum(
-        [i * (2.0 * x[i] ** 2 - x[i - 1]) ** 2 for i in range(1, len(x))]
+        [(i + 1) * (2.0 * x[i] ** 2 - x[i - 1]) ** 2 for i in range(1, len(x))]
     )
 
 
@@ -548,7 +548,7 @@ def easom(xy: Sequence[float]) -> float:
         (-512.0, 512.0),
     ],
     dimensions=2,
-    g_opt=[Solution(f_opt=-959.6407, x_opt=[512.0, 404.2319])],
+    g_opt=[Solution(f_opt=-959.6406627, x_opt=[512.0, 404.2319])],
     _ref=["wikipedia_test_functions"],
 )
 def eggholder(xy: Sequence[float]) -> float:
@@ -680,13 +680,13 @@ def hosaki(xy: Sequence[float]) -> float:
 
 @benchmark(
     bounds=[
-        (-10.0, 10.0),
-        (-10.0, 10.0),
+        (0.0, 10.0),
+        (0.0, 10.0),
     ],
     dimensions=2,
     g_opt=[
-        Solution(f_opt=0.6736675, x_opt=[0.0, 1.393249]),
-        Solution(f_opt=0.6736675, x_opt=[1.393249, 0.0]),
+        Solution(f_opt=-0.6736675, x_opt=[0.0, 1.393249]),
+        Solution(f_opt=-0.6736675, x_opt=[1.393249, 0.0]),
     ],
     _ref=["jamil2013"],
 )
@@ -695,13 +695,13 @@ def keane(xy: Sequence[float]) -> float:
     x, y = xy[0], xy[1]
     n = (sin(x - y) ** 2) * (sin(x + y) ** 2)
     d = sqrt(x**2 + y**2)
-    return n / d
+    return -safe_div(n, d)
 
 
 @benchmark(
     bounds=[
-        (-10.0, 10.0),
-        (-10.0, 10.0),
+        (-1.2, 1.2),
+        (-1.2, 1.2),
     ],
     dimensions=2,
     g_opt=[Solution(f_opt=0.0, x_opt=[1.0, 1.0])],
@@ -710,7 +710,7 @@ def keane(xy: Sequence[float]) -> float:
 def leon(xy: Sequence[float]) -> float:
     """Leon Function."""
     x, y = xy[0], xy[1]
-    return 100 * (y - x**3) ** 2 + (1 - x) ** 2
+    return 100 * (y - x**2) ** 2 + (1 - x) ** 2
 
 
 @benchmark(
@@ -772,7 +772,7 @@ def michalewicz(x: Sequence[float], m: float = 10) -> float:
         (-3.0, 4.0),
     ],
     dimensions=2,
-    g_opt=[Solution(f_opt=-1.9133, x_opt=[-0.54719, -1.54719])],
+    g_opt=[Solution(f_opt=-1.91322295, x_opt=[-0.54719, -1.54719])],
     _ref=["wikipedia_test_functions"],
 )
 def mccormick(xy: Sequence[float]) -> float:
@@ -787,7 +787,20 @@ def mccormick(xy: Sequence[float]) -> float:
         (-5.0, 5.0),
     ],
     dimensions=2,
-    g_opt=[Solution(f_opt=0.0, x_opt=[pi / 2, 0.0])],
+    g_opt=[
+        Solution(f_opt=0.0, x_opt=[-3 * pi / 2, -pi]),
+        Solution(f_opt=0.0, x_opt=[-3 * pi / 2, 0.0]),
+        Solution(f_opt=0.0, x_opt=[-3 * pi / 2, pi]),
+        Solution(f_opt=0.0, x_opt=[-pi / 2, -pi]),
+        Solution(f_opt=0.0, x_opt=[-pi / 2, 0.0]),
+        Solution(f_opt=0.0, x_opt=[-pi / 2, pi]),
+        Solution(f_opt=0.0, x_opt=[pi / 2, -pi]),
+        Solution(f_opt=0.0, x_opt=[pi / 2, 0.0]),
+        Solution(f_opt=0.0, x_opt=[pi / 2, pi]),
+        Solution(f_opt=0.0, x_opt=[3 * pi / 2, -pi]),
+        Solution(f_opt=0.0, x_opt=[3 * pi / 2, 0.0]),
+        Solution(f_opt=0.0, x_opt=[3 * pi / 2, pi]),
+    ],
     _ref=["parsopoulos2001"],
 )
 def parsopoulos(xy: Sequence[float]) -> float:
@@ -890,7 +903,7 @@ def rotated_hyper_ellipsoid(xy: Sequence[float]) -> float:
     """Rotated Hyper-Ellipsoid Function."""
     a = 0.0
     for i in range(len(xy)):
-        a += sum([xy[j] ** 2 for j in range(i)])
+        a += sum([xy[j] ** 2 for j in range(i + 1)])
     return a
 
 
@@ -947,6 +960,8 @@ def schaffer_n2(xy: Sequence[float]) -> float:
     g_opt=[
         Solution(f_opt=0.292579, x_opt=[0.0, 1.25313]),
         Solution(f_opt=0.292579, x_opt=[0.0, -1.25313]),
+        Solution(f_opt=0.292579, x_opt=[1.25313, 0.0]),
+        Solution(f_opt=0.292579, x_opt=[-1.25313, 0.0]),
     ],
     _ref=["surjanovic_schaffer_n4"],
 )
@@ -961,12 +976,12 @@ def schaffer_n4(xy: Sequence[float]) -> float:
 @benchmark(
     bounds=[(-500.0, 500.0)],
     dimensions=None,
-    g_opt=[Solution(f_opt=0.0, x_opt=[420.96874])],
+    g_opt=[Solution(f_opt=0.0, x_opt=[420.968746359982025])],
     _ref=["surjanovic_schwefel"],
 )
 def schwefel(x: Sequence[float]) -> float:
     """Schwefel Function."""
-    return 418.9829 * len(x) - sum([item * sin(sqrt(abs(item))) for item in x])
+    return 418.9828872724337 * len(x) - sum([item * sin(sqrt(abs(item))) for item in x])
 
 
 @benchmark(
@@ -1085,7 +1100,7 @@ def zakharov(x: Sequence[float]) -> float:
     a, b = 0.0, 0.0
     for i, val in enumerate(x):
         a += val**2
-        b += 0.5 * i * val
+        b += 0.5 * (i + 1) * val
     return a + b**2 + b**4
 
 
